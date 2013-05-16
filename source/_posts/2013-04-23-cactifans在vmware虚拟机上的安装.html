@@ -1,0 +1,82 @@
+---
+layout: post
+title: CactiFans在Vmware虚拟机上的安装
+categories:
+- cacti
+tags: []
+published: true
+comments: true
+---
+<p>最近有部分人反应在下载CactiFans的ISO后，在Vmware里安装后，重启出现如下错误
+<p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2013/04/1.png"><img class="aligncenter size-full wp-image-956" alt="1" src="http://www.cactifans.org/wp-content/uploads/2013/04/1.png" width="727" height="279" /></a></p>
+&nbsp;</p>
+
+<p>出现此种错误,是由于Vmware自做聪明导致的，下面我就演示下CactiFans在Vmware下的安装
+<!--more-->
+新建虚拟机，选择典型</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_141807.png"><img class="aligncenter size-full wp-image-957" alt="2013-04-23_141807" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_141807.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p><span style="color: #ff0000;"><strong>这里就是要注意的地方了，出现前面那个错误，就是因为大家在这里选了第二项</strong></span></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142336.png"><img class="aligncenter size-full wp-image-958" alt="2013-04-23_142336" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142336.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>系统这里我选Red Hat 6，选CentOS也没问题，注意自己的版本是32位还是64位</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142415.png"><img class="aligncenter size-full wp-image-959" alt="2013-04-23_142415" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142415.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>虚拟机名称及位置</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142442.png"><img class="aligncenter size-full wp-image-960" alt="2013-04-23_142442" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142442.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>硬盘大小</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142451.png"><img class="aligncenter size-full wp-image-961" alt="2013-04-23_142451" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142451.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>配置预览</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142506.png"><img class="aligncenter size-full wp-image-962" alt="2013-04-23_142506" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142506.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>建立成功</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142517.png"><img class="aligncenter size-full wp-image-963" alt="2013-04-23_142517" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142517.png" width="1040" height="758" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>启动虚拟机</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142541.png"><img class="aligncenter size-full wp-image-964" alt="2013-04-23_142541" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142541.png" width="736" height="553" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>点击右下角的光驱图标，先择settings，设置引导镜像</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143442.png"><img class="aligncenter size-full wp-image-965" alt="2013-04-23_143442" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143442.png" width="707" height="588" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>设置好后点ok，在这个界面回车</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143744.png"><img class="aligncenter size-full wp-image-966" alt="2013-04-23_143744" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143744.png" width="736" height="553" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>回车后就可以开始安装CactiFans了，vm-tools的安装我就不说了，可以不用安装</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143513.png"><img class="aligncenter size-full wp-image-967" alt="2013-04-23_143513" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143513.png" width="656" height="633" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>注:在Xen中，系统模版要选择other，不然也会出现上述错误。</p>

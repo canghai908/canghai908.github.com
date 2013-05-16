@@ -1,0 +1,92 @@
+---
+layout: post
+title: Cacti 0.8.7g在CentOS5.5上的安装（1）
+categories:
+- cacti
+- linux
+tags: []
+published: true
+comments: true
+---
+<p>1.系统的安装<br />
+这次我用的是CentOS5.5-i386，在选择安装包时一个包都不需要装，就以最小系统。配置好IP等。<br />
+A.关闭SElinux
+<pre class="brush: bash; gutter: true">vi /etc/sysconfig/selinux
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#       enforcing - SELinux security policy is enforced.
+#       permissive - SELinux prints warnings instead of enforcing.
+#       disabled - SELinux is fully disabled.</pre></p>
+
+<p>SELINUX=enforcing<br />
+# SELINUXTYPE= type of policy in use. Possible values are:<br />
+#       targeted - Only targeted network daemons are protected.<br />
+#       strict - Full SELinux protection.<br />
+SELINUXTYPE=targeted
+把SELINUX=enforcing改为SELINUX=disabled并保存！在这个时候SElinux还在运行我们用
+<pre class="brush: bash; gutter: true">setenforce 0</pre>
+来关闭SElinux
+<!--more-->
+B.防火墙<br />
+一般我都是把防火墙直接关掉
+<pre class="brush: bash; gutter: true">/etc/init.d/iptables stop
+/etc/init.d/ip6tables stop
+chkconfig iptables off
+chkconfig ip6tables off</pre>
+2.配置cacti需要的软件环境<br />
+A.由于一些包在官方的库中没有，因此我们要建立dag.repo，定义非官方库
+<pre class="brush: bash; gutter: true">vi /etc/yum.repos.d/dag.repo</pre>
+内容如下
+<pre class="brush: bash; gutter: true">[dag]
+name=Dag RPM Repository for Red Hat Enterprise Linux
+baseurl=http://apt.sw.be/redhat/el$releasever/en/$basearch/dag
+gpgcheck=1
+enabled=1</pre>
+然后再导入非官方库的GPG：
+<pre class="brush: bash; gutter: true">rpm --import http://dag.wieers.com/rpm/packages/RPM-GPG-KEY.dag.txt</pre>
+B.安装cacti需要的环境包
+<pre class="brush: bash; gutter: true">yum install -y httpd mysql mysql-server php php-mysql net-snmp net-snmp-utils
+yum install -y zlib libpng freetype libjpeg fontconfig gd libxml2 
+yum install -y rrdtool</pre>
+C.为cacti创建数据库和用户
+<pre class="brush: bash; gutter: true">service mysqld start
+/usr/bin/mysqladmin --user=root create cacti
+mysql -e &quot;GRANT ALL ON cacti.* TO cactiuser@localhost IDENTIFIED BY &#039;cactifans.org&#039;&quot;</pre>
+3.下载cacti-0.8.7g.tar.gz并解压、MV
+<pre class="brush: bash; gutter: true">cd /var/www/html/
+yum install wget -y
+wget http://www.cacti.net/downloads/cacti-0.8.7g.tar.gz
+tar xf cacti-0.8.7g.tar.gz
+rm -rf cacti-0.8.7g.tar.gz
+cd cacti-0.8.7g/
+mv * ../
+cd ..
+rm -rf cacti-0.8.7g/
+mysql -ucactiuser -pcactifans.org cacti &lt; /var/www/html/cacti.sql</pre>
+修改cacti的配置文件并保存
+<pre class="brush: bash; gutter: true">vi /var/www/html/include/config.php
+/* make sure these values refect your actual database/host/user/password */
+$database_type = &quot;mysql&quot;;
+$database_default = &quot;cacti&quot;;
+$database_hostname = &quot;localhost&quot;;
+$database_username = &quot;cactiuser&quot;;
+$database_password = &quot;cactifans.org&quot;;
+$database_port = &quot;3306&quot;;</pre>
+设置crontab定时任务<br />
+由于我们是最小系统安装没有安装定时任务，因此我们首先安装
+<pre class="brush: bash; gutter: true">yum install vixie-cron</pre>
+然后我们添加定时任务
+<pre class="brush: bash; gutter: true">cho &#039;*/5 * * * * root /usr/bin/php /var/www/html/poller.php&#039; &gt;&gt; /etc/crontab</pre>
+设置服务开机自启动,重启服务
+<pre class="brush: bash; gutter: true">chkconfig snmpd on
+chkconfig httpd on
+chkconfig mysqld on
+chkconfig crond on
+service httpd restart
+service snmpd restart
+service mysqld restart
+service crond restart</pre>
+4.WEB页完成安装<br />
+浏览<a href="http://xxx.xxx.xxx.xxx/index.php">http://xxx.xxx.xxx.xxx/index.php</a>
+就可以出再Cacti Installation Guide的页面了。NEXT--NEXT--FINISH。<br />
+用户名和密码为：admin/admin，之后输入新的密码，就完成了最基本的安装。</p>

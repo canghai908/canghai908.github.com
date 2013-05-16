@@ -1,0 +1,187 @@
+---
+layout: post
+title: Cacti插件详解——Syslog
+categories:
+- cacti
+- Cacti插件
+tags: []
+published: true
+comments: true
+---
+<p><code></code><span style="font-size: 18px;">     cacti中syslog插件，是通过rsyslog或syslog-ng与mysql的交互，将日志存放到mysql数据库中，cacti中的syslog插件从mysql中检索查看日志数据。因此，首先要配置一台rsyslog与mysql的日志中心服务器来接收客户机的日志;其次，配置cacti的syslog插件，通过该插件检索与查询mysql</span><span style="font-size: 18px;">中的日志。可以收集来自linux、windows等服务器和交换机路由器的日志。做到集中和分类查看。</span>
+<div></div>
+<div><span style="font-size: 18px;">说下软件环境</span></div>
+<div><span style="font-size: 18px;">os：centos6.2x86</span></div>
+<div><span style="font-size: 18px;">cacti-0.8.7i-PIA-3.1.tar.gz</span></div>
+<div><span style="font-size: 18px;">syslog-v1.22-2.tgz</span></div>
+<div><span style="font-size: 18px;">rsyslog-4.6.2-12.el6.i686</span></div>
+<div></div>
+<div><span style="font-size: 18px;">关于cacti的安装我这里就不详细讲了，可以在我的另外二篇文章</span></div>
+<div></div>
+<!--more-->
+<h2 class="entry-title" style="font-size: 20px; line-height: 26px; text-shadow: rgba(0, 0, 0, 0.199219) 1px 1px 3px; color: #000000; font-family: 微软雅黑; padding: 0px; margin: 0px;"><span style="text-decoration: underline;"><span style="font-size: 18px;"><a style="text-decoration: none; color: #000000;" title="链向 Cacti 0.8.7g在CentOS5.5上的安装（1） 的固定链接" href="http://www.cactifans.org/index.php/2011/09/cacti-0-8-7g%E5%9C%A8centos5-5%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/" rel="bookmark">Cacti 0.8.7g在CentOS5.5上的安装（1）</a></span></span></h2>
+&nbsp;
+<h2 class="entry-title" style="font-size: 20px; line-height: 26px; text-shadow: rgba(0, 0, 0, 0.199219) 1px 1px 3px; color: #000000; font-family: 微软雅黑; padding: 0px; margin: 0px;"><span style="text-decoration: underline;"><span style="font-size: 18px;"><a style="text-decoration: none; color: #000000;" title="链向 Cacti 0.8.7g在CentOS5.5上的安装（2） 的固定链接" href="http://www.cactifans.org/index.php/2011/09/cacti-0-8-7g%e5%9c%a8centos5-5%e4%b8%8a%e7%9a%84%e5%ae%89%e8%a3%85%ef%bc%882%ef%bc%89/" rel="bookmark">Cacti 0.8.7g在CentOS5.5上的安装（2）</a></span></span></h2>
+<span style="font-size: 18px;">由于我们此次安装的是集成PIA的cacti，因此不用单独安装PIA,</span><span style="font-size: 18px;">安装好cacti以后要启用Plugin Management,然后我们下载syslog插件</span></p>
+
+<p>&nbsp;
+<h2><span style="font-size: 18px;">1.设置接收日志</span></h2>
+<h1><span style="font-size: 18px;">要想接收日志信息，并在cacti的syslog插件中显示接收到的日志，首先是接收日志，有二种办法：</span></h1>
+<span style="font-size: 18px;">1.使用syslog-ng，在centos5.5及以下系统上，系统默认有syslog，可以发送日志，但不能接受日志，因此要借助于syslog-ng，来接收发送过来的日志，并规范成一个模版，再通过自己写的脚本，插入到mysql数据库里</span></p>
+
+<p><span style="font-size: 18px;">2.使用rsyslog，rsyslog是在centos6以上系统自带的，rsyslog不仅能接收日志，还可以发送日志，因此要是在centos6以上系统就不需要额外安装syslog-ng接收日志了，用自带的rsylog就可以接收日志，再用rsyslog-mysql就可以把接收到的日志写入mysql数据库</span></p>
+
+<p><span style="font-size: 18px;">下面我分别说明：</span>
+<h2>A.使用rsyslog</h2>
+<div><span style="font-size: 18px;">我用的是centos6.2使用的是rsyslog，配置下就可以用来接受日志。在centos5.5版本自带syslog，可是要收集日志就还要安装syslog-ng用来接受日志。另外还要安装rsyslog-mysql来把接受到的日志插入到mysql数据库里 </span></div>
+<pre class="brush: bash; gutter: true">yum install -y rsyslog rsyslog-mysql</pre>
+<div><span style="font-size: 18px;">下面我们要对rsyslog进行设置</span></div>
+<pre class="brush: bash; gutter: true">vi /etc/rsyslog.conf</pre>
+<div><span style="font-size: 18px;">在文件最后添加</span></div>
+<pre class="brush: bash; gutter: true">$ModLoad imudp.so
+$UDPServerRun 514
+$ModLoad ommysql
+$template cacti_syslog,&quot;INSERT INTO syslog_incoming(facility, priority, date, time, host, message) values (%syslogfacility%, %syslogpriority%, &#039;%timereported:::date-mysql%&#039;, &#039;%timereported:::date-mysql%&#039;, &#039;%HOSTNAME%&#039;, &#039;%msg%&#039;)&quot;, SQL
+*.* &amp;gt;localhost,syslog,cactiuser,cactifans.org;cacti_syslog</pre>
+<div /></p>
+
+<p><span style="font-size: 18px;"><span style="font-size: 18px;">然后保存，重新启动rsyslog，并设置rsyslog开机启动</span></span>
+<pre class="brush: bash; gutter: true">chkconfig rsyslog on
+service rsyslog restart</pre>
+<h2><span style="font-size: 18px;">B.使用syslog-ng</span></h2>
+<span style="font-size: 18px;"><span style="font-size: 18px;">syslog-ng在默认的源里没有，可以编译安装，在这里我用yum安装syslog-ng</span></span>
+<span style="font-size: 18px;"><span style="font-size: 18px;">首先添加一个第三方源</span></span>
+<pre class="brush: bash; gutter: true">rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+yum install -y syslog-ng</pre>
+<span style="font-size: 17px;">
+</span>
+<span style="font-size: 18px;"><span style="color: #000000; font-family: Verdana, Arial, sans-serif; line-height: 20px;">安装好后我们配置syslog-ng</span></span>
+<pre class="brush: bash; gutter: true">vi /etc/syslog-ng/syslog-ng.conf</pre>
+<p style="text-align: left;"><span style="font-size: 18px;"><span style="font-size: 18px;">在文件最后加入如下</span></span></p></p>
+
+<p><pre class="brush: bash; gutter: true">source net {</pre></p>
+
+<p>udp();<br />
+};</p>
+
+<p>destination d_mysql {<br />
+pipe(&quot;/tmp/mysql.pipe&quot;<br />
+template(&quot;INSERT INTO syslog_incoming (host, facility, priority, date, time, message) VALUES ( &#039;$HOST&#039;, &#039;$FACILITY&#039;, &#039;$PRIORITY&#039;, &#039;$YEAR-$MONTH-$DAY&#039;, &#039;$HOUR:$MIN:$SEC&#039;, &#039;$MSG&#039; );\n&quot;)<br />
+template-escape(yes)<br />
+);<br />
+};</p>
+
+<p>log { source(net); destination(d_mysql); };<br />
+log { source(s_sys); destination(d_mysql); };
+<span style="font-size: 18px;">加入后保存，退出。</span>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">我们需要写一个脚本把syslog-ng接受到的数据写入到mysql数据库里</span></span></div>
+<pre class="brush: bash; gutter: true">vi /sbin/syslogtomysql
+#!/bin/bash
+if [ ! -e /tmp/mysql.pipe ]; then
+        mkfifo /tmp/mysql.pipe
+fi</pre></p>
+
+<p>while [ -e /tmp/mysql.pipe ]<br />
+do<br />
+        mysql -u cactiuser --password=cactifans.org syslog &lt; /tmp/mysql.pipe<br />
+done
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">保存退出，我们赋予执行权限</span></span></div>
+<pre class="brush: bash; gutter: true">chmod +x /sbin/syslogtomysql</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">上面的mysql -u syslog （syslog为用户名 密码为syslogpwd，数据库名为syslog）</span></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">我们执行</span></span></div>
+<pre class="brush: bash; gutter: true">/sbin/syslogtomysql &amp;</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">再启动syslog-ng</span></span></div>
+<pre class="brush: bash; gutter: true">/etc/init.d/syslog-ng start</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">写好后我们把这个脚本写到开机启动里</span></span></div>
+<pre class="brush: bash; gutter: true">vi /etc/rc.local</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">添加如下</span></span></div>
+<pre class="brush: bash; gutter: true">/sbin/syslogtomysql &amp;</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">设置syslog-ng开机启动</span></span></div>
+<pre class="brush: bash; gutter: true">chkconfig syslog-ng on</pre>
+<span style="color: #000000; font-family: Verdana, Arial, sans-serif; font-size: 18px; line-height: 20px; text-align: left;">至此syslog的设置完成</span></p>
+
+<p>
+<p style="text-align: left;"><span style="font-size: 18px;"><span style="font-size: 18px;"><span style="color: #000000; font-family: Verdana, Arial, sans-serif; line-height: 20px;">syslog-ng和rsyslog的设置就说到这里，基本都是差不多，不过rsyslog好设置一点不用独立写脚本就成。在centos6以上版本中也可以用syslog-ng来接收日志。以下的安装步骤就一样了。</span></span></span></p>
+<p style="text-align: left;"><span style="font-size: 18px;"> </span></p></p>
+
+<p><h1 style="text-align: left;"><span style="font-size: 18px;">2.配置syslog的数据库</span></h1>
+<div><span style="font-size: 18px;"> </span></div>
+<pre class="brush: bash; gutter: true">mysql -uroot -p
+create database syslog；
+GRANT ALL ON syslog.* TO cactiuser@localhost IDENTIFIED BY &#039;cactifans.org； quit；</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">设置的数据库名：syslog 用户名：cactiuser 密码：cactifans.org 可以自行设定</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<h1><span style="font-size: 18px;"><span style="font-size: 18px;">3.安装syslog插件</span></span></h1>
+<div><span style="font-size: 18px;"> </span></div>
+<pre class="brush: bash; gutter: true">wget http://docs.cacti.net/_media/plugin:syslog-v1.22-2.tgz -O syslog.tgz
+tar zxvf syslog*.tgz -C /var/www/html/plugins
+chown -R apache:apache /var/www/html/plugins/syslog</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">接下来我们进行一下配置</span></span></div>
+<pre class="brush: bash; gutter: true">vi /var/www/html/plugins/syslog/config.php
+......
+global $config, $database_type, $database_default, $database_hostname;
+global $database_username, $database_password, $database_port;</pre></p>
+
+<p>/* revert if you dont use the Cacti database */<br />
+$use_cacti_db = false;</p>
+
+<p>if (!$use_cacti_db) {<br />
+        $syslogdb_type     = &#039;mysql&#039;;<br />
+        $syslogdb_default  = &#039;syslog&#039;;<br />
+        $syslogdb_hostname = &#039;localhost&#039;;<br />
+        $syslogdb_username = &#039;cactiuser&#039;;<br />
+        $syslogdb_password = &#039;cactifans.org&#039;;<br />
+        $syslogdb_port     = 3306;<br />
+         }else{<br />
+        $syslogdb_type     = $database_type;<br />
+        $syslogdb_default  = $database_default;<br />
+       $syslogdb_hostname = $database_hostname;<br />
+       $syslogdb_username = $database_username;<br />
+       $syslogdb_password = $database_password;<br />
+       $syslogdb_port     = $database_port;<br />
+}
+.......
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"><span style="color: #ff0000;">可以看到以上设置$use_cacti_db = false;这个是设置syslog是否要使用cacti的数据库，我在这里不使用cacti的数据，因为syslog往往比较多，日志比较多，为了便于备份和使用，还是选择用一个独立的数据库。</span>因此要在下面设置连接数据库的用户名，密码，数据库名等。设置好后我们打开cacti，点console——Plugin Management，可以看到syslog还没有被启用</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/1.png"><img class="alignleft size-full wp-image-451" title="1" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/1.png" width="796" height="589" /></a></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">我们点syslog前面的那个先下箭头的小原点，会出现如下图</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/2.png"><img class="alignleft size-large wp-image-452" title="2" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/2-1024x485.png" width="1024" height="485" /></a></span></div>
+<span style="font-size: 18px;"> </span>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">这里是对syslog数据的一些设置第分别为Database Storage Engine（数据库存储引擎）、Database Architecutre(数据库架构)</span><span style="font-size: 18px;">这二项在一般默认，如果你的mysql数据库为5.1.6后者以上可以选择InnoDB Storage 和Partitioned Table，可以提高syslog的性能</span><span style="font-size: 18px;">最后一项是Retention Policy（保留策略）就是要在syslog存储多长的时间，这个可以根据自己的需求设定，最后我们点install</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/3.png"><img class="alignleft size-full wp-image-454" title="3" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/3.png" width="830" height="418" /></a></span></div>
+<span style="font-size: 18px;"><span style="font-size: 18px;">就可以看到syslog已经安装，但是还没有启用，我们点那个绿色箭头就可以启用syslog</span></span>
+<p style="text-align: center;"><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/4.png"><img class="size-full wp-image-455 aligncenter" title="4" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/4.png" width="618" height="405" /></a></span></p>
+<span style="font-size: 18px;"><span style="font-size: 18px;">启用后我们可以看到syslog了</span></span>
+<p style="text-align: center;"><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/5.png"><img class="size-large wp-image-456 aligncenter" title="5" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/5-1024x447.png" width="1024" height="447" /></a></span></p>
+&nbsp;
+<h1><span style="font-size: 18px;">4.被监控端设置</span></h1>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">A.Linux服务器设置</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">如果系统用的是syslog或者sysklog可以添加如下到/etc/syslog.conf（具体位置可能有所不同）</span></span></div>
+<pre class="brush: bash; gutter: true">*.*     @192.168.0.111</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> @后面为你的cacti服务器IP地址</span></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> 设置完毕后重启syslog或者sysklog服务，并在防火墙上允许upd 514端口</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> 如果用的是rsyslog可以在rsylog的配置文件里添加如下(配置文件一般为rsyslog.conf)</span></span></div>
+<pre class="brush: bash; gutter: true"> *.*       @@192.168.0.111:514</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> @@后面为你的cacti服务器IP地址一般端口为514</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">设置完毕后重启rsyslog服务，并在防火墙上允许upd 514端口</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">通过以上设置就可以把服务器的所有日志发送到cacti服务器</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">B.网络设备</span></span></div>
+<pre class="brush: bash; gutter: true">logging 192.168.0.111</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">在设备上指定logging 为cacti的服务器就成了。（设备不通设置方法可能有所不同，可以参考设备说明书）</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">网络设备包括路由器，防火墙交换机。这样就可以在cacti里看到接受到的日志</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">效果图</span></span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/6.png"><img class="size-large wp-image-457 aligncenter" title="6" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/6-1024x669.png" width="1024" height="669" /></a></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">syslog可以接受到防火墙，路由器，交换机，服务器的日志，并自动分为7个等级，并用不通的颜色表示，看起来直观，也做到的日志的集中收集与查看.另外还可以在cacti里对的setting里对syslog插件进行一些设置。</span></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">本人菜鸟一个，如有错误之处，欢迎大家指正.</span></span></div></p>

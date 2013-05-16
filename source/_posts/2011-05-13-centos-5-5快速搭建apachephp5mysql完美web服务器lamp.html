@@ -1,0 +1,87 @@
+---
+layout: post
+title: CentOS 5.5快速搭建Apache+PHP5+MySQL完美Web服务器(LAMP)
+categories:
+- linux
+tags: []
+published: true
+comments: true
+---
+<p><span style="font-size: small;">在网上看了很多，修改多次，也试验多次，均没有问题！大家有什么问题可以留言!</span>
+<strong><span style="font-size: small;">1. 安装MySQL 5.0</span></strong>
+<span style="font-size: small;">安装MySQL 5.0，我们在终端中执行如下命令</span>
+<pre class="brush: bash; gutter: true">yum install mysql mysql-server</pre>
+CentOS中安装完MySQL默认是不启动的，而且系统随机启动项里也不会自动添加mysqld的项，不过，还好这些都不是什么问题，简单的两个命令就能搞定它们： <!--more-->
+<pre class="brush: bash; gutter: true">chkconfig --levels 235 mysqld on
+/etc/init.d/mysqld start</pre>
+使用过Debian/Ubuntu的朋友可能已经注意到，CentOS下安装MySQL不像Debian/Ubuntu那样，安装过程中就要求给mysql的root用户设定密码。而在CentOS中，安装完毕后，我们还要使用下面的命令给mysql的root用户设定密码：
+<pre class="brush: bash; gutter: true">mysqladmin -u root password yourrootsqlpassword
+mysqladmin -h server1.example.com -u root password yourrootsqlpassword</pre>
+<span style="font-size: small;">这一步一定要注意，任何人都有可能进入你的mysql数据库哦。。。</span>
+<strong><span style="font-size: small;">2. 安装Apache2</span></strong>
+<span style="font-size: small;">Apache2已经包含在CentOS软件包中了，因此使用下面的命令就能轻松安装它了： </span>
+<pre class="brush: bash; gutter: true">yum install httpd
+chkconfig --levels 235 httpd on
+/etc/init.d/httpd start</pre>
+<span style="font-size: small;"> OK，这个时候就可以使用浏览器打开 </span><a href="http://192.168.0.100/"><span style="font-size: small;">http://192.168.0.100</span></a><span style="font-size: small;"> 了，你可以看到CentOS的Apache的测试页面.
+</span><span style="font-size: small;">CentOS中，Apache的站点默认根目录(document root)位于 /var/www/html，配置文件位于 /etc/httpd/conf/httpd.conf， ServerName localhost还有一些其他的配置文件，都不许在 /etc/httpd/conf.d/ 文件夹下。</span>
+<strong><span style="font-size: small;">3. 安装PHP5</span></strong>
+<span style="font-size: small;">既然是“快速安装”，文中的步骤都是以快速且最小化安装为准。安装PHP5： </span>
+<pre class="brush: bash; gutter: true">yum install php
+/etc/init.d/httpd start</pre>
+<strong><span style="font-size: small;">4. 测试PHP5，查看PHP5安装的详细信息</span></strong>
+<span style="font-size: small;">测试PHP且要查看PHP5安装的相关信息最常用的做法是，在Apache站点根目录（/var/www/html）里新建一个名为 infor.php 的PHP程序文件，</span>
+<pre class="brush: bash; gutter: true">vi /var/www/html/info.php</pre>
+<pre class="brush: php; gutter: true">&lt;?php
+phpinfo(); 
+?&gt;</pre>
+<span style="font-size: small;">PHP中phpinfo()这个函数就是用来显示PHP的具体信息的，在浏览器在打开 </span><a href="http://192.168.0.100/info.php"><span style="font-size: small;">http://192.168.0.100/info.php</span></a><span style="font-size: small;">：</span></p>
+
+<p><span style="font-size: small;">从图中我们能看到，PHP5已经能正常工作了，继续往下看，可以发现，常用的功能模块都已经启动了。当然，MySQL此时还没有现身，因为我们还没有为PHP5安装MySQL支持。</span></p>
+
+<p><strong><span style="font-size: small;">5. 为PHP5安装MySQL支持</span></strong></p>
+
+<p><span style="font-size: small;">为了让PHP支持MySQL，我们还要安装php-mysql安装包。安装php-mysql软件包之前，我们回过头看看，我们所需要的PHP支持模块是不是都安装了呢？CentOS也提供了对软件包进行查找的命令： </span>
+<pre class="brush: bash; gutter: true">yum search php</pre>
+复制代码使用上面这个命令，可以检索出所有php相关的软件包，从中选出我们需要的加以安装：
+<pre class="brush: bash; gutter: true">yum install php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring</pre>
+安装完成后，不要忘了重启一下Apache2：
+<pre class="brush: bash; gutter: true">/etc/init.d/httpd restart</pre>
+现在，重新打开 <a href="http://192.168.0.100/info.php"><span style="font-size: small;">http://192.168.0.100/info.php</span></a><span style="font-size: small;"> 页面，就可以看到mysql的支持项了：</span>
+<strong><span style="font-size: small;">6. 安装phpMyAdmin</span></strong></p>
+
+<p><span style="font-size: small;">phpMyAdmin是一个以PHP为基础，以Web-Base方式架构在网站主机上的MySQL的数据库管理工具。它可以管理整个MySQL服务器(需要超级用户)，也可以管理单个数据库。</span></p>
+
+<p><span style="font-size: small;">安装它比较简单，我们可以直接从phpMyAdmin官网上下载phpMyAdmin包，且把它解压存放在一个能够访问的Web站点目录里就可以了。</span>
+<span style="font-size: small;">下面我们来看看，如何使用yum命令安装phpMyAdmin预编译包。</span>
+<span style="font-size: small;">由于CentOS软件安装源中没有phpMyAdmin软件包，我们需要为CentOS启用RPMforge源：</span>
+<span style="font-size: small;">x86_64系统中使用， </span>
+<pre class="brush: bash; gutter: true">wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.3.6-1.el5.rf.x86_64.rpm
+rpm -Uvh rpmforge-release-0.3.6-1.el5.rf.x86_64.rpm</pre>
+复制代码i386系统中使用，
+<pre class="brush: bash; gutter: true">wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.3.6-1.el5.rf.i386.rpm
+rpm -Uvh rpmforge-release-0.3.6-1.el5.rf.i386.rpm</pre>
+rpmforge源安装成功后，我们就可以安装phpMyAdmin了：
+<pre class="brush: bash; gutter: true">yum install phpmyadmin[/bash]
+现在我们来对phpMyAdmin进行一些简单的配置。由于phpMyAdmin安装后，默认是只能从本地服务器上访问的，我们需要修改phpMyAdmin配置文件，使得远程主机或客户端也能访问它。修改/etc/httpd/conf.d/phpmyadmin.conf，把 &lt;Directory &quot;/usr/share/phpmyadmin&quot;&gt; 这个节点的配置注释掉：</pre>
+<pre class="brush: bash; gutter: true">vi /etc/httpd/conf.d/phpmyadmin.conf</pre>
+<pre class="brush: bash; gutter: true"># Web application to manage MySQL
+#</pre></p>
+
+<p>#<br />
+# Order Deny,Allow<br />
+# Deny from all<br />
+# Allow from 127.0.0.1<br />
+#</p>
+
+<p>Alias /phpmyadmin /usr/share/phpmyadmin<br />
+Alias /phpMyAdmin /usr/share/phpmyadmin<br />
+Alias /mysqladmin /usr/share/phpmyadmin
+然后，把phpMyAdmin的验证方式从默认的cookie方式改成http：
+<pre class="brush: bash; gutter: true">vi /usr/share/phpmyadmin/config.inc.php</pre>
+<pre class="brush: bash; gutter: true">[...]
+/* Authentication type */
+$cfg[&#039;Servers&#039;][$i][&#039;auth_type&#039;] = &#039;http&#039;;
+[...]</pre>
+好了，所有的安装配置都完成了，打开 <a href="http://192.168.0.100/phpmyadmin/"><span style="font-size: small;">http://192.168.0.100/phpmyadmin/</span></a><span style="font-size: small;"> 尽情享用吧：
+</span></p>

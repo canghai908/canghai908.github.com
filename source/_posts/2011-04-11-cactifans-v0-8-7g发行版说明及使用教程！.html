@@ -1,0 +1,80 @@
+---
+layout: post
+title: CactiFans-v0.8.7g发行版说明及使用教程！
+categories:
+- cacti
+tags: []
+published: true
+comments: true
+---
+<p><h3>CactiFans是全自动的Cacti部署系统，不过也在其中加入了一部分需要用户自己设置的选项，让用户自己随着自己的需要自行设定，提高灵活性，同时也使用户掌握cacti的用法！</h3>
+<h1><strong>1.cacti的初始化</strong></h1>
+在用iso安装好系统之后，在最后安装完毕，会出现如下登录窗口，这里会显示IP信息（这里的IP是通过dhcp自动分配的，如果没有分配到IP这里就不会显示，需要用户自行设</p>
+
+<p>定IP，后面给大家说）</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/4.png"><img class="alignnone size-full wp-image-146" title="4" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/4.png" width="370" height="301" /></a></p>
+
+<p>看到IP后可以在浏览器里直接打开</p>
+
+<p><!--more--></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/51.png"><img class="alignnone size-full wp-image-147" title="5" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/51.png" width="726" height="668" /></a></p>
+
+<p>这里点直接点NEXT就可以了</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/62.png"><img class="alignnone size-full wp-image-148" title="6" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/62.png" width="727" height="618" /></a></p>
+
+<p>继续点NEXT</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/7.png"><img class="alignnone size-full wp-image-149" title="7" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/7.png" width="739" height="707" /></a></p>
+
+<p>这是一些基本的路径，可以直接点Finish！</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/9.png"><img class="alignnone size-full wp-image-150" title="9" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/9.png" width="750" height="556" /></a></p>
+
+<p>全部设置完毕，在这里用默认的用户名密码登录  user：<strong>admin</strong> pass：<strong>admin</strong></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/10.png"><img class="alignnone size-full wp-image-151" title="10" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/10.png" width="752" height="496" /></a></p>
+
+<p>这里我们要设定一个自己的密码,输入好好后点save！就可以进入cacti！下次就可以用我们设定的密码登录了，用户名还是admin
+<h1>2.插件的安装</h1>
+CactiFans-v0.8.7g版自带13个插件，这些插件在默认的情况下是没有被安装的，如果你要使用其中的插件，可以根据自己的需要自行安装插件！</p>
+
+<p>首先是启用Plugin Architecture(后面给大家介绍这个），用admin登录到cacti，点最左边的 "User Management",再点"admin"</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/14.png"><img class="alignnone size-full wp-image-158" title="14" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/14.png" width="902" height="204" /></a></p>
+
+<p>点了之后，会看到admin用户的一些基本设置，我们页面最下面，看到有一项没有选"Plugin Management",我们把它选定，就启用了。</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/15.png"><img class="alignnone size-full wp-image-160" title="15" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/15.png" width="1114" height="296" /></a></p>
+
+<p>启用之后，会在左边的栏目中看到有了Plugin Management这个选项，点击这选项，就会看到系统中自带的13个插件，都是处于未安装状态。</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/161.png"><img class="alignnone size-full wp-image-162" title="16" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/161.png" /></a></p>
+
+<p>点击那个蓝色的箭头，就会安装插件，安装好后，我们看到有的插件边上还有一个绿色的箭头，点那个箭头可以启用该插件！</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/21.png"><img class="alignnone size-full wp-image-181" title="2" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/21.png" width="817" height="445" /></a></p>
+
+<p>启用便可以使用这些插件了</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/111.png"><img class="alignnone size-full wp-image-182" title="11" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/111.png" width="791" height="493" /></a></p>
+
+<p>注：1.安装syslog插件时会提示如下信息，我们点“upgrade”便可以了！</p>
+
+<p>&nbsp;</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/13.png"><img class="alignnone size-full wp-image-180" title="1" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/13.png" width="951" height="497" /></a></p>
+
+<p>2.在启用插件后还有二个插件需要在admin里启用，如图（选点最后那个插件点save就可以了）</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/41.png"><img class="alignnone size-full wp-image-183" title="4" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/41.png" width="830" height="395" /></a>
+<h1>3.启用轮询引擎-spine</h1>
+cactifans自带spine高效轮询引擎，可以提cacit的效率。点击<strong>cacti</strong>主界面左边的”<strong>Setting</strong>“，再选择”<strong>path</strong>“，页面底部有一个设置spine路径的地方</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/71.png"><img class="alignnone size-full wp-image-184" title="7" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/71.png" width="1110" height="166" /></a></p>
+
+<p>在<strong>Spine Poller File Path</strong>路径里填上<strong>spine</strong>的路径：<strong>/usr/bin/spine</strong> 点击<strong>save</strong>保存！然后再点Poller选项卡，把默认的<strong>cmd.php</strong>换成<strong>spine</strong></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/8.png"><img class="alignnone size-full wp-image-185" title="8" alt="" src="http://www.cactifans.org/wp-content/uploads/2011/04/8.png" width="777" height="306" /></a></p>

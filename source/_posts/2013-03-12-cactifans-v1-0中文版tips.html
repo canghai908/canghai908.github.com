@@ -1,0 +1,56 @@
+---
+layout: post
+title: CactiFans-v1.0中文版Tips
+categories:
+- cacti
+tags: []
+published: true
+comments: true
+---
+<p>CactiFans-v1.0中文版发行已经有半年左右的时间，由于本人毕业之后忙于工作等事情，很久没有更新blog，给大家使用造成一定的麻烦，在此说声不好意思啊！嘿嘿！好了，今天我写几个关于CactiFans中文版V1.0的小Tips，帮大家更好的使用。
+<h3>一.修改系统密码</h3>
+ssh登录上去执行
+<pre class="brush: bash; gutter: true">passwd root</pre>
+根据提示输入新密码就可以修改系统密码
+<h3>二.修改Nagios密码</h3>
+Nagios的登录地址为：http://192.168.1.10/nagios/ （系统默认Ip地址为：192.168.1.10）<br />
+登录的用户名为：nagiosadmin</p>
+
+<p>执行以下命令修改nagios登录密码
+<pre class="brush: bash; gutter: true">cd /etc/nagios
+htpasswd -bc passwd nagiosadmin XXXXXX</pre>
+根据提示输入新密码就可以修改系统密码<br />
+XXXXXX是你要设置的密码
+<h3>三.修改nconf密码</h3>
+nconf的登录地址为：http://192.168.1.10/nconf/<br />
+nconf的登录用户名为：admin<br />
+执行以下命令修改nconf的登录密码<!--more-->
+<pre class="brush: bash; gutter: true">cd /usr/share/nconf/config
+vi .file_accounts.php</pre>
+就可以看到admin的密码，是明文的，修改为你要的密码保存退出就生效了。
+<a href="http://www.cactifans.org/index.php/2012/12/cactifans-v1-0%e4%b8%ad%e6%96%87%e7%89%88tips/2012-12-13_203522/" rel="attachment wp-att-712"><img class="alignleft size-full wp-image-712" alt="2012-12-13_203522" src="http://www.cactifans.org/wp-content/uploads/2012/12/2012-12-13_203522.png" width="905" height="426" /></a>
+<h3></h3>
+<h3>四.修改weathermap编辑密码</h3>
+由于Weathermap没有对编辑拓扑图的editor.php做验证，而导致任何人都可以编辑拓扑图，这个问题在weathermap官网是提到过的, 传送门：<a href="http://www.network-weathermap.com/manual/latest/pages/install-cacti-editor.html">http://www.network-weathermap.com/manual/latest/pages/install-cacti-editor.html</a>容易被忽视，网上也有很多没做限制的weathmaper图。在CactiFans中文版v1.0中，已经对editor.php这个文件的访问权限做了限制，访问此文件会提示输入用户名和密码<br />
+地址：http://192.168.1.10/plugins/weathermap/editor.php   (IP根据你自己的具体设定)<br />
+用户名：cactifans<br />
+执行以下命令修改weathermap修改密码
+<pre class="brush: bash; gutter: true">
+htpasswd  -b /var/www/html/plugins/weathermap/.htpasswd cactifans XXX</pre>
+XXX为你要修改成的新密码
+<h3>五. 关于字体太小的问题</h3>
+由于从英文版到中文版，CactiFans中文版v1.0的字体有点小，看起来不是很舒服，这是 由于css问题造成。我已经做好一个补丁包，只要Patch下就可以使字体恢复到正常大小。<br />
+ssh登录到CactiFans服务器执行如下命令
+<pre class="brush: bash; gutter: true">wget http://dl.cactifans.org/cactifans/patches/FixFontsize.patch
+patch -p0 &lt; FixFontsize.patch</pre>
+再打开浏览器登录到cacti，用Ctrl+F5强制刷新就可以看到字体已经恢复到正常的大小。<br />
+好了，今天就先写到这里，以后在使用中有任何问题都可以给我留言。
+<h3>六.关于查看图形出现2个周问题</h3>
+由于翻译错误，导致查看图形时出2个周的图片，其实一个是月的，纯属翻译错误，大家可以通过以下命令修复。
+<pre class="brush: sql; gutter: true">mysql -uroot -pcactifansdb
+use cacti;
+update rra set name=&#039;月 (2小时平均)&#039; where id=&#039;3&#039;;
+exit;</pre>
+就可以了，刷新查看图形已经更新了。</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/03/11.png"><img class="alignleft size-full wp-image-824" alt="11" src="http://www.cactifans.org/wp-content/uploads/2013/03/11.png" width="645" height="481" /></a></p>

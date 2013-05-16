@@ -1,0 +1,76 @@
+---
+layout: post
+title: 在Ubuntu 12.04上安装Puppet配置管理工具
+categories:
+- puppet
+tags: []
+published: true
+comments: true
+---
+<p>最近看了下puppet,发现puppet真是个好东西。Puppet 是一个客户端/服务器（C/S）架构的配置管理工具，在中央服务器上安装 puppet-server 服务器（puppet master），在需要被管理的目标服务器上安装 puppet 客户端软件（puppet client）。当客户端连接上服务器后，定义在服务器上的配置文件会被编译，然后在客户端上运行。客户端每隔半小时主动会和服务器通信一次，确认配置信息的更新情况，如果有新的配置信息（或者配置有变化），配置文件将会被重新编译并分发到客户端执行。当然，也可以在服务器上主动触发更新指令来强制各客户端进行配置更新。</p>
+
+<p>Puppet 要求所有机器有完整的域名（FQDN），如果没有 DNS 服务器提供域名的话，可以在两台机器上设置主机名（注意要先设置主机名再安装 Puppet，因为安装 Puppet 时会把主机名写入证书，客户端和服务端通信需要这个证书）,因为我配置了DNS，所以就不用改hosts了，如果没有就需要改hosts文件指定</p>
+
+<p>我也是使用5台机器做实验
+<!--more-->
+<pre class="brush: bash; gutter: true">
+master.canghai.com  puppet master
+node1.canghai.com
+node2.canghai.com
+node3.canghai.com
+node4.canghai.com
+node5.canghai.com</pre>
+安装ntp服务在服务端和客户端都要安装
+<pre class="brush: bash; gutter: true">apt-get install ntp
+ntpdate pool.ntp.org</pre>
+服务端master安装
+<pre class="brush: bash; gutter: true">
+apt-get install ruby libshadow-ruby1.8
+apt-get install puppet puppetmaster facter</pre>
+客户端agenet安装
+<pre class="brush: bash; gutter: true">
+apt-get install ruby libshadow-ruby1.8
+apt-get install puppet facter</pre>
+Puppet 客户端使用 HTTPS 和服务端（master）通信，为了和服务器端通信必须有合法的 SSL 认证，第一次运行 puppet 客户端的时候会生成一个 SSL 证书并指定发给 Puppet 服务端。
+<pre class="brush: bash; gutter: true">
+puppet agent --no-daemonize --onetime --verbose --debug --server=master.canghai.com
+</pre>
+Puppet 服务端接受到客户端的证书后必须签字（sign）才能允许客户端接入，sign 后用 puppet cert list –all 查看会发现 node1.canghai.com 前面多了一个 + 后，表示 “加入” 成功：
+<pre class="brush: bash; gutter: true">
+puppet cert list --all 查看所有客户端的请求(有+号的代表已经签好证书可以通信，没有加号的代表尚未签好证书)
+puppet cert --sign node1.canghai.com  签字客户端，自此可以通信
+</pre>
+查看所有客户端的请求
+<pre class="brush: bash; gutter: true">
+puppet cert list --all
++ &quot;master.canghai.com&quot; (4D:71:A9:06:C5:30:6E:14:AA:BD:B2:7F:50:48:32:0A) (alt names: &quot;DNS:master.canghai.com&quot;, &quot;DNS:puppet&quot;, &quot;DNS:puppet.canghai.com&quot;)
++ &quot;node1.canghai.com&quot; (7D:CE:3D:6B:E2:CA:5C:32:66:BA:4A:E1:20:42:E0:94)
++ &quot;node2.canghai.com&quot; (78:37:17:A2:90:31:D8:8B:3F:0C:6D:21:17:4C:4E:9E)
++ &quot;node3.canghai.com&quot; (20:02:70:1E:D7:5F:CD:B8:0E:88:77:AA:EB:2E:35:43)
++ &quot;node4.canghai.com&quot; (DE:6D:D1:7C:F8:B3:B1:BD:15:B3:B0:7B:DE:66:39:82)
++ &quot;node5.canghai.com&quot; (41:D6:34:0D:8C:01:54:81:82:39:C8:AC:BC:27:A7:F5)
+</pre>
+测试一下<br />
+现在可以在服务端写个小例子来测试一下。这个例子作用很简单，用来在客户端的 /tmp 目录下新建一个 helloworld.txt 文件，内容为 hello, world. 在服务端编写代码
+<pre class="brush: bash; gutter: true">
+vi /etc/puppet/manifests/site.pp
+</pre>
+文件内容如下
+<pre class="brush: bash; gutter: true">
+node default {
+        file {
+                &quot;/tmp/helloworld.txt&quot;: content =&gt; &quot;hello, world&quot;;
+        }
+}
+</pre>
+在客户端上执行puppet，运行成功后会在 /tmp 看到新生成的 helloworld.txt：
+<pre class="brush: bash; gutter: true">
+puppet agent --test --server=master.canghai.com
+info: Caching catalog for node1.canghai.com
+info: Applying configuration version &#039;1367388486&#039;
+notice: /Stage[main]//Node[default]/File[/tmp/helloworld.txt]/ensure: defined content as &#039;{md5}e4d7f1b4ed2e42d15898f4b27b019da4&#039;
+notice: Finished catalog run in 0.05 seconds</pre></p>
+
+<p>cat /tmp/helloworld.txt <br />
+hello, worldroot
+</p>

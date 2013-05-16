@@ -1,0 +1,39 @@
+---
+layout: post
+title: Cacti 0.8.7g在CentOS5.5上的安装（2）
+categories:
+- cacti
+- linux
+tags: []
+published: true
+comments: true
+---
+<p><pre>上次我们已经安装好了cacti的基本程序，这次来说一下安装Plugin Architecture。
+首先给大家介绍一下Plugin Architecture。
+以我理解PluginArchitecture就是cacti的一个插件架构，
+安装了它之后才能安装cacti的众多插件，因此，我们想要获得
+cacti的更多功能就要安装这个插件。这个插件的版本每个都
+和cacti的插件版本是对应的，安装的时候要记得看好版本。
+下载Patch安装包，并安装（可以到<a href="http://cactiusers.org/">http://cactiusers.org/</a>中下载cacti 0.8.7f对应的patch文件，
+也叫做Plugin Architecture，即插件架构）</pre>
+<!--more--></p>
+
+<p><pre lang="bash" line="1" escaped="true">wget http://mirror.cactiusers.org/downloads/plugins/cacti-plugin-0.8.7g-PA-v2.8.tar.gz
+tar zxvf cacti-plugin-0.8.7f-PA-v2.7.tar.gz
+cp -R cacti-plugin-arch/* /var/www/html/
+cp: overwrite `/var/www/html/LICENSE'? y
+cp: overwrite `/var/www/html/README'? y
+cd /var/www/html/
+mysql -ucactiuser -pcactifans.org cacti &lt; /var/www/html/pa.sql</pre>
+这里我们安装一下patch，
+<pre lang="bash" line="1" escaped="true">yum install -y patch
+patch -p1 -N &lt;cacti-plugin-0.8.7g-PA-v2.8.diff</pre>
+授权admin用户使用"plugin Management"：<br />
+登录后，Utilities--User Management--admin--Realm Permissions，
+<a href="http://www.cactifans.org/wp-content/uploads/2011/09/2011-09-08_221726.png"><img class="alignleft size-full wp-image-365" title="2011-09-08_221726" src="http://www.cactifans.org/wp-content/uploads/2011/09/2011-09-08_221726.png" alt="" width="581" height="619" /></a></p>
+
+<p>选中“Plugin Management"，Save。OK啦，后面的工作就是要安装相关的插件了</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/09/2011-09-08_221755.png"><img class="alignleft size-full wp-image-366" title="2011-09-08_221755" src="http://www.cactifans.org/wp-content/uploads/2011/09/2011-09-08_221755.png" alt="" width="977" height="737" /></a></p>
+
+<p>&nbsp;</p>

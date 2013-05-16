@@ -1,0 +1,130 @@
+---
+layout: post
+title: cacti-0.8.8发布
+categories:
+- cacti
+tags: []
+published: true
+comments: true
+---
+<p>cacti-0.8.8终于发布了，修复了很多bug，而且集成了PIA,以后就估计就没有PIA这个说法了。</p>
+
+<p>Release Notes - 0.8.8</p>
+
+<p>Important Notices</p>
+
+<p><span style="color: #ff0000;">Plugin Architecture is now part of Cacti</span>
+Changelog</p>
+
+<p>&nbsp;
+<ul>
+<ul>
+	<li>bug#0002056: un-initialized datetime used for host status (was: Zero length string != NULL)</li>
+	<li>bug#0002081: In Graph Management, search display graph title breaks when using pattern symbol "/"</li>
+	<li>bug#0002132: need to include pa.sql with the 0.8.7i and future releases</li>
+	<li>bug#0002134: rebuild_poller_cache.php --host-id deletes table poller_item completely</li>
+	<li>bug#0002141: cacti.sql missing BTREE PRIMARY KEY for poller_output</li>
+	<li>bug#0002146: Utilities -&gt; View Log File -&gt; refresh does not work</li>
+	<li>bug#0002150: usort_data_query_index() is broken -&gt; graph order for hosts with data query sort option fails</li>
+	<li>bug#0002151: When building HTML forms with sub_checkbox on_change parameter is not used</li>
+	<li>bug#0002152: Issue with filter on graphs_new.php</li>
+</ul>
+</ul>
+<!--more-->
+<ul>
+	<li>bug#0002153: Cant search for patterns containing a forward-slash</li>
+	<li>bug#0002156: CDEF strings are not escaped before passed to rrdtool command</li>
+	<li>bug#0002158: Minor changes to grammar of displayed messages</li>
+	<li>bug#0002165: Using data input field in data source name (related to 2079 in 0.8.7i)</li>
+	<li>bug#0002167: New poller hook poller_finishing</li>
+	<li>bug#0002172: structure_rra_paths.php does not handle disabled data sources</li>
+	<li>bug#0002174: poller_item.host_id has wrong type</li>
+	<li>bug#0002178: typo in include/global_form.php: Mimimum -&gt; Minimum</li>
+	<li>bug#0002181: session_unregister (use in functions.php) doesn't exist anymore in PHP 5.4</li>
+	<li>bug#0002182: When there is no suitable (unique) index, graphs are not shown in data query ordering on host leafs</li>
+	<li>bug#0002189: Proper graph hooks</li>
+	<li>bug#0002191: Refresh issues</li>
+	<li>bug#0002194: changing data query XML does not propagate to existing data sources</li>
+	<li>bug: Fix input validation on cli/api_device.php</li>
+	<li>bug: Fix issue with data source template associate command line script inserting incorrect rra information</li>
+	<li>bug: Fix minor display issue on data source pages</li>
+	<li>bug: Fix minor issue with counting items in the poller_output table</li>
+	<li>bug: Graph settings and settings check boxes do not allow unchecking to be saved</li>
+	<li>bug: Fix minor issue with plugin library caused by non-session</li>
+	<li>bug: Fix SQL error on data input save for non-templated graphs</li>
+	<li>bug: user_log index added to increase performance</li>
+	<li>feature: Merge Plugin Architecture into Cacti</li>
+	<li>feature: Added index to data_template_data to increase performance</li>
+</ul>
+安装好之后就直接看到到了Plugin Management。</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/04/a.png"><img class="alignnone size-large wp-image-591" title="a" src="http://www.cactifans.org/wp-content/uploads/2012/04/a-1024x458.png" alt="" width="1024" height="458" /></a></p>
+
+<p>初步使用不错，在导入模版的时候发现提示</p>
+
+<p><span style="color: #ff0000;"> Importing template Error: XML: Cacti version does not exist</span></p>
+
+<p>在cacti论坛里找到这个解决方法，原来这个是bug，并且已经提交，并修复了。</p>
+
+<p><a href="http://bugs.cacti.net/view.php?id=2207">http://bugs.cacti.net/view.php?id=2207</a></p>
+
+<p>临时的解决办法就是
+<pre lang="bash" line="1" escaped="true">vi include/global_arrays.php
+$hash_version_codes = array(
+&quot;0.8.4&quot; =&gt; &quot;0000&quot;,
+&quot;0.8.5&quot; =&gt; &quot;0001&quot;,
+&quot;0.8.5a&quot; =&gt; &quot;0002&quot;,
+&quot;0.8.6&quot; =&gt; &quot;0003&quot;,
+&quot;0.8.6a&quot; =&gt; &quot;0004&quot;,
+&quot;0.8.6b&quot; =&gt; &quot;0005&quot;,
+&quot;0.8.6c&quot; =&gt; &quot;0006&quot;,
+&quot;0.8.6d&quot; =&gt; &quot;0007&quot;,
+&quot;0.8.6e&quot; =&gt; &quot;0008&quot;,
+&quot;0.8.6f&quot; =&gt; &quot;0009&quot;,
+&quot;0.8.6g&quot; =&gt; &quot;0010&quot;,
+&quot;0.8.6h&quot; =&gt; &quot;0011&quot;,
+&quot;0.8.6i&quot; =&gt; &quot;0012&quot;,
+&quot;0.8.6j&quot; =&gt; &quot;0013&quot;,
+&quot;0.8.7&quot; =&gt; &quot;0014&quot;,
+&quot;0.8.7a&quot; =&gt; &quot;0015&quot;,
+&quot;0.8.7b&quot; =&gt; &quot;0016&quot;,
+&quot;0.8.7c&quot; =&gt; &quot;0017&quot;,
+&quot;0.8.7d&quot; =&gt; &quot;0018&quot;,
+&quot;0.8.7e&quot; =&gt; &quot;0019&quot;,
+&quot;0.8.7f&quot; =&gt; &quot;0020&quot;,
+&quot;0.8.7g&quot; =&gt; &quot;0021&quot;,
+&quot;0.8.7h&quot; =&gt; &quot;0022&quot;,
+&quot;0.8.7i&quot; =&gt; &quot;0023&quot;
+);</pre>
+找到这里，在这里添加一个
+<pre lang="bash" line="1" escaped="true">&quot;0.8.8&quot;  =&gt; &quot;0024&quot;</pre>
+并在"0.8.7i" =&gt; "0023"后加一个，<br />
+修改好后为
+<pre lang="bash" line="1" escaped="true">$hash_version_codes = array(
+&quot;0.8.4&quot; =&gt; &quot;0000&quot;,
+&quot;0.8.5&quot; =&gt; &quot;0001&quot;,
+&quot;0.8.5a&quot; =&gt; &quot;0002&quot;,
+&quot;0.8.6&quot; =&gt; &quot;0003&quot;,
+&quot;0.8.6a&quot; =&gt; &quot;0004&quot;,
+&quot;0.8.6b&quot; =&gt; &quot;0005&quot;,
+&quot;0.8.6c&quot; =&gt; &quot;0006&quot;,
+&quot;0.8.6d&quot; =&gt; &quot;0007&quot;,
+&quot;0.8.6e&quot; =&gt; &quot;0008&quot;,
+&quot;0.8.6f&quot; =&gt; &quot;0009&quot;,
+&quot;0.8.6g&quot; =&gt; &quot;0010&quot;,
+&quot;0.8.6h&quot; =&gt; &quot;0011&quot;,
+&quot;0.8.6i&quot; =&gt; &quot;0012&quot;,
+&quot;0.8.6j&quot; =&gt; &quot;0013&quot;,
+&quot;0.8.7&quot; =&gt; &quot;0014&quot;,
+&quot;0.8.7a&quot; =&gt; &quot;0015&quot;,
+&quot;0.8.7b&quot; =&gt; &quot;0016&quot;,
+&quot;0.8.7c&quot; =&gt; &quot;0017&quot;,
+&quot;0.8.7d&quot; =&gt; &quot;0018&quot;,
+&quot;0.8.7e&quot; =&gt; &quot;0019&quot;,
+&quot;0.8.7f&quot; =&gt; &quot;0020&quot;,
+&quot;0.8.7g&quot; =&gt; &quot;0021&quot;,
+&quot;0.8.7h&quot; =&gt; &quot;0022&quot;,
+&quot;0.8.7i&quot; =&gt; &quot;0023&quot;,
+&quot;0.8.8&quot; =&gt; &quot;0024&quot;
+);</pre>
+这样就可以解决了，别的还在测试中。</p>
