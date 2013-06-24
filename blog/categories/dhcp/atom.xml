@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: dhcp | Canghai's Blog]]></title>
-  <link href="http://canghai809.github.io/blog/categories/dhcp/atom.xml" rel="self"/>
-  <link href="http://canghai809.github.io/"/>
-  <updated>2013-06-24T12:36:26+08:00</updated>
-  <id>http://canghai809.github.io/</id>
+  <link href="http://canghai908.github.io/blog/categories/dhcp/atom.xml" rel="self"/>
+  <link href="http://canghai908.github.io/"/>
+  <updated>2013-06-24T12:46:26+08:00</updated>
+  <id>http://canghai908.github.io/</id>
   <author>
     <name><![CDATA[Sole]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[基于Web界面监视DHCP服务器]]></title>
-    <link href="http://canghai809.github.io/blog/2011/04/18/%E5%9F%BA%E4%BA%8Eweb%E7%95%8C%E9%9D%A2%E7%9B%91%E8%A7%86dhcp%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <link href="http://canghai908.github.io/blog/2011/04/18/%E5%9F%BA%E4%BA%8Eweb%E7%95%8C%E9%9D%A2%E7%9B%91%E8%A7%86dhcp%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <updated>2011-04-18T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2011/04/18/基于web界面监视dhcp服务器</id>
+    <id>http://canghai908.github.io/blog/2011/04/18/基于web界面监视dhcp服务器</id>
     <content type="html"><![CDATA[<p>在Linux操作系统下建立DHCP服务器非常简单，只要掌握几个简单的命令。DHCP服务器的日常维护也成了一个问题，有的时候服务器是运行的，进程却卡死了，导致不能正常分配ip，因此如果可以实时监控DHCP服务器IP的分配就可以知道了DHCP服务器是否正常工作。</p>
 
 

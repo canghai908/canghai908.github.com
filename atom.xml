@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Canghai's Blog]]></title>
-  <link href="http://canghai809.github.io/atom.xml" rel="self"/>
-  <link href="http://canghai809.github.io/"/>
-  <updated>2013-06-24T12:36:26+08:00</updated>
-  <id>http://canghai809.github.io/</id>
+  <link href="http://canghai908.github.io/atom.xml" rel="self"/>
+  <link href="http://canghai908.github.io/"/>
+  <updated>2013-06-24T12:46:26+08:00</updated>
+  <id>http://canghai908.github.io/</id>
   <author>
     <name><![CDATA[Sole]]></name>
     
@@ -14,136 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[测试下新blog啊]]></title>
-    <link href="http://canghai809.github.io/blog/2013/05/17/ce-shi-xia-xin-bloga/"/>
-    <updated>2013-05-17T11:29:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/05/17/ce-shi-xia-xin-bloga</id>
-    <content type="html"><![CDATA[<h4>hah</h4>
-
-<p>Hello World!</p>
-
-<h1>heihei</h1>
-
-<figure class='code'><figcaption><span> (test.js)</span> <a href='http://canghai809.github.io/downloads/code/test.js'>download</a></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="cm">/**</span>
-</span><span class='line'><span class="cm">sample javascript from xui</span>
-</span><span class='line'><span class="cm">*/</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="kc">undefined</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">xui</span><span class="p">,</span>
-</span><span class='line'>    <span class="nb">window</span>     <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">string</span>     <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">),</span>
-</span><span class='line'>    <span class="nb">document</span>   <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">simpleExpr</span> <span class="o">=</span> <span class="sr">/^#?([\w-]+)$/</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">idExpr</span>     <span class="o">=</span> <span class="sr">/^#/</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">tagExpr</span>    <span class="o">=</span> <span class="sr">/&lt;([\w:]+)/</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">slice</span>      <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="p">};</span>
-</span><span class='line'>    <span class="k">try</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">slice</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>    <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span> <span class="nx">slice</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">ret</span><span class="o">=</span><span class="p">[];</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
-</span><span class='line'>        <span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span> <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span> <span class="p">};</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">x$</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">xui</span> <span class="o">=</span> <span class="nx">xui</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="k">new</span> <span class="nx">xui</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">context</span><span class="p">);</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img class="right" src="http://www.17kantu.org/wp-content/uploads/2013/04/d176.jpg" width="796" height="531" title="Place Kitten #3" ></p>
-
-<!--more-->
-
-
-<p><video width='640' height='320' preload='none' controls poster='http://s3.imathis.com/video/zero-to-fancy-buttons.png'><source src='http://s3.imathis.com/video/zero-to-fancy-buttons.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></video>
-Example 1</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Awesome code snippet</span></code></pre></td></tr></table></div></figure>
-
-
-<p><video width='640' height='320' preload='none' controls poster='http://www.cactifans.org/videos/cacti01/cacti01_First_Frame.png'><source src='http://www.cactifans.org/videos/cacti04/cacti04.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></video>
-Example 2</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">rectangle</span> <span class="nl">setX:</span> <span class="mi">10</span> <span class="nl">y:</span> <span class="mi">10</span> <span class="nl">width:</span> <span class="mi">20</span> <span class="nl">height:</span> <span class="mi">20</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Example 3</p>
-
-<figure class='code'><figcaption><span>Time to be Awesome - awesome.rb </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Awesome!&quot;</span> <span class="k">unless</span> <span class="n">lame</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Example 4</p>
-
-<figure class='code'><figcaption><span>Here&#8217;s an example .rvmrc file. </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rvm</span> <span class="n">ruby</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">8</span><span class="o">.</span><span class="mi">6</span> <span class="c1"># ZOMG, seriously? We still use this version?</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Example 5</p>
-
-<figure class='code'><figcaption><span>Javascript Array Syntax</span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span> <span class="nx">element1</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">elementN</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello World]]></title>
-    <link href="http://canghai809.github.io/blog/2013/05/16/hello-world/"/>
-    <updated>2013-05-16T14:25:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/05/16/hello-world</id>
-    <content type="html"><![CDATA[<h3>Hellow World</h3>
-
-<p>This is a test!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[My First Blog]]></title>
-    <link href="http://canghai809.github.io/blog/2013/05/15/my-first-blog/"/>
-    <updated>2013-05-15T12:41:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/05/15/my-first-blog</id>
-    <content type="html"><![CDATA[<h3>Hello octopress</h3>
-
-<p>这是一个测试文章啊，看看效果如何啊。呵呵。</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[在CentOS 6.4上安装Puppet配置管理工具]]></title>
-    <link href="http://canghai809.github.io/blog/2013/05/05/%E5%9C%A8centos-6-4%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    <link href="http://canghai908.github.io/blog/2013/05/05/%E5%9C%A8centos-6-4%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
     <updated>2013-05-05T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/05/05/在centos-6-4上安装puppet配置管理工具</id>
+    <id>http://canghai908.github.io/blog/2013/05/05/在centos-6-4上安装puppet配置管理工具</id>
     <content type="html"><![CDATA[<p>上篇说了下在ubuntu12.04上安装puppet，安装的版本为puppet2.7.11版本，今天尝试了下在CentOS6.4系统上安装puppet 3.1.1版本,本文参考<a href="http://www.chenshake.com/puppet-study-notes/" target="_blank">chenshake</a>的文章
 <pre class="brush: bash; gutter: true">OS:centso 6.4 X64
 Puppet 3.1.1
@@ -344,9 +218,9 @@ rake jobs:work RAILS_ENV=&quot;production&quot;</pre>
   
   <entry>
     <title type="html"><![CDATA[在Ubuntu 12.04上安装Puppet配置管理工具]]></title>
-    <link href="http://canghai809.github.io/blog/2013/05/01/%E5%9C%A8ubuntu-12-04%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    <link href="http://canghai908.github.io/blog/2013/05/01/%E5%9C%A8ubuntu-12-04%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
     <updated>2013-05-01T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/05/01/在ubuntu-12-04上安装puppet配置管理工具</id>
+    <id>http://canghai908.github.io/blog/2013/05/01/在ubuntu-12-04上安装puppet配置管理工具</id>
     <content type="html"><![CDATA[<p>最近看了下puppet,发现puppet真是个好东西。Puppet 是一个客户端/服务器（C/S）架构的配置管理工具，在中央服务器上安装 puppet-server 服务器（puppet master），在需要被管理的目标服务器上安装 puppet 客户端软件（puppet client）。当客户端连接上服务器后，定义在服务器上的配置文件会被编译，然后在客户端上运行。客户端每隔半小时主动会和服务器通信一次，确认配置信息的更新情况，如果有新的配置信息（或者配置有变化），配置文件将会被重新编译并分发到客户端执行。当然，也可以在服务器上主动触发更新指令来强制各客户端进行配置更新。</p>
 
 <p>Puppet 要求所有机器有完整的域名（FQDN），如果没有 DNS 服务器提供域名的话，可以在两台机器上设置主机名（注意要先设置主机名再安装 Puppet，因为安装 Puppet 时会把主机名写入证书，客户端和服务端通信需要这个证书）,因为我配置了DNS，所以就不用改hosts了，如果没有就需要改hosts文件指定</p>
@@ -419,9 +293,9 @@ hello, worldroot
   
   <entry>
     <title type="html"><![CDATA[CactiFans在Vmware虚拟机上的安装]]></title>
-    <link href="http://canghai809.github.io/blog/2013/04/23/cactifans%E5%9C%A8vmware%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/"/>
+    <link href="http://canghai908.github.io/blog/2013/04/23/cactifans%E5%9C%A8vmware%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/"/>
     <updated>2013-04-23T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/04/23/cactifans在vmware虚拟机上的安装</id>
+    <id>http://canghai908.github.io/blog/2013/04/23/cactifans在vmware虚拟机上的安装</id>
     <content type="html"><![CDATA[<p>最近有部分人反应在下载CactiFans的ISO后，在Vmware里安装后，重启出现如下错误
 <p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2013/04/1.png"><img class="aligncenter size-full wp-image-956" alt="1" src="http://www.cactifans.org/wp-content/uploads/2013/04/1.png" width="727" height="279" /></a></p>
 &nbsp;</p>
@@ -500,9 +374,9 @@ hello, worldroot
   
   <entry>
     <title type="html"><![CDATA[Cacti插件flowview的安装及使用]]></title>
-    <link href="http://canghai809.github.io/blog/2013/04/09/cacti%E6%8F%92%E4%BB%B6flowview%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2013/04/09/cacti%E6%8F%92%E4%BB%B6flowview%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
     <updated>2013-04-09T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/04/09/cacti插件flowview的安装及使用</id>
+    <id>http://canghai908.github.io/blog/2013/04/09/cacti插件flowview的安装及使用</id>
     <content type="html"><![CDATA[<p>这期主要给大家讲的是cacti插件flowview插件的安装及使用，这个插件是利用flow-capture来把路由发送哦过来的flow信息保存为文件，再通过flowview来进行查看，因此专门做一期视频</p>
 
 <p>再次感谢肥肥提供的设备和机器。</p>
@@ -522,9 +396,9 @@ hello, worldroot
   
   <entry>
     <title type="html"><![CDATA[cacti插件Thold的安装及使用]]></title>
-    <link href="http://canghai809.github.io/blog/2013/03/24/cacti%E6%8F%92%E4%BB%B6thold%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2013/03/24/cacti%E6%8F%92%E4%BB%B6thold%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
     <updated>2013-03-24T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/03/24/cacti插件thold的安装及使用</id>
+    <id>http://canghai908.github.io/blog/2013/03/24/cacti插件thold的安装及使用</id>
     <content type="html"><![CDATA[<p>接上期视频，这起主要讲cacti最主要的插件之一——Thold的安装及使用</p>
 
 <p>这个插件在cacti用用的频率是比较大的，因此专门做一期</p>
@@ -544,9 +418,9 @@ hello, worldroot
   
   <entry>
     <title type="html"><![CDATA[cacti插件weathermap的安装及使用]]></title>
-    <link href="http://canghai809.github.io/blog/2013/03/18/cacti%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2013/03/18/cacti%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
     <updated>2013-03-18T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/03/18/cacti插件的安装及使用</id>
+    <id>http://canghai908.github.io/blog/2013/03/18/cacti插件的安装及使用</id>
     <content type="html"><![CDATA[<p>接着上期视频，这一节视频，主要讲三个方面:
 <ol>
 	<li>cacti高效采集器spine的安装及使用</li>
@@ -568,9 +442,9 @@ hello, worldroot
   
   <entry>
     <title type="html"><![CDATA[Cacti安装视频]]></title>
-    <link href="http://canghai809.github.io/blog/2013/03/17/cacti%E5%AE%89%E8%A3%85%E8%A7%86%E9%A2%91/"/>
+    <link href="http://canghai908.github.io/blog/2013/03/17/cacti%E5%AE%89%E8%A3%85%E8%A7%86%E9%A2%91/"/>
     <updated>2013-03-17T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/03/17/cacti安装视频</id>
+    <id>http://canghai908.github.io/blog/2013/03/17/cacti安装视频</id>
     <content type="html"><![CDATA[<p>录了一个Cacti 0.8.8a的安装视频，目的就是给初学者和新手看的。想想当年我安装cacti的时候也没有一个权威的文档，苦逼倒腾，各种状况，各种不出图。因此录了一个cacti的最新版0.8.8a在centos6.3 64位上的安装视频，在其他Linux系统上的安装也大同小异。本人也是菜鸟一个，视频之中有任何错误和不足之处望大家指出。此视频时给初学者看的，是关于安装系统到安装cacti，添加监控一个Linux服务器。大牛可直接无数。本人第一次录视频，缺乏经验，望大家见谅。谢谢大家的支持。
 <span style="color: #ff0000;">注：如果看不清楚，点击视频右下角的全屏查看</span>
 <iframe name="tsc_player" src="http://www.cactifans.org/videos/cacti01/cacti01_player.html" height="525" width="700" allowfullscreen="" frameborder="0" scrolling="no"></iframe></p>
@@ -587,9 +461,9 @@ hello, worldroot
   
   <entry>
     <title type="html"><![CDATA[Kali Linux 发布]]></title>
-    <link href="http://canghai809.github.io/blog/2013/03/14/kali-linux-%E5%8F%91%E5%B8%83/"/>
+    <link href="http://canghai908.github.io/blog/2013/03/14/kali-linux-%E5%8F%91%E5%B8%83/"/>
     <updated>2013-03-14T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/03/14/kali-linux-发布</id>
+    <id>http://canghai908.github.io/blog/2013/03/14/kali-linux-发布</id>
     <content type="html"><![CDATA[<p>Kali Linux is the successor of the BackTrack Penetration Testing Linux distribution has been released. From the official project page:
 <blockquote>Kali is a complete re-build of BackTrack Linux, adhering completely to Debian development standards. All-new infrastructure has been put in place, all tools were reviewed and packaged, and we use Git for our VCS.</blockquote>
 官方网站：<a href="http://www.kali.org/">http://www.kali.org/</a></p>
@@ -614,9 +488,9 @@ hello, worldroot
   
   <entry>
     <title type="html"><![CDATA[CentOS 6.4 发布]]></title>
-    <link href="http://canghai809.github.io/blog/2013/03/12/centos-6-4-%E5%8F%91%E5%B8%83/"/>
+    <link href="http://canghai908.github.io/blog/2013/03/12/centos-6-4-%E5%8F%91%E5%B8%83/"/>
     <updated>2013-03-12T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/03/12/centos-6-4-发布</id>
+    <id>http://canghai908.github.io/blog/2013/03/12/centos-6-4-发布</id>
     <content type="html"><![CDATA[<p>We are pleased to announce the immediate availability of CentOS-6.4<br />
 install media for i386 and x86_64 Architectures. Release Notes for 6.4<br />
 are available at http://wiki.centos.org/Manuals/ReleaseNotes/CentOS6.4 -<br />
@@ -744,9 +618,9 @@ donors.</p>
   
   <entry>
     <title type="html"><![CDATA[CactiFans-v1.0中文版Tips]]></title>
-    <link href="http://canghai809.github.io/blog/2013/03/12/cactifans-v1-0%E4%B8%AD%E6%96%87%E7%89%88tips/"/>
+    <link href="http://canghai908.github.io/blog/2013/03/12/cactifans-v1-0%E4%B8%AD%E6%96%87%E7%89%88tips/"/>
     <updated>2013-03-12T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/03/12/cactifans-v1-0中文版tips</id>
+    <id>http://canghai908.github.io/blog/2013/03/12/cactifans-v1-0中文版tips</id>
     <content type="html"><![CDATA[<p>CactiFans-v1.0中文版发行已经有半年左右的时间，由于本人毕业之后忙于工作等事情，很久没有更新blog，给大家使用造成一定的麻烦，在此说声不好意思啊！嘿嘿！好了，今天我写几个关于CactiFans中文版V1.0的小Tips，帮大家更好的使用。
 <h3>一.修改系统密码</h3>
 ssh登录上去执行
@@ -799,9 +673,9 @@ exit;</pre>
   
   <entry>
     <title type="html"><![CDATA[Recover MySQL root Password]]></title>
-    <link href="http://canghai809.github.io/blog/2013/02/26/recover-mysql-root-password/"/>
+    <link href="http://canghai908.github.io/blog/2013/02/26/recover-mysql-root-password/"/>
     <updated>2013-02-26T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/02/26/recover-mysql-root-password</id>
+    <id>http://canghai908.github.io/blog/2013/02/26/recover-mysql-root-password</id>
     <content type="html"><![CDATA[<p>You can recover MySQL database server password with following five easy steps.<br />
 Step # 1: Stop the MySQL server process.<br />
 Step # 2: Start the MySQL (mysqld) server/daemon process with the &#8211;skip-grant-tables option so that it will not prompt for password.<br />
@@ -846,9 +720,9 @@ mysql -u root -p</pre></p>
   
   <entry>
     <title type="html"><![CDATA[CentOS一些比较老版本的repo]]></title>
-    <link href="http://canghai809.github.io/blog/2013/01/07/centos%E4%B8%80%E4%BA%9B%E6%AF%94%E8%BE%83%E8%80%81%E7%89%88%E6%9C%AC%E7%9A%84repo/"/>
+    <link href="http://canghai908.github.io/blog/2013/01/07/centos%E4%B8%80%E4%BA%9B%E6%AF%94%E8%BE%83%E8%80%81%E7%89%88%E6%9C%AC%E7%9A%84repo/"/>
     <updated>2013-01-07T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/01/07/centos一些比较老版本的repo</id>
+    <id>http://canghai908.github.io/blog/2013/01/07/centos一些比较老版本的repo</id>
     <content type="html"><![CDATA[<p>centos的老版本对应的域名是vault.centos.org ，方便以后使用，直接repo文件。</p>
 
 <p>Packages previously released as 5.5, and its updates
@@ -1028,9 +902,9 @@ enabled=0</p>
   
   <entry>
     <title type="html"><![CDATA[【置顶】CactiFans V1.0中文版发布]]></title>
-    <link href="http://canghai809.github.io/blog/2012/06/18/cactifans-v1-0%E4%B8%AD%E6%96%87%E7%89%88%E5%8F%91%E5%B8%83/"/>
+    <link href="http://canghai908.github.io/blog/2012/06/18/cactifans-v1-0%E4%B8%AD%E6%96%87%E7%89%88%E5%8F%91%E5%B8%83/"/>
     <updated>2012-06-18T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2012/06/18/cactifans-v1-0中文版发布</id>
+    <id>http://canghai908.github.io/blog/2012/06/18/cactifans-v1-0中文版发布</id>
     <content type="html"><![CDATA[<p>经过几个月来来的努力，CactiFans V1.0中文版终于发布了！仔细算起，自上次发布已经有一年多了，这个时间是有点长，主要的原因是我太忙了，事情太多了。做完这版本，我也要毕业了，离开学校了，大学也就这么上完了，也算毕业的纪念吧！进入正题。</p>
 
 <p>CactiFans是我制作的一个cacti的集成全自动安装系统！
@@ -1148,9 +1022,9 @@ phpmyadmin
   
   <entry>
     <title type="html"><![CDATA[Centos6.2+Openvpn+Radius+Mysql+daloRADIUS]]></title>
-    <link href="http://canghai809.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius/"/>
+    <link href="http://canghai908.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius/"/>
     <updated>2012-04-24T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius</id>
+    <id>http://canghai908.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius</id>
     <content type="html"><![CDATA[<p>OpenVPN是不同于PPTP、L2TP的另一种VPN软件包，基于SSL的VPN。OpenVPN使用需要客户端支持。</p>
 
 <p>OS:CentOS 6.2 I386<br />
@@ -1482,9 +1356,9 @@ auth-user-pass</pre>
   
   <entry>
     <title type="html"><![CDATA[cacti-0.8.8发布]]></title>
-    <link href="http://canghai809.github.io/blog/2012/04/12/cacti-0-8-8%E5%8F%91%E5%B8%83/"/>
+    <link href="http://canghai908.github.io/blog/2012/04/12/cacti-0-8-8%E5%8F%91%E5%B8%83/"/>
     <updated>2012-04-12T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2012/04/12/cacti-0-8-8发布</id>
+    <id>http://canghai908.github.io/blog/2012/04/12/cacti-0-8-8发布</id>
     <content type="html"><![CDATA[<p>cacti-0.8.8终于发布了，修复了很多bug，而且集成了PIA,以后就估计就没有PIA这个说法了。</p>
 
 <p>Release Notes - 0.8.8</p>
@@ -1611,9 +1485,9 @@ $hash_version_codes = array(
   
   <entry>
     <title type="html"><![CDATA[Cacti插件详解——Syslog]]></title>
-    <link href="http://canghai809.github.io/blog/2012/03/12/cacti%E6%8F%92%E4%BB%B6%E8%AF%A6%E8%A7%A3-syslog/"/>
+    <link href="http://canghai908.github.io/blog/2012/03/12/cacti%E6%8F%92%E4%BB%B6%E8%AF%A6%E8%A7%A3-syslog/"/>
     <updated>2012-03-12T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2012/03/12/cacti插件详解-syslog</id>
+    <id>http://canghai908.github.io/blog/2012/03/12/cacti插件详解-syslog</id>
     <content type="html"><![CDATA[<p><code></code><span style="font-size: 18px;">     cacti中syslog插件，是通过rsyslog或syslog-ng与mysql的交互，将日志存放到mysql数据库中，cacti中的syslog插件从mysql中检索查看日志数据。因此，首先要配置一台rsyslog与mysql的日志中心服务器来接收客户机的日志;其次，配置cacti的syslog插件，通过该插件检索与查询mysql</span><span style="font-size: 18px;">中的日志。可以收集来自linux、windows等服务器和交换机路由器的日志。做到集中和分类查看。</span>
 <div></div>
 <div><span style="font-size: 18px;">说下软件环境</span></div>
@@ -1796,9 +1670,9 @@ $use_cacti_db = false;</p>
   
   <entry>
     <title type="html"><![CDATA[cacti整合nagios-cacti插件npc的使用]]></title>
-    <link href="http://canghai809.github.io/blog/2012/02/24/cacti%E6%95%B4%E5%90%88nagios-cacti%E6%8F%92%E4%BB%B6npc%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2012/02/24/cacti%E6%95%B4%E5%90%88nagios-cacti%E6%8F%92%E4%BB%B6npc%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <updated>2012-02-24T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2012/02/24/cacti整合nagios-cacti插件npc的使用</id>
+    <id>http://canghai908.github.io/blog/2012/02/24/cacti整合nagios-cacti插件npc的使用</id>
     <content type="html"><![CDATA[<p><span style="font-size: 18px;"><span style="font-family: arial,helvetica,sans-serif;">                Nagios是</span>监控服务器的状态很强大，并且报警功能也不错，不过就是缺少直观的表示，在cacti的插件里有一个插件NPC，通过NDO</span><span style="font-size: 18px;">可以把Nagios里的数据展示在NPC标签里，很直观的就可以看到各种信息如图：</span></p>
 
 <p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc1.png"><img class="aligncenter size-full wp-image-410" title="npc1" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc1.png" width="1275" height="670" /></a></p>
@@ -2051,6 +1925,142 @@ exit;</pre>
 <p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc7.png"><img class="aligncenter size-large wp-image-421" title="npc7" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc7-1024x322.png" width="1024" height="322" /></a></p>
 
 <p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc8.png"><img class="aligncenter size-large wp-image-422" title="npc8" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc8-1024x515.png" width="1024" height="515" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在Solaris 10 X86上安装Oracle 10g RAC]]></title>
+    <link href="http://canghai908.github.io/blog/2011/09/17/%E5%9C%A8solaris-10-x86%E4%B8%8A%E5%AE%89%E8%A3%85oracle-10g-rac/"/>
+    <updated>2011-09-17T00:00:00+08:00</updated>
+    <id>http://canghai908.github.io/blog/2011/09/17/在solaris-10-x86上安装oracle-10g-rac</id>
+    <content type="html"><![CDATA[<p>[wp-pdf-view swf=&#8221;/wp-content/uploads/2011/09/1.swf&#8221; width=&#8221;598&#8221; height=&#8221;841&#8221; /]</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cacti 0.8.7g在CentOS5.5上的安装（2）]]></title>
+    <link href="http://canghai908.github.io/blog/2011/09/08/cacti-0-8-7g%E5%9C%A8centos5-5%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85%EF%BC%882%EF%BC%89/"/>
+    <updated>2011-09-08T00:00:00+08:00</updated>
+    <id>http://canghai908.github.io/blog/2011/09/08/cacti-0-8-7g在centos5-5上的安装（2）</id>
+    <content type="html"><![CDATA[<p><pre>上次我们已经安装好了cacti的基本程序，这次来说一下安装Plugin Architecture。
+首先给大家介绍一下Plugin Architecture。
+以我理解PluginArchitecture就是cacti的一个插件架构，
+安装了它之后才能安装cacti的众多插件，因此，我们想要获得
+cacti的更多功能就要安装这个插件。这个插件的版本每个都
+和cacti的插件版本是对应的，安装的时候要记得看好版本。
+下载Patch安装包，并安装（可以到<a href="http://cactiusers.org/">http://cactiusers.org/</a>中下载cacti 0.8.7f对应的patch文件，
+也叫做Plugin Architecture，即插件架构）</pre>
+<!--more--></p>
+
+<p><pre lang="bash" line="1" escaped="true">wget http://mirror.cactiusers.org/downloads/plugins/cacti-plugin-0.8.7g-PA-v2.8.tar.gz
+tar zxvf cacti-plugin-0.8.7f-PA-v2.7.tar.gz
+cp -R cacti-plugin-arch/* /var/www/html/
+cp: overwrite `/var/www/html/LICENSE'? y
+cp: overwrite `/var/www/html/README'? y
+cd /var/www/html/
+mysql -ucactiuser -pcactifans.org cacti &lt; /var/www/html/pa.sql</pre>
+这里我们安装一下patch，
+<pre lang="bash" line="1" escaped="true">yum install -y patch
+patch -p1 -N &lt;cacti-plugin-0.8.7g-PA-v2.8.diff</pre>
+授权admin用户使用&#8221;plugin Management&#8221;：<br />
+登录后，Utilities&#8211;User Management&#8211;admin&#8211;Realm Permissions，
+<a href="http://www.cactifans.org/wp-content/uploads/2011/09/2011-09-08_221726.png"><img class="alignleft size-full wp-image-365" title="2011-09-08_221726" src="http://www.cactifans.org/wp-content/uploads/2011/09/2011-09-08_221726.png" alt="" width="581" height="619" /></a></p>
+
+<p>选中“Plugin Management&#8221;，Save。OK啦，后面的工作就是要安装相关的插件了</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/09/2011-09-08_221755.png"><img class="alignleft size-full wp-image-366" title="2011-09-08_221755" src="http://www.cactifans.org/wp-content/uploads/2011/09/2011-09-08_221755.png" alt="" width="977" height="737" /></a></p>
+
+<p>&nbsp;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cacti 0.8.7g在CentOS5.5上的安装（1）]]></title>
+    <link href="http://canghai908.github.io/blog/2011/09/08/cacti-0-8-7g%E5%9C%A8centos5-5%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/"/>
+    <updated>2011-09-08T00:00:00+08:00</updated>
+    <id>http://canghai908.github.io/blog/2011/09/08/cacti-0-8-7g在centos5-5上的安装</id>
+    <content type="html"><![CDATA[<p>1.系统的安装<br />
+这次我用的是CentOS5.5-i386，在选择安装包时一个包都不需要装，就以最小系统。配置好IP等。<br />
+A.关闭SElinux
+<pre class="brush: bash; gutter: true">vi /etc/sysconfig/selinux
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#       enforcing - SELinux security policy is enforced.
+#       permissive - SELinux prints warnings instead of enforcing.
+#       disabled - SELinux is fully disabled.</pre></p>
+
+<p>SELINUX=enforcing<br />
+# SELINUXTYPE= type of policy in use. Possible values are:<br />
+#       targeted - Only targeted network daemons are protected.<br />
+#       strict - Full SELinux protection.<br />
+SELINUXTYPE=targeted
+把SELINUX=enforcing改为SELINUX=disabled并保存！在这个时候SElinux还在运行我们用
+<pre class="brush: bash; gutter: true">setenforce 0</pre>
+来关闭SElinux
+<!--more-->
+B.防火墙<br />
+一般我都是把防火墙直接关掉
+<pre class="brush: bash; gutter: true">/etc/init.d/iptables stop
+/etc/init.d/ip6tables stop
+chkconfig iptables off
+chkconfig ip6tables off</pre>
+2.配置cacti需要的软件环境<br />
+A.由于一些包在官方的库中没有，因此我们要建立dag.repo，定义非官方库
+<pre class="brush: bash; gutter: true">vi /etc/yum.repos.d/dag.repo</pre>
+内容如下
+<pre class="brush: bash; gutter: true">[dag]
+name=Dag RPM Repository for Red Hat Enterprise Linux
+baseurl=http://apt.sw.be/redhat/el$releasever/en/$basearch/dag
+gpgcheck=1
+enabled=1</pre>
+然后再导入非官方库的GPG：
+<pre class="brush: bash; gutter: true">rpm --import http://dag.wieers.com/rpm/packages/RPM-GPG-KEY.dag.txt</pre>
+B.安装cacti需要的环境包
+<pre class="brush: bash; gutter: true">yum install -y httpd mysql mysql-server php php-mysql net-snmp net-snmp-utils
+yum install -y zlib libpng freetype libjpeg fontconfig gd libxml2 
+yum install -y rrdtool</pre>
+C.为cacti创建数据库和用户
+<pre class="brush: bash; gutter: true">service mysqld start
+/usr/bin/mysqladmin --user=root create cacti
+mysql -e &quot;GRANT ALL ON cacti.* TO cactiuser@localhost IDENTIFIED BY &#039;cactifans.org&#039;&quot;</pre>
+3.下载cacti-0.8.7g.tar.gz并解压、MV
+<pre class="brush: bash; gutter: true">cd /var/www/html/
+yum install wget -y
+wget http://www.cacti.net/downloads/cacti-0.8.7g.tar.gz
+tar xf cacti-0.8.7g.tar.gz
+rm -rf cacti-0.8.7g.tar.gz
+cd cacti-0.8.7g/
+mv * ../
+cd ..
+rm -rf cacti-0.8.7g/
+mysql -ucactiuser -pcactifans.org cacti &lt; /var/www/html/cacti.sql</pre>
+修改cacti的配置文件并保存
+<pre class="brush: bash; gutter: true">vi /var/www/html/include/config.php
+/* make sure these values refect your actual database/host/user/password */
+$database_type = &quot;mysql&quot;;
+$database_default = &quot;cacti&quot;;
+$database_hostname = &quot;localhost&quot;;
+$database_username = &quot;cactiuser&quot;;
+$database_password = &quot;cactifans.org&quot;;
+$database_port = &quot;3306&quot;;</pre>
+设置crontab定时任务<br />
+由于我们是最小系统安装没有安装定时任务，因此我们首先安装
+<pre class="brush: bash; gutter: true">yum install vixie-cron</pre>
+然后我们添加定时任务
+<pre class="brush: bash; gutter: true">cho &#039;*/5 * * * * root /usr/bin/php /var/www/html/poller.php&#039; &gt;&gt; /etc/crontab</pre>
+设置服务开机自启动,重启服务
+<pre class="brush: bash; gutter: true">chkconfig snmpd on
+chkconfig httpd on
+chkconfig mysqld on
+chkconfig crond on
+service httpd restart
+service snmpd restart
+service mysqld restart
+service crond restart</pre>
+4.WEB页完成安装<br />
+浏览<a href="http://xxx.xxx.xxx.xxx/index.php">http://xxx.xxx.xxx.xxx/index.php</a>
+就可以出再Cacti Installation Guide的页面了。NEXT&#8211;NEXT&#8211;FINISH。<br />
+用户名和密码为：admin/admin，之后输入新的密码，就完成了最基本的安装。</p>
 ]]></content>
   </entry>
   

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: MySQL | Canghai's Blog]]></title>
-  <link href="http://canghai809.github.io/blog/categories/mysql/atom.xml" rel="self"/>
-  <link href="http://canghai809.github.io/"/>
-  <updated>2013-06-24T12:36:26+08:00</updated>
-  <id>http://canghai809.github.io/</id>
+  <link href="http://canghai908.github.io/blog/categories/mysql/atom.xml" rel="self"/>
+  <link href="http://canghai908.github.io/"/>
+  <updated>2013-06-24T12:46:26+08:00</updated>
+  <id>http://canghai908.github.io/</id>
   <author>
     <name><![CDATA[Sole]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Recover MySQL root Password]]></title>
-    <link href="http://canghai809.github.io/blog/2013/02/26/recover-mysql-root-password/"/>
+    <link href="http://canghai908.github.io/blog/2013/02/26/recover-mysql-root-password/"/>
     <updated>2013-02-26T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/02/26/recover-mysql-root-password</id>
+    <id>http://canghai908.github.io/blog/2013/02/26/recover-mysql-root-password</id>
     <content type="html"><![CDATA[<p>You can recover MySQL database server password with following five easy steps.<br />
 Step # 1: Stop the MySQL server process.<br />
 Step # 2: Start the MySQL (mysqld) server/daemon process with the --skip-grant-tables option so that it will not prompt for password.<br />

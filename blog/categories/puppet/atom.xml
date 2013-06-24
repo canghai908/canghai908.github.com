@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: puppet | Canghai's Blog]]></title>
-  <link href="http://canghai809.github.io/blog/categories/puppet/atom.xml" rel="self"/>
-  <link href="http://canghai809.github.io/"/>
-  <updated>2013-06-24T12:36:26+08:00</updated>
-  <id>http://canghai809.github.io/</id>
+  <link href="http://canghai908.github.io/blog/categories/puppet/atom.xml" rel="self"/>
+  <link href="http://canghai908.github.io/"/>
+  <updated>2013-06-24T12:46:26+08:00</updated>
+  <id>http://canghai908.github.io/</id>
   <author>
     <name><![CDATA[Sole]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[在CentOS 6.4上安装Puppet配置管理工具]]></title>
-    <link href="http://canghai809.github.io/blog/2013/05/05/%E5%9C%A8centos-6-4%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    <link href="http://canghai908.github.io/blog/2013/05/05/%E5%9C%A8centos-6-4%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
     <updated>2013-05-05T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/05/05/在centos-6-4上安装puppet配置管理工具</id>
+    <id>http://canghai908.github.io/blog/2013/05/05/在centos-6-4上安装puppet配置管理工具</id>
     <content type="html"><![CDATA[<p>上篇说了下在ubuntu12.04上安装puppet，安装的版本为puppet2.7.11版本，今天尝试了下在CentOS6.4系统上安装puppet 3.1.1版本,本文参考<a href="http://www.chenshake.com/puppet-study-notes/" target="_blank">chenshake</a>的文章
 <pre class="brush: bash; gutter: true">OS:centso 6.4 X64
 Puppet 3.1.1
@@ -249,9 +249,9 @@ rake jobs:work RAILS_ENV=&quot;production&quot;</pre>
   
   <entry>
     <title type="html"><![CDATA[在Ubuntu 12.04上安装Puppet配置管理工具]]></title>
-    <link href="http://canghai809.github.io/blog/2013/05/01/%E5%9C%A8ubuntu-12-04%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    <link href="http://canghai908.github.io/blog/2013/05/01/%E5%9C%A8ubuntu-12-04%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
     <updated>2013-05-01T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/05/01/在ubuntu-12-04上安装puppet配置管理工具</id>
+    <id>http://canghai908.github.io/blog/2013/05/01/在ubuntu-12-04上安装puppet配置管理工具</id>
     <content type="html"><![CDATA[<p>最近看了下puppet,发现puppet真是个好东西。Puppet 是一个客户端/服务器（C/S）架构的配置管理工具，在中央服务器上安装 puppet-server 服务器（puppet master），在需要被管理的目标服务器上安装 puppet 客户端软件（puppet client）。当客户端连接上服务器后，定义在服务器上的配置文件会被编译，然后在客户端上运行。客户端每隔半小时主动会和服务器通信一次，确认配置信息的更新情况，如果有新的配置信息（或者配置有变化），配置文件将会被重新编译并分发到客户端执行。当然，也可以在服务器上主动触发更新指令来强制各客户端进行配置更新。</p>
 
 

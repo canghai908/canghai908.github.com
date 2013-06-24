@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: oracle | Canghai's Blog]]></title>
-  <link href="http://canghai809.github.io/blog/categories/oracle/atom.xml" rel="self"/>
-  <link href="http://canghai809.github.io/"/>
-  <updated>2013-06-24T12:36:26+08:00</updated>
-  <id>http://canghai809.github.io/</id>
+  <link href="http://canghai908.github.io/blog/categories/oracle/atom.xml" rel="self"/>
+  <link href="http://canghai908.github.io/"/>
+  <updated>2013-06-24T12:46:26+08:00</updated>
+  <id>http://canghai908.github.io/</id>
   <author>
     <name><![CDATA[Sole]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[在Solaris 10 X86上安装Oracle 10g RAC]]></title>
-    <link href="http://canghai809.github.io/blog/2011/09/17/%E5%9C%A8solaris-10-x86%E4%B8%8A%E5%AE%89%E8%A3%85oracle-10g-rac/"/>
+    <link href="http://canghai908.github.io/blog/2011/09/17/%E5%9C%A8solaris-10-x86%E4%B8%8A%E5%AE%89%E8%A3%85oracle-10g-rac/"/>
     <updated>2011-09-17T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2011/09/17/在solaris-10-x86上安装oracle-10g-rac</id>
+    <id>http://canghai908.github.io/blog/2011/09/17/在solaris-10-x86上安装oracle-10g-rac</id>
     <content type="html"><![CDATA[<p>[wp-pdf-view swf="/wp-content/uploads/2011/09/1.swf" width="598" height="841" /]</p>
 
 ]]></content>

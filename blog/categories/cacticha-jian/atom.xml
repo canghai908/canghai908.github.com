@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Cacti插件 | Canghai's Blog]]></title>
-  <link href="http://canghai809.github.io/blog/categories/cacticha-jian/atom.xml" rel="self"/>
-  <link href="http://canghai809.github.io/"/>
-  <updated>2013-06-24T12:36:26+08:00</updated>
-  <id>http://canghai809.github.io/</id>
+  <link href="http://canghai908.github.io/blog/categories/cacticha-jian/atom.xml" rel="self"/>
+  <link href="http://canghai908.github.io/"/>
+  <updated>2013-06-24T12:46:26+08:00</updated>
+  <id>http://canghai908.github.io/</id>
   <author>
     <name><![CDATA[Sole]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cacti插件flowview的安装及使用]]></title>
-    <link href="http://canghai809.github.io/blog/2013/04/09/cacti%E6%8F%92%E4%BB%B6flowview%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2013/04/09/cacti%E6%8F%92%E4%BB%B6flowview%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
     <updated>2013-04-09T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/04/09/cacti插件flowview的安装及使用</id>
+    <id>http://canghai908.github.io/blog/2013/04/09/cacti插件flowview的安装及使用</id>
     <content type="html"><![CDATA[<p>这期主要给大家讲的是cacti插件flowview插件的安装及使用，这个插件是利用flow-capture来把路由发送哦过来的flow信息保存为文件，再通过flowview来进行查看，因此专门做一期视频</p>
 
 
@@ -56,9 +56,9 @@
   
   <entry>
     <title type="html"><![CDATA[cacti插件Thold的安装及使用]]></title>
-    <link href="http://canghai809.github.io/blog/2013/03/24/cacti%E6%8F%92%E4%BB%B6thold%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2013/03/24/cacti%E6%8F%92%E4%BB%B6thold%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
     <updated>2013-03-24T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/03/24/cacti插件thold的安装及使用</id>
+    <id>http://canghai908.github.io/blog/2013/03/24/cacti插件thold的安装及使用</id>
     <content type="html"><![CDATA[<p>接上期视频，这起主要讲cacti最主要的插件之一——Thold的安装及使用</p>
 
 
@@ -97,9 +97,9 @@
   
   <entry>
     <title type="html"><![CDATA[cacti插件weathermap的安装及使用]]></title>
-    <link href="http://canghai809.github.io/blog/2013/03/18/cacti%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2013/03/18/cacti%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
     <updated>2013-03-18T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/03/18/cacti插件的安装及使用</id>
+    <id>http://canghai908.github.io/blog/2013/03/18/cacti插件的安装及使用</id>
     <content type="html"><![CDATA[<p>接着上期视频，这一节视频，主要讲三个方面:
 <ol>
     <li>cacti高效采集器spine的安装及使用</li>
@@ -134,9 +134,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cacti插件详解——Syslog]]></title>
-    <link href="http://canghai809.github.io/blog/2012/03/12/cacti%E6%8F%92%E4%BB%B6%E8%AF%A6%E8%A7%A3-syslog/"/>
+    <link href="http://canghai908.github.io/blog/2012/03/12/cacti%E6%8F%92%E4%BB%B6%E8%AF%A6%E8%A7%A3-syslog/"/>
     <updated>2012-03-12T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2012/03/12/cacti插件详解-syslog</id>
+    <id>http://canghai908.github.io/blog/2012/03/12/cacti插件详解-syslog</id>
     <content type="html"><![CDATA[<p><code></code><span style="font-size: 18px;">     cacti中syslog插件，是通过rsyslog或syslog-ng与mysql的交互，将日志存放到mysql数据库中，cacti中的syslog插件从mysql中检索查看日志数据。因此，首先要配置一台rsyslog与mysql的日志中心服务器来接收客户机的日志;其次，配置cacti的syslog插件，通过该插件检索与查询mysql</span><span style="font-size: 18px;">中的日志。可以收集来自linux、windows等服务器和交换机路由器的日志。做到集中和分类查看。</span>
 <div></div>
 <div><span style="font-size: 18px;">说下软件环境</span></div>
@@ -359,9 +359,9 @@ $use_cacti_db = false;</p>
   
   <entry>
     <title type="html"><![CDATA[cacti整合nagios-cacti插件npc的使用]]></title>
-    <link href="http://canghai809.github.io/blog/2012/02/24/cacti%E6%95%B4%E5%90%88nagios-cacti%E6%8F%92%E4%BB%B6npc%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2012/02/24/cacti%E6%95%B4%E5%90%88nagios-cacti%E6%8F%92%E4%BB%B6npc%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <updated>2012-02-24T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2012/02/24/cacti整合nagios-cacti插件npc的使用</id>
+    <id>http://canghai908.github.io/blog/2012/02/24/cacti整合nagios-cacti插件npc的使用</id>
     <content type="html"><![CDATA[<p><span style="font-size: 18px;"><span style="font-family: arial,helvetica,sans-serif;">                Nagios是</span>监控服务器的状态很强大，并且报警功能也不错，不过就是缺少直观的表示，在cacti的插件里有一个插件NPC，通过NDO</span><span style="font-size: 18px;">可以把Nagios里的数据展示在NPC标签里，很直观的就可以看到各种信息如图：</span></p>
 
 

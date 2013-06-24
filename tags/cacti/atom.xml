@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Tagcacti | Canghai's Blog]]></title>
-  <link href="http://canghai809.github.io/tags/cacti/atom.xml" rel="self"/>
-  <link href="http://canghai809.github.io/"/>
-  <updated>2013-06-24T12:36:26+08:00</updated>
-  <id>http://canghai809.github.io/</id>
+  <link href="http://canghai908.github.io/tags/cacti/atom.xml" rel="self"/>
+  <link href="http://canghai908.github.io/"/>
+  <updated>2013-06-24T12:46:26+08:00</updated>
+  <id>http://canghai908.github.io/</id>
   <author>
     <name><![CDATA[Sole]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[首发]cacti-0.8.7h-beta1版试用]]></title>
-    <link href="http://canghai809.github.io/blog/2011/04/16/%E9%A6%96%E5%8F%91cacti-0-8-7h-beta1%E7%89%88%E8%AF%95%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2011/04/16/%E9%A6%96%E5%8F%91cacti-0-8-7h-beta1%E7%89%88%E8%AF%95%E7%94%A8/"/>
     <updated>2011-04-16T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2011/04/16/首发cacti-0-8-7h-beta1版试用</id>
+    <id>http://canghai908.github.io/blog/2011/04/16/首发cacti-0-8-7h-beta1版试用</id>
     <content type="html"><![CDATA[<p>今天把cacti的0.8.7h版的beta1版测试了一些，这个是cacti最新的beta版本，同时也推出了cacti-plugin-0.8.7h-PA-v3.0-beta1和cacti-spine-0.8.7h-beta，安装好后基本业界面如下，没有太大变化</p>
 
 
@@ -102,9 +102,9 @@
   
   <entry>
     <title type="html"><![CDATA[CactiFans预览图！]]></title>
-    <link href="http://canghai809.github.io/blog/2011/04/09/cactifans%E9%A2%84%E8%A7%88%E5%9B%BE%EF%BC%81/"/>
+    <link href="http://canghai908.github.io/blog/2011/04/09/cactifans%E9%A2%84%E8%A7%88%E5%9B%BE%EF%BC%81/"/>
     <updated>2011-04-09T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2011/04/09/cactifans预览图！</id>
+    <id>http://canghai908.github.io/blog/2011/04/09/cactifans预览图！</id>
     <content type="html"><![CDATA[<p>引导安装界面</p>
 
 

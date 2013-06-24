@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 未分类 | Canghai's Blog]]></title>
-  <link href="http://canghai809.github.io/blog/categories/wei-fen-lei/atom.xml" rel="self"/>
-  <link href="http://canghai809.github.io/"/>
-  <updated>2013-06-24T12:36:26+08:00</updated>
-  <id>http://canghai809.github.io/</id>
+  <link href="http://canghai908.github.io/blog/categories/wei-fen-lei/atom.xml" rel="self"/>
+  <link href="http://canghai908.github.io/"/>
+  <updated>2013-06-24T12:46:26+08:00</updated>
+  <id>http://canghai908.github.io/</id>
   <author>
     <name><![CDATA[Sole]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Centos6.2+Openvpn+Radius+Mysql+daloRADIUS]]></title>
-    <link href="http://canghai809.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius/"/>
+    <link href="http://canghai908.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius/"/>
     <updated>2012-04-24T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius</id>
+    <id>http://canghai908.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius</id>
     <content type="html"><![CDATA[<p>OpenVPN是不同于PPTP、L2TP的另一种VPN软件包，基于SSL的VPN。OpenVPN使用需要客户端支持。</p>
 
 

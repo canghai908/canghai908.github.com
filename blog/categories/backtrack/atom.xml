@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: BackTrack | Canghai's Blog]]></title>
-  <link href="http://canghai809.github.io/blog/categories/backtrack/atom.xml" rel="self"/>
-  <link href="http://canghai809.github.io/"/>
-  <updated>2013-06-24T12:36:26+08:00</updated>
-  <id>http://canghai809.github.io/</id>
+  <link href="http://canghai908.github.io/blog/categories/backtrack/atom.xml" rel="self"/>
+  <link href="http://canghai908.github.io/"/>
+  <updated>2013-06-24T12:46:26+08:00</updated>
+  <id>http://canghai908.github.io/</id>
   <author>
     <name><![CDATA[Sole]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[BackTrack 5 release!]]></title>
-    <link href="http://canghai809.github.io/blog/2011/05/11/backtrack-5-release/"/>
+    <link href="http://canghai908.github.io/blog/2011/05/11/backtrack-5-release/"/>
     <updated>2011-05-11T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2011/05/11/backtrack-5-release</id>
+    <id>http://canghai908.github.io/blog/2011/05/11/backtrack-5-release</id>
     <content type="html"><![CDATA[<p>终于发发布了！在第一时刻下载，安装看了一下！最新的BT5有kde和gnome二种！并且都有32位和64位版本！下面上几张图！</p>
 
 

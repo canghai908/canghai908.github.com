@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: cacti | Canghai's Blog]]></title>
-  <link href="http://canghai809.github.io/blog/categories/cacti/atom.xml" rel="self"/>
-  <link href="http://canghai809.github.io/"/>
-  <updated>2013-06-24T12:36:26+08:00</updated>
-  <id>http://canghai809.github.io/</id>
+  <link href="http://canghai908.github.io/blog/categories/cacti/atom.xml" rel="self"/>
+  <link href="http://canghai908.github.io/"/>
+  <updated>2013-06-24T12:46:26+08:00</updated>
+  <id>http://canghai908.github.io/</id>
   <author>
     <name><![CDATA[Sole]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[CactiFans在Vmware虚拟机上的安装]]></title>
-    <link href="http://canghai809.github.io/blog/2013/04/23/cactifans%E5%9C%A8vmware%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/"/>
+    <link href="http://canghai908.github.io/blog/2013/04/23/cactifans%E5%9C%A8vmware%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/"/>
     <updated>2013-04-23T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/04/23/cactifans在vmware虚拟机上的安装</id>
+    <id>http://canghai908.github.io/blog/2013/04/23/cactifans在vmware虚拟机上的安装</id>
     <content type="html"><![CDATA[<p>最近有部分人反应在下载CactiFans的ISO后，在Vmware里安装后，重启出现如下错误
 <p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2013/04/1.png"><img class="aligncenter size-full wp-image-956" alt="1" src="http://www.cactifans.org/wp-content/uploads/2013/04/1.png" width="727" height="279" /></a></p>
 &nbsp;</p>
@@ -199,9 +199,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cacti插件flowview的安装及使用]]></title>
-    <link href="http://canghai809.github.io/blog/2013/04/09/cacti%E6%8F%92%E4%BB%B6flowview%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2013/04/09/cacti%E6%8F%92%E4%BB%B6flowview%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
     <updated>2013-04-09T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/04/09/cacti插件flowview的安装及使用</id>
+    <id>http://canghai908.github.io/blog/2013/04/09/cacti插件flowview的安装及使用</id>
     <content type="html"><![CDATA[<p>这期主要给大家讲的是cacti插件flowview插件的安装及使用，这个插件是利用flow-capture来把路由发送哦过来的flow信息保存为文件，再通过flowview来进行查看，因此专门做一期视频</p>
 
 
@@ -240,9 +240,9 @@
   
   <entry>
     <title type="html"><![CDATA[cacti插件Thold的安装及使用]]></title>
-    <link href="http://canghai809.github.io/blog/2013/03/24/cacti%E6%8F%92%E4%BB%B6thold%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2013/03/24/cacti%E6%8F%92%E4%BB%B6thold%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
     <updated>2013-03-24T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/03/24/cacti插件thold的安装及使用</id>
+    <id>http://canghai908.github.io/blog/2013/03/24/cacti插件thold的安装及使用</id>
     <content type="html"><![CDATA[<p>接上期视频，这起主要讲cacti最主要的插件之一——Thold的安装及使用</p>
 
 
@@ -281,9 +281,9 @@
   
   <entry>
     <title type="html"><![CDATA[cacti插件weathermap的安装及使用]]></title>
-    <link href="http://canghai809.github.io/blog/2013/03/18/cacti%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <link href="http://canghai908.github.io/blog/2013/03/18/cacti%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
     <updated>2013-03-18T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/03/18/cacti插件的安装及使用</id>
+    <id>http://canghai908.github.io/blog/2013/03/18/cacti插件的安装及使用</id>
     <content type="html"><![CDATA[<p>接着上期视频，这一节视频，主要讲三个方面:
 <ol>
     <li>cacti高效采集器spine的安装及使用</li>
@@ -318,9 +318,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cacti安装视频]]></title>
-    <link href="http://canghai809.github.io/blog/2013/03/17/cacti%E5%AE%89%E8%A3%85%E8%A7%86%E9%A2%91/"/>
+    <link href="http://canghai908.github.io/blog/2013/03/17/cacti%E5%AE%89%E8%A3%85%E8%A7%86%E9%A2%91/"/>
     <updated>2013-03-17T00:00:00+08:00</updated>
-    <id>http://canghai809.github.io/blog/2013/03/17/cacti安装视频</id>
+    <id>http://canghai908.github.io/blog/2013/03/17/cacti安装视频</id>
     <content type="html"><![CDATA[<p>录了一个Cacti 0.8.8a的安装视频，目的就是给初学者和新手看的。想想当年我安装cacti的时候也没有一个权威的文档，苦逼倒腾，各种状况，各种不出图。因此录了一个cacti的最新版0.8.8a在centos6.3 64位上的安装视频，在其他Linux系统上的安装也大同小异。本人也是菜鸟一个，视频之中有任何错误和不足之处望大家指出。此视频时给初学者看的，是关于安装系统到安装cacti，添加监控一个Linux服务器。大牛可直接无数。本人第一次录视频，缺乏经验，望大家见谅。谢谢大家的支持。
 <span style="color: #ff0000;">注：如果看不清楚，点击视频右下角的全屏查看</span>
 <iframe name="tsc_player" src="http://www.cactifans.org/videos/cacti01/cacti01_player.html" height="525" width="700" allowfullscreen="" frameborder="0" scrolling="no"></iframe></p>
