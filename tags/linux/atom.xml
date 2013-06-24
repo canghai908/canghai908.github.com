@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Taglinux | Canghai's Blog]]></title>
+  <link href="http://canghai809.github.io/tags/linux/atom.xml" rel="self"/>
+  <link href="http://canghai809.github.io/"/>
+  <updated>2013-06-24T12:36:26+08:00</updated>
+  <id>http://canghai809.github.io/</id>
+  <author>
+    <name><![CDATA[Sole]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[在CentOS 6.4上安装Puppet配置管理工具]]></title>
+    <link href="http://canghai809.github.io/blog/2013/05/05/%E5%9C%A8centos-6-4%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    <updated>2013-05-05T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/05/05/在centos-6-4上安装puppet配置管理工具</id>
+    <content type="html"><![CDATA[<p>上篇说了下在ubuntu12.04上安装puppet，安装的版本为puppet2.7.11版本，今天尝试了下在CentOS6.4系统上安装puppet 3.1.1版本,本文参考<a href="http://www.chenshake.com/puppet-study-notes/" target="_blank">chenshake</a>的文章
+<pre class="brush: bash; gutter: true">OS:centso 6.4 X64
+Puppet 3.1.1
+Puppet master: master.canghai.com
+Puppet clients:node1-5.canghai.com</pre>
+Puppet 要求所有机器有完整的域名（FQDN），如果没有 DNS 服务器提供域名的话，可以在两台机器上设置主机名（注意要先设置主机名再安装 Puppet，因为安装 Puppet 时会把主机名写入证书，客户端和服务端通信需要这个证书）,因为我配置了DNS，所以就不用改hosts了，如果没有就需要改hosts文件指定。<br />
+1.关闭selinux，iptables，并设置ntp<br />
+采用CentOS-6.4-x86_64-minimal.iso最小化安装，因此先要安装ntp、wget等常用工具<br />
+安装ntp wget
+<pre class="brush: bash; gutter: true">yum install wget ntp -y</pre>
+关闭selinux
+<pre class="brush: bash; gutter: true">sed -i &#039;/SELINUX/ s/enforcing/disabled/g&#039; /etc/selinux/config
+setenforce 0</pre>
+停止iptables
+<pre class="brush: bash; gutter: true">chkconfig ip6tables off
+chkconfig iptables off
+/etc/init.d/ip6tables stop
+/etc/init.d/iptables stop</pre>
+设置ntp
+<!--more-->
+<pre class="brush: bash; gutter: true">ntpdate pool.ntp.org
+chkconfig ntp on
+service ntpd start</pre>
+2.安装puppet服务<br />
+puppet不在CentOS的基本源中，需要加入 PuppetLabs 提供的官方源：
+<pre class="brush: bash; gutter: true">wget http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
+rpm -ivh puppetlabs-release-6-7.noarch.rpm
+yum update</pre>
+在 master上安装和启用 puppet 服务：
+<pre class="brush: bash; gutter: true">yum install puppet-server
+chkconfig puppet on
+service puppetmaster start</pre>
+在clients上安装puppet客户端
+<pre class="brush: bash; gutter: true">yum install puppet
+chkconfig puppet on
+service puppet start</pre>
+3.配置puppet<br />
+对于puppet 客户端，修改/etc/puppet/puppet.conf，指定master服务器
+<pre class="brush: bash; gutter: true">vi /etc/puppet/puppet.conf</pre></p>
+
+
+
+
+<p>[main]<br />
+# The Puppet log directory.<br />
+# The default value is &#039;$vardir/log&#039;.<br />
+logdir = /var/log/puppet</p>
+
+
+
+
+<p># Where Puppet PID files are kept.<br />
+# The default value is &#039;$vardir/run&#039;.<br />
+rundir = /var/run/puppet</p>
+
+
+
+
+<p># Where SSL certificates are kept.<br />
+# The default value is &#039;$confdir/ssl&#039;.<br />
+ssldir = $vardir/ssl</p>
+
+
+
+
+<p>[agent]<br />
+# The file in which puppetd stores a list of the classes<br />
+# associated with the retrieved configuratiion. Can be loaded in<br />
+# the separate ``puppet`` executable using the ``--loadclasses``<br />
+# option.<br />
+# The default value is &#039;$confdir/classes.txt&#039;.<br />
+classfile = $vardir/classes.txt</p>
+
+
+
+
+<p># Where puppetd caches the local configuration. An<br />
+# extension indicating the cache format is added automatically.<br />
+# The default value is &#039;$confdir/localconfig&#039;.<br />
+localconfig = $vardir/localconfig<br />
+server = master.canghai.com
+并重启puppet服务
+<pre class="brush: bash; gutter: true">service puppet restart</pre>
+4.Client申请证书<br />
+服务端自动签发证书设置<br />
+设置master自动签发所有的证书，我们只需要在/etc/puppet 目录下创建 autosign.conf 文件。（不需要修改 /etc/puppet/puppet.conf文件，因为我默认的autosign.conf 文件的位置没有修改）
+<pre class="brush: bash; gutter: true">cat &gt; /etc/puppet/autosign.conf &lt;&lt;EOF
+*.canghai.com
+EOF
+service puppetmaster restart</pre>
+这样就会对所有来自canghai.com的机器的请求，都自动签名。<br />
+client需要向服务器端发出请求, 让服务器对客户端进行管理. 这其实是一个证书签发的过程. 第一次运行 puppet 客户端的时候会生成一个 SSL 证书并指定发给 Puppet 服务端, 服务器端如果同意管理客户端,就会对这个证书进行签发，可以用这个命令来签发证书，由于我们已经在客户端设置了server地址，因此不需要跟服务端地址
+<pre class="brush: bash; gutter: true">puppet agent</pre>
+为了详细了解注册的过程和日后排错,可以增加参数，因为配置文件里<br />
+–no-daemonize 前台输出日志<br />
+–verbose 输入更加详细的日志<br />
+–debug 更加详细的日志，排错的时候使用<br />
+–test 表示测试，就带一个–test参数就可以
+<pre class="brush: bash; gutter: true">puppet agent --no-daemonize --onetime --verbose --debug</pre>
+就可以申请证书了，由于我配置的自动签发证书，所以直接就签发了，在服务端执行
+<pre class="brush: bash; gutter: true">puppet cert list --all
++ &quot;master.canghai.com&quot; (SHA256) CA:50:6A:51:D5:AD:F0:73:BF:83:A0:4A:BF:1F:4E:F0:56:C9:4B:D8:4D:BB:62:10:EE:14:16:D5:96:D0:B6:F7 (alt names: &quot;DNS:master.canghai.com&quot;, &quot;DNS:puppet&quot;, &quot;DNS:puppet.canghai.com&quot;)
++ &quot;node1.canghai.com&quot; (SHA256) B8:95:69:2B:7B:3E:F4:38:CA:63:BE:A0:ED:3C:E7:05:1F:93:53:2D:1C:60:67:E9:D8:20:99:90:B8:9B:D6:40
++ &quot;node2.canghai.com&quot; (SHA256) 6C:65:34:9D:B1:82:35:24:EF:3F:10:2B:10:F0:0B:44:42:AB:84:42:29:B5:73:1A:A0:1D:D5:1E:9E:24:BC:E3
++ &quot;node3.canghai.com&quot; (SHA256) 57:54:33:37:23:A7:CD:BE:F6:25:BD:6F:E3:DA:F9:57:48:50:C7:5E:36:8F:F4:BA:C8:27:DF:B0:A2:84:5F:AF
++ &quot;node4.canghai.com&quot; (SHA256) 65:2F:0E:E7:98:F5:05:40:31:2F:FF:36:A5:3E:DE:C1:91:E8:45:16:55:60:A1:82:74:BC:84:EC:BA:C0:62:F0
++ &quot;node5.canghai.com&quot; (SHA256) 8C:1B:31:B6:C0:9C:A5:AF:89:6C:85:1B:BA:D0:03:63:07:4C:B1:89:D4:E6:B7:4E:CA:4A:23:C7:3C:5F:CA:3D</pre>
+就可以看到所有客户端已经都已签发证书，前面带"+"号的就是签发成功的，撸过没有签名的，可以用
+<pre class="brush: bash; gutter: true">puppet cert --sign node1.canghai.com</pre>
+进行签发证书,签发后在master，执行
+<pre class="brush: bash; gutter: true">puppet cert list --all</pre>
+即可看到证书已经签发<br />
+5.在服务端安装puppet的dashboard<br />
+安装mysql
+<pre class="brush: bash; gutter: true">yum install -y mysql mysql-devel mysql-server</pre>
+优化mysql设置<br />
+编辑 /etc/my.cnf, 在[mysqld]字段,增加最后一行
+<pre class="brush: bash; gutter: true">cat /etc/my.cnf
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+max_allowed_packet = 32M
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid</pre>
+启动服务
+<pre class="brush: bash; gutter: true">/etc/init.d/mysqld start
+chkconfig mysqld on</pre>
+设置mysql密码，我这里使用是密码是123456
+<pre class="brush: bash; gutter: true">mysqladmin -u root password &#039;123456&#039;</pre>
+创建一个dashboard数据库
+<pre class="brush: bash; gutter: true">mysql -uroot -p123456 &lt;&lt;EOF
+CREATE DATABASE dashboard CHARACTER SET utf8;
+CREATE USER &#039;dashboard&#039;@&#039;localhost&#039; IDENTIFIED BY &#039;123456&#039;;
+GRANT ALL PRIVILEGES ON dashboard.* TO &#039;dashboard&#039;@&#039;localhost&#039;;
+FLUSH PRIVILEGES;
+EOF</pre>
+Passenger+Apache+Dashboard<br />
+这是让Apache支持ruby,由于Passenger不在centos官方源里，因此要添加epel的源
+<pre class="brush: bash; gutter: true">wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm -ivh epel-release-6-8.noarch.rpm
+yum install mod_passenger puppet-dashboard</pre>
+配置Dashboard
+<pre class="brush: bash; gutter: true">vi /usr/share/puppet-dashboard/config/database.yml
+production:
+  database: dashboard
+  username: dashboard
+  password: 123456
+  encoding: utf8
+  adapter: mysql</pre>
+修改时区
+<pre class="brush: bash; gutter: true">vi /usr/share/puppet-dashboard/config/environment.rb</pre></p>
+
+
+
+
+<p>  #config.time_zone = &#039;UTC&#039;<br />
+  config.time_zone = &#039;Beijing&#039;
+初始化数据库
+<pre class="brush: bash; gutter: true">cd /usr/share/puppet-dashboard/
+rake RAILS_ENV=production db:migrate</pre>
+配置Apache<br />
+我们需要整合Passenger和apache
+<pre class="brush: bash; gutter: true">cat &gt; /etc/httpd/conf.d/passenger.conf &lt;&lt; EOF
+LoadModule passenger_module modules/mod_passenger.so</pre></p>
+
+
+
+
+<p>PassengerRoot /usr/share/rubygems/gems/passenger-3.0.17<br />
+PassengerRuby /usr/bin/ruby<br />
+PassengerHighPerformance on<br />
+PassengerMaxPoolSize 12<br />
+PassengerPoolIdleTime 1500<br />
+PassengerStatThrottleRate 120<br />
+RailsAutoDetect On</p>
+
+
+
+
+<p>ServerName master.canghai.com<br />
+DocumentRoot &quot;/usr/share/puppet-dashboard/public/&quot;<br />
+&amp;lt;Directory &quot;/usr/share/puppet-dashboard/public/&quot;&amp;gt;<br />
+Options None<br />
+AllowOverride AuthConfig<br />
+Order allow,deny<br />
+allow from all</p>
+
+
+
+
+<p>ErrorLog /var/log/httpd/master.canghai.com_error.log<br />
+LogLevel warn<br />
+CustomLog /var/log/httpd/master.canghai.com_access.log combined<br />
+ServerSignature On</p>
+
+
+
+
+<p>EOF
+启动服务
+<pre class="brush: bash; gutter: true">/etc/init.d/httpd start
+chkconfig httpd on</pre>
+配置puppet<br />
+让Dashboard使用Reports，现在默认agent是已经启用Report的功能，所以你就不需要设置agent,你只需要设置Server端就可以
+<pre class="brush: bash; gutter: true">vi /etc/puppet/puppet.conf
+[master]
+reports = store, http
+reporturl = http://master.canghai.com:80/reports/upload</pre>
+重启puppetmaster 服务
+<pre class="brush: bash; gutter: true">/etc/init.d/puppetmaster restart</pre>
+这时候就可以直接用 http://ip 访问puppet Dashboard
+<a href="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_210851.png"><img class="aligncenter size-full wp-image-996" alt="2013-05-05_210851" src="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_210851.png" width="1025" height="642" /></a>
+导入报告
+<pre class="brush: bash; gutter: true">cd /usr/share/puppet-dashboard
+rake RAILS_ENV=production reports:import</pre>
+这时候你访问Dashboard,可以看到导入的任务.
+<a href="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_220858.png"><img class="size-full wp-image-1016 alignnone" alt="2013-05-05_220858" src="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_220858.png" width="209" height="144" /></a>
+4. 执行导入的reports
+<pre class="brush: bash; gutter: true">cd /usr/share/puppet-dashboard
+rake jobs:work RAILS_ENV=&quot;production&quot;</pre>
+<a href="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_221221.png"><img class="aligncenter size-full wp-image-1018" alt="2013-05-05_221221" src="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_221221.png" width="1025" height="637" /></a></p>
+
+]]></content>
+  </entry>
+  
+</feed>

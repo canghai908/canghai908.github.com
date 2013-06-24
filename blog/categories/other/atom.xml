@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: other | Canghai's Blog]]></title>
+  <link href="http://canghai809.github.io/blog/categories/other/atom.xml" rel="self"/>
+  <link href="http://canghai809.github.io/"/>
+  <updated>2013-06-24T12:36:26+08:00</updated>
+  <id>http://canghai809.github.io/</id>
+  <author>
+    <name><![CDATA[Sole]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hello world！]]></title>
+    <link href="http://canghai809.github.io/blog/2011/03/20/hello-world/"/>
+    <updated>2011-03-20T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2011/03/20/hello-world</id>
+    <content type="html"><![CDATA[<p>Cactifans站与今天成立！过几天将推出作品！请大家耐心等待！</p>
+
+
+
+
+<p>by：sole</p>
+
+]]></content>
+  </entry>
+  
+</feed>

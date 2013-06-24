@@ -1,0 +1,507 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>cacti整合nagios-cacti插件npc的使用 - Canghai's Blog</title>
+  <meta name="author" content="Sole">
+
+  
+  <meta name="description" content="cactifans,Linux">
+  <meta name="keywords" content="linux,cacti,httpd,browser,internet,media,sql,news,cactifans">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://canghai809.github.io/blog/2012/02/24/cacti%E6%95%B4%E5%90%88nagios-cacti%E6%8F%92%E4%BB%B6npc%E7%9A%84%E4%BD%BF%E7%94%A8">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Canghai's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Canghai's Blog</a></h1>
+  
+    <h2>A blogging framework for hackers!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:canghai809.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">博客主页</a></li>
+  <li><a href="/blog/archives">文章列表</a></li>
+  <li><a href="/blog/categories/cacti">cacti</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Cacti整合nagios-cacti插件npc的使用</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-24T00:00:00+08:00" pubdate data-updated="true">Feb 24<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><span style="font-size: 18px;"><span style="font-family: arial,helvetica,sans-serif;">                Nagios是</span>监控服务器的状态很强大，并且报警功能也不错，不过就是缺少直观的表示，在cacti的插件里有一个插件NPC，通过NDO</span><span style="font-size: 18px;">可以把Nagios里的数据展示在NPC标签里，很直观的就可以看到各种信息如图：</span></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc1.png"><img class="aligncenter size-full wp-image-410" title="npc1" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc1.png" width="1275" height="670" /></a></p>
+
+<p>图2</p>
+
+<p>&nbsp;</p>
+
+<p><!--more--></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc2.png"><img class="aligncenter size-large wp-image-411" title="npc2" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc2-1024x418.png" width="1024" height="418" /></a></p>
+
+<p><span style="font-size: 18px;">下面说一下我本次的安装环境；</span>
+<h1>1.软件环境</h1>
+<span style="font-size: 18px;">OS：CentOS6.2 i386（最小化安装，只安装开ssh-server）</span></p>
+
+<p><span style="font-size: 18px;">cacti-0.8.7i-PIA-3.1</span></p>
+
+<p><span style="font-size: 18px;">nagios-3.2.3-3.el6.rf.i686</span></p>
+
+<p><span style="font-size: 18px;">ndoutils-1.4-0.beta8.1.el6.rf.i686  (nagios的数据库支持）</span></p>
+
+<p><span style="font-size: 18px;">settings-v0.71-1 （cacti 插件）</span></p>
+
+<p><span style="font-size: 18px;">npc-2.4     （ <span style="font-family: Verdana;">nagios plugin for cacti ，</span>cacti插件）</span>
+<h1>2.环境支持</h1>
+<span style="font-size: 18px;">http mysql mysql-devel（ <span style="font-family: Verdana;">ndoutils需要它的支持</span>）php php-devel rrdtool <span style="font-family: Verdana;">net-snmp libtool</span></span></p>
+
+<p><span style="color: #ff0000;"><span style="font-size: 18px;"><span style="font-family: Verdana;">注：有人说要安装</span>php-json，经过测试在CentOS5.5里是要安装的，在CentOS6里，这个包已经在php-common里了，所以在安装php的时候就一起安装了</span></span>
+<h1>3.安装cacti</h1>
+<span style="font-size: 18px;">A.关闭SElinux</span>
+<pre class="brush: bash; gutter: true">vi /etc/sysconfig/selinux
+# This file controls the state of SELinux on the system.</pre></p>
+
+<p># SELINUX= can take one of these three values:</p>
+
+<p>#       enforcing - SELinux security policy is enforced.</p>
+
+<p>#       permissive - SELinux prints warnings instead of enforcing.</p>
+
+<p>#       disabled - SELinux is fully disabled.</p>
+
+<p>SELINUX=enforcing</p>
+
+<p># SELINUXTYPE= type of policy in use. Possible values are:</p>
+
+<p>#       targeted - Only targeted network daemons are protected.</p>
+
+<p>#       strict - Full SELinux protection.</p>
+
+<p>SELINUXTYPE=targeted
+<span style="font-size: 18px;">
+把SELINUX=enforcing改为SELINUX=disabled并保存！在这个时候SElinux还在运行关闭</span>
+<pre class="brush: bash; gutter: true">setenforce 0</pre>
+<span style="font-size: 18px;">B.防火墙</span></p>
+
+<p>一般我都是把防火墙直接关掉省的好多事情（生产环境不建议这么搞啊！嘿嘿！）
+<pre class="brush: bash; gutter: true">/etc/init.d/iptables stop
+/etc/init.d/ip6tables stop
+chkconfig iptables off
+chkconfig ip6tables off</pre>
+<span style="font-size: 18px;">C.由于一些包在官方的库中没有，因此我们要建立dag.repo，定义非官方库</span>
+<pre class="brush: bash; gutter: true">vi /etc/yum.repos.d/dag.repo
+[dag]</pre></p>
+
+<p>name=Dag RPM Repository for Red Hat Enterprise Linux<br />
+baseurl=http://apt.sw.be/redhat/el$releasever/en/$basearch/dag<br />
+gpgcheck=1<br />
+enabled=1
+然后再导入非官方库的GPG：
+<pre class="brush: bash; gutter: true">rpm --import http://dag.wieers.com/rpm/packages/RPM-GPG-KEY.dag.txt</pre>
+安装cacti需要的环境包
+<pre class="brush: bash; gutter: true">yum install -y httpd mysql mysql-server  php php-mysql php-devel net-snmp net-snmp-utils
+yum install -y zlib libpng freetype libjpeg fontconfig gd libxml2 patch wget
+yum install -y rrdtool</pre>
+<span style="font-size: 18px;">下载cacti-0.8.7i-PIA-3.1.tar.gz(这个是整合了cacti 0.8.7和 cacti-plugin-arch3.1的）并解压</span>
+<pre class="brush: bash; gutter: true">cd /var/www/html/
+yum install wget -y
+wget http://www.cacti.net/downloads/cacti-0.8.7i-PIA-3.1.tar.gz
+tar zxvf cacti-0.8.7i-PIA-3.1.tar.gz
+wget http://www.cacti.net/downloads/patches/0.8.7i/settings_checkbox.patch
+cd cacti-0.8.7i-PIA-3.1
+patch -p1 -N &lt; ../settings_checkbox.patch
+cd ..
+mv -f cacti-0.8.7i-PIA-3.1/* /var/www/html/
+rm -rf cacti-0.8.7i-PIA-3.1
+chown -R apache:apache /var/www/html/</pre>
+<span style="font-size: 18px;">D.为cacti创建数据库和用户</span>
+<pre class="brush: bash; gutter: true">service mysqld start
+/usr/bin/mysqladmin --user=root create cacti
+mysql -e &quot;GRANT ALL ON cacti.* TO cactiuser@localhost IDENTIFIED BY &#039;cactifans.org&#039;&quot;</pre>
+我们再导入cacti的数据库
+<pre class="brush: bash; gutter: true">mysql -ucactiuser -pcactifans.org cacti &lt; /var/www/html/cacti.sql</pre>
+修改cacti的配置文件并保存
+<pre class="brush: bash; gutter: true">vi /var/www/html/include/config.php</pre></p>
+
+<p>/* make sure these values refect your actual database/host/user/password */<br />
+$database_type = &quot;mysql&quot;;<br />
+$database_default = &quot;cacti&quot;;<br />
+$database_hostname = &quot;localhost&quot;;<br />
+$database_username = &quot;cactiuser&quot;;<br />
+$database_password = &quot;cactifans.org&quot;;<br />
+$database_port = &quot;3306&quot;;
+设置crontab定时任务<br />
+由于我们是最小系统安装没有安装定时任务，因此我们首先安装
+<pre class="brush: bash; gutter: true">yum install vixie-cron</pre>
+然后我们添加定时任务
+<pre class="brush: bash; gutter: true">echo &#039;*/5 * * * * root /usr/bin/php /var/www/html/poller.php&#039; &gt;&gt; /etc/crontab</pre>
+<span style="font-size: 18px;">设置服务开机自启动,重启服务</span>
+<pre class="brush: bash; gutter: true">chkconfig snmpd on
+chkconfig httpd on
+chkconfig mysqld on
+chkconfig crond on
+service httpd restart
+service snmpd restart
+service mysqld restart
+service crond restart</pre>
+<span style="font-size: 18px;">E.WEB页完成安装</span>
+浏览http://xxx.xxx.xxx.xxx/index.php<br />
+就可以出再Cacti Installation Guide的页面了。NEXT&#8211;NEXT&#8211;FINISH。<br />
+用户名和密码为：admin/admin，之后输入新的密码，就完成了最基本的安装。
+<span style="font-size: 18px;">F.由于我们安装的这个版本已经在整合了cacti-plugin-3.1，所以我们只要在cacti里启用就成了，点console&#8211;User Management&#8211;admin</span></p>
+
+<p>可以看到Plugin Management ，选中它点save就可以启用cacti-plugin
+<h1>3.安装ngios</h1>
+<span style="font-size: 18px;">nagios我通过yum进行安装</span>
+<pre class="brush: bash; gutter: true">yum install nagios nagios-plugin nagios-nrpe</pre>
+这样就把ngios安装好了，安装好之后有几个地方需要配置一下，</p>
+
+<p>A.设置nagios的访问用户及密码，默认用户为nagiosadmin
+<pre class="brush: bash; gutter: true">htpasswd -c /etc/nagios/htpasswd.users nagiosadmin</pre>
+如果你设置的用户不是nagios还需要修改cgi.cfg(yum 安装会将nagios的配置文件放在/etc/nagios下)
+<pre class="brush: bash; gutter: true">
+authorized_for_system_information=nagiosadmin
+authorized_for_configuration_information=nagiosadmin
+authorized_for_system_commands=nagiosadmin
+authorized_for_all_services=nagiosadmin
+authorized_for_all_hosts=nagiosadmin
+authorized_for_all_service_commands=nagiosadmin
+authorized_for_all_host_commands=nagiosadmin</pre>
+修改以上几个的nagiosadmin为自定义的用户名，否则你将没有权限看见服务器的信息。<br />
+nagios的安装到到此结束了，至于详细的配置网上也有很多例子。Nagios的配置无非就是主机，服务，报警的配置，可以写成简单的脚本来实现快速添加。
+<h1>4.安装ndoutils</h1>
+<span style="font-size: 18px;">ndoutils我也是通过yum安装的，比较方便这个需要用到mysql的mysql-lib及mysql-inc，</span>
+因此需要安装mysql-devel（yum install mysql-devel）
+<pre class="brush: bash; gutter: true">yum install ndoutils -y</pre>
+然后我们配置ndo2db.cfg （yum默认安装的路径为 /etc/nagios/ndo2db.cfg）
+<pre class="brush: bash; gutter: true">vi /etc/nagios/ndo2db.cfg
+socket_type=tcp
+socket_name=/var/nagios/rw/ndo.sock
+db_name=cacti
+db_prefix=npc_
+db_user=cactiuser
+db_pass=cactifans.org
+debug_level=1
+debug_file=/var/nagios/ndo2db.debug</pre>
+用的数据库为cacti的数据库，别的根据你自己的具体设置就成了<br />
+配置ndomod.cfg  （yum默认安装的路径为 /etc/nagios/ndomod.cfg）
+<pre class="brush: bash; gutter: true">vi /etc/nagios/ndomod.cfg
+output_type=tcpsocket
+output=127.0.0.1
+buffer_file=/var/nagios/ndomod.tmp</pre>
+配置nagios.cfg   （yum安装的默认路径为 /etc/nagios/nagios.cfg)
+<pre class="brush: bash; gutter: true">check_external_commands=1
+command_check_interval = -1
+event_broker_options = -1
+broker_module=/usr/libexec/ndomod-3x.o config_file=/etc/nagios/ndomod.cfg
+process_performance_data=1</pre>
+<h1>5.安装NPC</h1>
+<span style="font-size: 18px;">我在npc的官网没有下载到，下载的地址貌似已经不能用了，最后发现有svn的，于是我用svn check了一份(我已打包传到我的空间,<a href="http://www.cactifans.org/plugins/npc.tar.gz">点此下载</a>）</span>
+<pre class="brush: bash; gutter: true">wget http://www.cactifans.org/plugins/npc.tar.gz
+tar zxvf npc*.tar.gz -C /var/www/html/plugins
+chown -R apache:apache /var/www/html/plugins/npc</pre>
+然后进入cacti，点Console&#8211;Plugin Management&#8211;并启用npc插件就是了</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc4.png"><img class="aligncenter size-full wp-image-418" title="npc4" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc4.png" width="914" height="327" /></a></p>
+
+<p><span style="font-size: 18px;">接着在右侧栏目中选择settings,点选npc的标签</span></p>
+
+<p>钩选Remote Commands
+<pre class="brush: bash; gutter: true">Nagios Command File Path：      /var/nagios/rw/nagios.cmd</pre>
+这个文件启动nagios后会产生，根据实际的位置写，yum安装的在默认在 /var/nagios/rw/nagios.cmd
+<pre class="brush: bash; gutter: true">Nagios URL：]http://yourserver/nagios/</pre>
+保存就可以了。</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc5.png"><img class="aligncenter size-large wp-image-419" title="npc5" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc5-1024x430.png" width="1024" height="430" /></a></p>
+
+<p><span style="font-size: 18px;">接着启动nagios ndoutils</span>
+<pre class="brush: bash; gutter: true">service mysqld restart
+service httpd restart
+/usr/sbin/ndo2db-3x -c /etc/nagios/ndo2db.cfg
+service nagios start
+chkconfig nagios on</pre>
+安装好之后在npc里只看到nagios status是on 别的主机信息却是没有查看日志发现有如下信息
+<pre class="brush: bash; gutter: true">tail -100 /var/log/messages</pre></p>
+
+<p>Feb 24 12:02:37 localhost ndo2db-3x: Error: mysql_query() failed for &#039;INSERT INTO npc_servicestatus SET instance_id=&#039;1&#039;</p>
+
+<p>, service_object_id=&#039;5&#039;, status_update_time=FROM_UNIXTIME(1330055656), output=&#039;HTTP OK: HTTP/1&#46;1 200 OK - 1916 bytes i</p>
+
+<p>n 0&#46;083 second response time&#039;, long_output=&#039;&#039;, perfdata=&#039;time=0&#46;083463s;;;0&#46;000000 size=1916B;;;0&#039;, current_state=&#039;0</p>
+
+<p>&#039;, has_been_checked=&#039;1&#039;, should_be_scheduled=&#039;1&#039;, current_check_attempt=&#039;1&#039;, max_check_attempts=&#039;4&#039;, last_check=FROM_UN</p>
+
+<p>IXTIME(1330055520), next_check=FROM_UNIXTIME(1330055820), check_type=&#039;0&#039;, last_state_change=FROM_UNIXTIME(1330011420),</p>
+
+<p>last_hard_state_change=FROM_UNIXTIME(1330011420), last_hard_state=&#039;0&#039;, last_time_ok=FROM_UNIXTIME(1330055520), last_tim</p>
+
+<p>e_warning=FROM_UNIXTIME(0), last_time_unknown=FROM_UNIXTIME(0), last_time_critical=FROM_UNIXTIME(1330011120), state_typ</p>
+
+<p>e=&#039;1&#039;, last_notification=FROM_UNIXTIME(0), next_notification=FROM_UNIXTIME(0), no_more_notifications=&#039;0&#039;, notifications</p>
+
+<p>_enabled=&#039;1&#039;, problem_has_been_acknowledged=&#039;0&#039;, acknowledgement_type=&#039;0&#039;, current_notification_number=&#039;0&#039;, passive_che</p>
+
+<p>cks_enabled=&#039;1&#039;, active_checks_enabled=&#039;1&#039;, event_handler_enabled=&#039;1&#039;, flap_detection_enabled=&#039;1&#039;, is_flapping=&#039;0&#039;, per</p>
+
+<p>cent_state_change=&#039;0.000000&#039;, latency=&#039;0.027000&#039;, execution_time=&#039;0.094000&#039;, scheduled_downtime_depth=&#039;0&#039;, failure_pred</p>
+
+<p>iction_enabled=&#039;1&#039;, process_performance_data=&#039;1&#039;, obsess_over_service=&#039;1&#039;, modified_service_attributes=&#039;1&#039;, event_handl</p>
+
+<p>er=&#039;&#039;, check_command=&#039;check_http&#039;, normal_check_interval=&#039;5.000000&#039;, retry_check_interval=&#039;1.000000&#039;, check_timeperiod_</p>
+
+<p>object_id=&#039;2&#039; ON DUPLICATE KEY UPDATE instance_id=&#039;1&#039;, service_object_id=&#039;5&#039;, status_update_time=FROM_UNIXTIME(13300556</p>
+
+<p>56), output=&#039;HTTP OK: HTTP/1&#46;1 200 OK - 1916 bytes in 0&#46;083 second response time&#039;, long_output=&#039;&#039;, perfdata=&#039;time=0&#46;</p>
+
+<p>083463s;;;0&#46;000000 size=1916B;;;0&#039;, current_state=&#039;0&#039;, has_been_checked=&#039;1&#039;, should_be_scheduled=&#039;1&#039;, current_check_at</p>
+
+<p>tempt=&#039;1&#039;, max_check_attempts=&#039;4&#039;, last_check=FROM_UNIXTIME(1330055520), next_check=FROM_UNIXTIME(1330055820), check_ty</p>
+
+<p>pe=&#039;0&#039;, last_state_change=FROM_
+很多类似的错误，最后在cacti的论坛里找到了，是缺少一个表因此进入mysql执行如下语句
+<pre class="brush: sql; gutter: true">mysql -ucactiuser -pcactifans.org
+use cacti;
+ALTER TABLE `npc_hostchecks` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_hoststatus` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_servicechecks` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_servicestatus` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_statehistory` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_eventhandlers` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_systemcommands` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_notifications` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+exit;</pre>
+这样操作之后刷新一次就可以了，现在已经正常了</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc6.png"><img class="aligncenter size-large wp-image-420" title="npc6" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc6-1024x443.png" width="1024" height="443" /></a></p>
+
+<p>&nbsp;</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc7.png"><img class="aligncenter size-large wp-image-421" title="npc7" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc7-1024x322.png" width="1024" height="322" /></a></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc8.png"><img class="aligncenter size-large wp-image-422" title="npc8" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc8-1024x515.png" width="1024" height="515" /></a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Sole</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-24T00:00:00+08:00" pubdate data-updated="true">Feb 24<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cacticha-jian/'>Cacti插件</a>, <a class='category' href='/blog/categories/cacti/'>cacti</a>
+  
+</span>
+
+
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/09/17/%E5%9C%A8solaris-10-x86%E4%B8%8A%E5%AE%89%E8%A3%85oracle-10g-rac/" title="Previous Post: 在Solaris 10 X86上安装Oracle 10g RAC">&laquo; 在Solaris 10 X86上安装Oracle 10g RAC</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/03/12/cacti%E6%8F%92%E4%BB%B6%E8%AF%A6%E8%A7%A3-syslog/" title="Next Post: Cacti插件详解——Syslog">Cacti插件详解——Syslog &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2119046645&verifier=220ff941&dpc=1"></iframe>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/backtrack'>BackTrack (1)</a></li><li><a href='/blog/categories/cacti'>cacti (17)</a></li><li><a href='/blog/categories/cacti插件'>Cacti插件 (6)</a></li><li><a href='/blog/categories/dhcp'>dhcp (1)</a></li><li><a href='/blog/categories/linux'>linux (7)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/oracle'>oracle (1)</a></li><li><a href='/blog/categories/other'>other (1)</a></li><li><a href='/blog/categories/puppet'>puppet (2)</a></li><li><a href='/blog/categories/未分类'>未分类 (1)</a></li><li><a href='/blog/categories/测试'>测试 (1)</a></li><li><a href='/blog/categories/视频'>视频 (4)</a></li></ul>
+</section>
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/backtrack' style='font-size: 103.52941176470588%'>BackTrack(1)</a> <a href='/blog/categories/cacti' style='font-size: 160.0%'>cacti(17)</a> <a href='/blog/categories/cacti插件' style='font-size: 121.17647058823529%'>Cacti插件(6)</a> <a href='/blog/categories/dhcp' style='font-size: 103.52941176470588%'>dhcp(1)</a> <a href='/blog/categories/linux' style='font-size: 124.70588235294117%'>linux(7)</a> <a href='/blog/categories/mysql' style='font-size: 103.52941176470588%'>MySQL(1)</a> <a href='/blog/categories/oracle' style='font-size: 103.52941176470588%'>oracle(1)</a> <a href='/blog/categories/other' style='font-size: 103.52941176470588%'>other(1)</a> <a href='/blog/categories/puppet' style='font-size: 107.05882352941177%'>puppet(2)</a> <a href='/blog/categories/未分类' style='font-size: 103.52941176470588%'>未分类(1)</a> <a href='/blog/categories/测试' style='font-size: 103.52941176470588%'>测试(1)</a> <a href='/blog/categories/视频' style='font-size: 114.11764705882354%'>视频(4)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/17/ce-shi-xia-xin-bloga/">测试下新blog啊</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/16/hello-world/">Hello World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/my-first-blog/">My First Blog</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/05/%E5%9C%A8centos-6-4%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">在CentOS 6.4上安装Puppet配置管理工具</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/01/%E5%9C%A8ubuntu-12-04%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">在Ubuntu 12.04上安装Puppet配置管理工具</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+<a style="font-size: 165%" href="/tags/cacti/">cacti</a>
+<a style="font-size: 60%" href="/tags/centos/">centos</a>
+<a style="font-size: 60%" href="/tags/hello-world/">hello world!</a>
+<a style="font-size: 60%" href="/tags/linux/">linux</a>
+<a style="font-size: 60%" href="/tags/puppet/">puppet</a>
+
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Sole -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'cactifans';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://canghai809.github.io/blog/2012/02/24/cacti%E6%95%B4%E5%90%88nagios-cacti%E6%8F%92%E4%BB%B6npc%E7%9A%84%E4%BD%BF%E7%94%A8/';
+        var disqus_url = 'http://canghai809.github.io/blog/2012/02/24/cacti%E6%95%B4%E5%90%88nagios-cacti%E6%8F%92%E4%BB%B6npc%E7%9A%84%E4%BD%BF%E7%94%A8/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

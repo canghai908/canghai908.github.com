@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>基于Web界面监视DHCP服务器 - Canghai's Blog</title>
+  <meta name="author" content="Sole">
+
+  
+  <meta name="description" content="cactifans,Linux">
+  <meta name="keywords" content="linux,cacti,httpd,browser,internet,media,sql,news,cactifans">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://canghai809.github.io/blog/2011/04/18/%E5%9F%BA%E4%BA%8Eweb%E7%95%8C%E9%9D%A2%E7%9B%91%E8%A7%86dhcp%E6%9C%8D%E5%8A%A1%E5%99%A8">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Canghai's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Canghai's Blog</a></h1>
+  
+    <h2>A blogging framework for hackers!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:canghai809.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">博客主页</a></li>
+  <li><a href="/blog/archives">文章列表</a></li>
+  <li><a href="/blog/categories/cacti">cacti</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">基于Web界面监视DHCP服务器</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-18T00:00:00+08:00" pubdate data-updated="true">Apr 18<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>在Linux操作系统下建立DHCP服务器非常简单，只要掌握几个简单的命令。DHCP服务器的日常维护也成了一个问题，有的时候服务器是运行的，进程却卡死了，导致不能正常分配ip，因此如果可以实时监控DHCP服务器IP的分配就可以知道了DHCP服务器是否正常工作。</p>
+
+<p>首先就是配置DHCP服务器，以前我也没配置过！现在回头看看，在linux下配置HDCP服务非常简单，只要配置正确就可以了。嗯!废话不多说，下面我们就来配置DHCP服务器！我的是Centos5.5</p>
+
+<p>一.配置DHCP服务器</p>
+
+<p>为了使DHCP服务器能为正确MS的DHCP客户机器服务，需要创建一个到地址255.255.255.255</p>
+
+<p>的路由，把这条路由命令加到/etc/rc.d/rc.local，使得每次机器启动后自动运行。<!--more--></p>
+
+<p>route add -host 255.255.255.255 dev eth0</p>
+
+<p>在一些老Linux核心的系统里可能会报告错误消息：</p>
+
+<p>255.255.255.255： Unkown host</p>
+
+<p>可以试着加下面的条目到/etc/hosts文件里</p>
+
+<p>255.255.255.255 dhcphost</p>
+
+<p>再用下面的命令</p>
+
+<p>#route add -host dhcphost dev eth0 装DHCP软件包</p>
+
+<p>1.安装DHCP软件包</p>
+
+<p>#yum install dhcp -y        / 我是用yum安装的，当然也可以用rpm包安装。</p>
+
+<p>2.配置DHCP服务器配置文件</p>
+
+<p>#vi /etc/dhcpd.conf</p>
+
+<p>先贴一下我的配置；我的是在虚拟机里配置的，先贴配置，后面给大家一一说明</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/239c79def58770e7b6fd4881.jpg"><img class="alignnone size-full wp-image-243" title="239c79def58770e7b6fd4881" src="http://www.cactifans.org/wp-content/uploads/2011/04/239c79def58770e7b6fd4881.jpg" alt="" width="605" height="302" /></a></p>
+
+<p>说明:</p>
+
+<p>#开头的行，表示注释，每一个subnet表示一段动态地址的设置。 后面要家$，后面给大家解释；</p>
+
+<p>ddns-update-style interim;     //动态DNS解析<br />
+ignore client-updates;           //忽略客户端DNS设置，就是不允许客户机更新DNS记录</p>
+
+<p>#$servers                            //子网注释名<br />
+subnet 192.168.2.0 netmask 255.255.255.0 {<br />
+        option routers                  192.168.2.1;                   //设置网关<br />
+        option subnet-mask              255.255.255.0;         //子网掩码<br />
+        option domain-name              &#8220;canghai.net&#8221;;          //域名<br />
+        option domain-name-servers      202.103.44.150;        //指定DNS<br />
+        range dynamic-bootp 192.168.2.100 192.168.2.190;   //设置ip分配范围<br />
+        default-lease-time 21600;     //设置最短租期<br />
+        max-lease-time 43200;        //设置最长租期<br />
+}</p>
+
+<p>关于配置文件的就是这些，我也是看自说明自己理解的，不过没问题，配置好了DHCP配置文件就可以启动DHCP服务器了~</p>
+
+<p>#service dhcpd start</p>
+
+<p>看到OK说明DHCP服务启动，如果失败请检查配置文件。</p>
+
+<p>二.配置dhcpstatus</p>
+
+<p>dhcpstatus是一个开源软件，可以通过读取dhcpd.leases而活动当前IP分配的状况，并通过web页面放映出来。其最新版本为0.60</p>
+
+<p>1.下载并解压</p>
+
+<p>#wget <a href="http://downloads.sourceforge.net/project/dhcpstatus/dhcpstatus/v0.60/dhcpstatus_0.60.tar.gz">http://downloads.sourceforge.net/project/dhcpstatus/dhcpstatus/v0.60/dhcpstatus_0.60.tar.gz</a></p>
+
+<p>#tar zxvf dhcpstatus_0.60.tar.gz -c /tmp</p>
+
+<p>2.建立安装目录</p>
+
+<p>#mkdir /usr/local/dhcpstatus</p>
+
+<p>#cd /usr/local/dhcpstatus</p>
+
+<p>#tar zxvf /tmp/dhcpstatus_0.60/libraries.tar</p>
+
+<p>3.根据DHCP服务器的设置修改dhcpstatus.ini</p>
+
+<p>#vi /usr/local/dhcpstatus/dhcpstatus.ini</p>
+
+<p>将主要的一行</p>
+
+<p>leases_file=/etc/dhcpd.leases</p>
+
+<p>修改为</p>
+
+<p>leases_file=/var/lib/dhcpd/dhcpd.leases</p>
+
+<p>具体路径根据自己系统配置</p>
+
+<p>4.安装脚本文件.</p>
+
+<p>拷贝scripts目录下的dhcpstatus.cgi到web目录</p>
+
+<p>#cp /tmp/dhcpstatus_0.60/scripts/dhcpstatus.cgi /var/www/cgi-bin</p>
+
+<p>拷贝scripts目录下的dhcpstatus到/usr/local/bin</p>
+
+<p>#cp /tmp/dhcpstatus_0.60/scripts/dhcpstatus /usr/local/bin</p>
+
+<p>修改dhcpstatus.cgi文件首行的#!/usr/local/bin/perl -w 指向你的perl位置。（一般不用修改）</p>
+
+<p>5.启动http</p>
+
+<p>现在配置好了，我们可以启动http服务</p>
+
+<p>#service httpd start</p>
+
+<p>好了，现在我们可以通过浏览器访问了。在地址栏里输入地址</p>
+
+<p><a href="http://dhcpserverip/cgi-bin/dhcpstatus.cgi">http://DHCPServerIP/cgi-bin/dhcpstatus.cgi</a></p>
+
+<p>可以看到DHCP分配了如图：</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/734829ed2e4c6803b80e2d82.jpg"><img class="alignnone size-full wp-image-246" title="734829ed2e4c6803b80e2d82" src="http://www.cactifans.org/wp-content/uploads/2011/04/734829ed2e4c6803b80e2d82.jpg" alt="" width="945" height="436" /></a></p>
+
+<p>点击Subnet,可以看到子网的具体IP分配情况。</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/085b5b890b3b702eb31bba82.jpg"><img class="alignnone size-full wp-image-249" title="085b5b890b3b702eb31bba82" src="http://www.cactifans.org/wp-content/uploads/2011/04/085b5b890b3b702eb31bba82.jpg" alt="" width="503" height="247" /></a></p>
+
+<p>还可以看到计算机名</p>
+
+<p> <a href="http://www.cactifans.org/wp-content/uploads/2011/04/2a5f1dfe988232b59e51468c.jpg"><img class="alignnone size-full wp-image-248" title="2a5f1dfe988232b59e51468c" src="http://www.cactifans.org/wp-content/uploads/2011/04/2a5f1dfe988232b59e51468c.jpg" alt="" width="928" height="563" /></a></p>
+
+<p>三.添加认证。</p>
+
+<p>基于安全考虑，会次页面进行验证；</p>
+
+<p>修改httpd.conf配置文件</p>
+
+<p># vi /etc/httpd/conf/httpd.conf<br />
+找到cgi-bin，如图</p>
+
+<p>将AllowOverride None</p>
+
+<p>修改为</p>
+
+<p>AllowOverride AuthConfig</p>
+
+<p>然后我们在/var/www/cgi-bin/下建立.htaccess文件</p>
+
+<p># vi /var/www/cgi-bin/.htaccess<br />
+内容如下</p>
+
+<p>AuthName &#8220;DHCP Status Access&#8221;<br />
+AuthType Basic<br />
+AuthUserFile /var/www/cgi-bin/.htpasswd<br />
+require valid-user</p>
+
+<p>保存，然后执行</p>
+
+<p>htpasswd -bc /var/www/cgi-bin/.htpasswd admin XXXX</p>
+
+<p>其中XXXX表示密码，admin表示管理用户</p>
+
+<p>最后我们重启httpd服务</p>
+
+<p>#service httpd restart</p>
+
+<p>如果成功我们访问时，会看到如图验证页面。</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/c88bfd3d404c73cf3a87ce82.jpg"><img class="alignnone size-full wp-image-250" title="c88bfd3d404c73cf3a87ce82" src="http://www.cactifans.org/wp-content/uploads/2011/04/c88bfd3d404c73cf3a87ce82.jpg" alt="" width="489" height="498" /></a></p>
+
+<p>ps：</p>
+
+<p>1.dhcpstatus可以方便的监控DHCP服务器，为大家带来了方便，本人也是根据说明自行设置配置，难免有错，望大家指正。</p>
+
+<p>2.#$servers                    //子网注释名 $注释符号不可少</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Sole</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-18T00:00:00+08:00" pubdate data-updated="true">Apr 18<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/dhcp/'>dhcp</a>
+  
+</span>
+
+
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/16/%E9%A6%96%E5%8F%91cacti-0-8-7h-beta1%E7%89%88%E8%AF%95%E7%94%A8/" title="Previous Post: [首发]cacti-0.8.7h-beta1版试用">&laquo; [首发]cacti-0.8.7h-beta1版试用</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/05/11/backtrack-5-release/" title="Next Post: BackTrack 5 release!">BackTrack 5 release! &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2119046645&verifier=220ff941&dpc=1"></iframe>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/backtrack'>BackTrack (1)</a></li><li><a href='/blog/categories/cacti'>cacti (17)</a></li><li><a href='/blog/categories/cacti插件'>Cacti插件 (6)</a></li><li><a href='/blog/categories/dhcp'>dhcp (1)</a></li><li><a href='/blog/categories/linux'>linux (7)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/oracle'>oracle (1)</a></li><li><a href='/blog/categories/other'>other (1)</a></li><li><a href='/blog/categories/puppet'>puppet (2)</a></li><li><a href='/blog/categories/未分类'>未分类 (1)</a></li><li><a href='/blog/categories/测试'>测试 (1)</a></li><li><a href='/blog/categories/视频'>视频 (4)</a></li></ul>
+</section>
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/backtrack' style='font-size: 103.52941176470588%'>BackTrack(1)</a> <a href='/blog/categories/cacti' style='font-size: 160.0%'>cacti(17)</a> <a href='/blog/categories/cacti插件' style='font-size: 121.17647058823529%'>Cacti插件(6)</a> <a href='/blog/categories/dhcp' style='font-size: 103.52941176470588%'>dhcp(1)</a> <a href='/blog/categories/linux' style='font-size: 124.70588235294117%'>linux(7)</a> <a href='/blog/categories/mysql' style='font-size: 103.52941176470588%'>MySQL(1)</a> <a href='/blog/categories/oracle' style='font-size: 103.52941176470588%'>oracle(1)</a> <a href='/blog/categories/other' style='font-size: 103.52941176470588%'>other(1)</a> <a href='/blog/categories/puppet' style='font-size: 107.05882352941177%'>puppet(2)</a> <a href='/blog/categories/未分类' style='font-size: 103.52941176470588%'>未分类(1)</a> <a href='/blog/categories/测试' style='font-size: 103.52941176470588%'>测试(1)</a> <a href='/blog/categories/视频' style='font-size: 114.11764705882354%'>视频(4)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/17/ce-shi-xia-xin-bloga/">测试下新blog啊</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/16/hello-world/">Hello World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/my-first-blog/">My First Blog</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/05/%E5%9C%A8centos-6-4%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">在CentOS 6.4上安装Puppet配置管理工具</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/01/%E5%9C%A8ubuntu-12-04%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">在Ubuntu 12.04上安装Puppet配置管理工具</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+<a style="font-size: 165%" href="/tags/cacti/">cacti</a>
+<a style="font-size: 60%" href="/tags/centos/">centos</a>
+<a style="font-size: 60%" href="/tags/hello-world/">hello world!</a>
+<a style="font-size: 60%" href="/tags/linux/">linux</a>
+<a style="font-size: 60%" href="/tags/puppet/">puppet</a>
+
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Sole -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

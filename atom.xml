@@ -1,0 +1,2057 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Canghai's Blog]]></title>
+  <link href="http://canghai809.github.io/atom.xml" rel="self"/>
+  <link href="http://canghai809.github.io/"/>
+  <updated>2013-06-24T12:36:26+08:00</updated>
+  <id>http://canghai809.github.io/</id>
+  <author>
+    <name><![CDATA[Sole]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[测试下新blog啊]]></title>
+    <link href="http://canghai809.github.io/blog/2013/05/17/ce-shi-xia-xin-bloga/"/>
+    <updated>2013-05-17T11:29:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/05/17/ce-shi-xia-xin-bloga</id>
+    <content type="html"><![CDATA[<h4>hah</h4>
+
+<p>Hello World!</p>
+
+<h1>heihei</h1>
+
+<figure class='code'><figcaption><span> (test.js)</span> <a href='http://canghai809.github.io/downloads/code/test.js'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm">sample javascript from xui</span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="kc">undefined</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">xui</span><span class="p">,</span>
+</span><span class='line'>    <span class="nb">window</span>     <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">string</span>     <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">),</span>
+</span><span class='line'>    <span class="nb">document</span>   <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">simpleExpr</span> <span class="o">=</span> <span class="sr">/^#?([\w-]+)$/</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">idExpr</span>     <span class="o">=</span> <span class="sr">/^#/</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">tagExpr</span>    <span class="o">=</span> <span class="sr">/&lt;([\w:]+)/</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">slice</span>      <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="p">};</span>
+</span><span class='line'>    <span class="k">try</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">slice</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span> <span class="nx">slice</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">ret</span><span class="o">=</span><span class="p">[];</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span> <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span> <span class="p">};</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">x$</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">xui</span> <span class="o">=</span> <span class="nx">xui</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">new</span> <span class="nx">xui</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">context</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img class="right" src="http://www.17kantu.org/wp-content/uploads/2013/04/d176.jpg" width="796" height="531" title="Place Kitten #3" ></p>
+
+<!--more-->
+
+
+<p><video width='640' height='320' preload='none' controls poster='http://s3.imathis.com/video/zero-to-fancy-buttons.png'><source src='http://s3.imathis.com/video/zero-to-fancy-buttons.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></video>
+Example 1</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Awesome code snippet</span></code></pre></td></tr></table></div></figure>
+
+
+<p><video width='640' height='320' preload='none' controls poster='http://www.cactifans.org/videos/cacti01/cacti01_First_Frame.png'><source src='http://www.cactifans.org/videos/cacti04/cacti04.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></video>
+Example 2</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">rectangle</span> <span class="nl">setX:</span> <span class="mi">10</span> <span class="nl">y:</span> <span class="mi">10</span> <span class="nl">width:</span> <span class="mi">20</span> <span class="nl">height:</span> <span class="mi">20</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Example 3</p>
+
+<figure class='code'><figcaption><span>Time to be Awesome - awesome.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Awesome!&quot;</span> <span class="k">unless</span> <span class="n">lame</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Example 4</p>
+
+<figure class='code'><figcaption><span>Here&#8217;s an example .rvmrc file. </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rvm</span> <span class="n">ruby</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="mi">8</span><span class="o">.</span><span class="mi">6</span> <span class="c1"># ZOMG, seriously? We still use this version?</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Example 5</p>
+
+<figure class='code'><figcaption><span>Javascript Array Syntax</span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span> <span class="nx">element1</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">elementN</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hello World]]></title>
+    <link href="http://canghai809.github.io/blog/2013/05/16/hello-world/"/>
+    <updated>2013-05-16T14:25:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/05/16/hello-world</id>
+    <content type="html"><![CDATA[<h3>Hellow World</h3>
+
+<p>This is a test!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My First Blog]]></title>
+    <link href="http://canghai809.github.io/blog/2013/05/15/my-first-blog/"/>
+    <updated>2013-05-15T12:41:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/05/15/my-first-blog</id>
+    <content type="html"><![CDATA[<h3>Hello octopress</h3>
+
+<p>这是一个测试文章啊，看看效果如何啊。呵呵。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在CentOS 6.4上安装Puppet配置管理工具]]></title>
+    <link href="http://canghai809.github.io/blog/2013/05/05/%E5%9C%A8centos-6-4%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    <updated>2013-05-05T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/05/05/在centos-6-4上安装puppet配置管理工具</id>
+    <content type="html"><![CDATA[<p>上篇说了下在ubuntu12.04上安装puppet，安装的版本为puppet2.7.11版本，今天尝试了下在CentOS6.4系统上安装puppet 3.1.1版本,本文参考<a href="http://www.chenshake.com/puppet-study-notes/" target="_blank">chenshake</a>的文章
+<pre class="brush: bash; gutter: true">OS:centso 6.4 X64
+Puppet 3.1.1
+Puppet master: master.canghai.com
+Puppet clients:node1-5.canghai.com</pre>
+Puppet 要求所有机器有完整的域名（FQDN），如果没有 DNS 服务器提供域名的话，可以在两台机器上设置主机名（注意要先设置主机名再安装 Puppet，因为安装 Puppet 时会把主机名写入证书，客户端和服务端通信需要这个证书）,因为我配置了DNS，所以就不用改hosts了，如果没有就需要改hosts文件指定。<br />
+1.关闭selinux，iptables，并设置ntp<br />
+采用CentOS-6.4-x86_64-minimal.iso最小化安装，因此先要安装ntp、wget等常用工具<br />
+安装ntp wget
+<pre class="brush: bash; gutter: true">yum install wget ntp -y</pre>
+关闭selinux
+<pre class="brush: bash; gutter: true">sed -i &#039;/SELINUX/ s/enforcing/disabled/g&#039; /etc/selinux/config
+setenforce 0</pre>
+停止iptables
+<pre class="brush: bash; gutter: true">chkconfig ip6tables off
+chkconfig iptables off
+/etc/init.d/ip6tables stop
+/etc/init.d/iptables stop</pre>
+设置ntp
+<!--more-->
+<pre class="brush: bash; gutter: true">ntpdate pool.ntp.org
+chkconfig ntp on
+service ntpd start</pre>
+2.安装puppet服务<br />
+puppet不在CentOS的基本源中，需要加入 PuppetLabs 提供的官方源：
+<pre class="brush: bash; gutter: true">wget http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
+rpm -ivh puppetlabs-release-6-7.noarch.rpm
+yum update</pre>
+在 master上安装和启用 puppet 服务：
+<pre class="brush: bash; gutter: true">yum install puppet-server
+chkconfig puppet on
+service puppetmaster start</pre>
+在clients上安装puppet客户端
+<pre class="brush: bash; gutter: true">yum install puppet
+chkconfig puppet on
+service puppet start</pre>
+3.配置puppet<br />
+对于puppet 客户端，修改/etc/puppet/puppet.conf，指定master服务器
+<pre class="brush: bash; gutter: true">vi /etc/puppet/puppet.conf</pre></p>
+
+<p>[main]<br />
+# The Puppet log directory.<br />
+# The default value is &#039;$vardir/log&#039;.<br />
+logdir = /var/log/puppet</p>
+
+<p># Where Puppet PID files are kept.<br />
+# The default value is &#039;$vardir/run&#039;.<br />
+rundir = /var/run/puppet</p>
+
+<p># Where SSL certificates are kept.<br />
+# The default value is &#039;$confdir/ssl&#039;.<br />
+ssldir = $vardir/ssl</p>
+
+<p>[agent]<br />
+# The file in which puppetd stores a list of the classes<br />
+# associated with the retrieved configuratiion. Can be loaded in<br />
+# the separate &#8220;puppet&#8220; executable using the &#8220;&#8211;loadclasses&#8220;<br />
+# option.<br />
+# The default value is &#039;$confdir/classes.txt&#039;.<br />
+classfile = $vardir/classes.txt</p>
+
+<p># Where puppetd caches the local configuration. An<br />
+# extension indicating the cache format is added automatically.<br />
+# The default value is &#039;$confdir/localconfig&#039;.<br />
+localconfig = $vardir/localconfig<br />
+server = master.canghai.com
+并重启puppet服务
+<pre class="brush: bash; gutter: true">service puppet restart</pre>
+4.Client申请证书<br />
+服务端自动签发证书设置<br />
+设置master自动签发所有的证书，我们只需要在/etc/puppet 目录下创建 autosign.conf 文件。（不需要修改 /etc/puppet/puppet.conf文件，因为我默认的autosign.conf 文件的位置没有修改）
+<pre class="brush: bash; gutter: true">cat &gt; /etc/puppet/autosign.conf &lt;&lt;EOF
+*.canghai.com
+EOF
+service puppetmaster restart</pre>
+这样就会对所有来自canghai.com的机器的请求，都自动签名。<br />
+client需要向服务器端发出请求, 让服务器对客户端进行管理. 这其实是一个证书签发的过程. 第一次运行 puppet 客户端的时候会生成一个 SSL 证书并指定发给 Puppet 服务端, 服务器端如果同意管理客户端,就会对这个证书进行签发，可以用这个命令来签发证书，由于我们已经在客户端设置了server地址，因此不需要跟服务端地址
+<pre class="brush: bash; gutter: true">puppet agent</pre>
+为了详细了解注册的过程和日后排错,可以增加参数，因为配置文件里<br />
+–no-daemonize 前台输出日志<br />
+–verbose 输入更加详细的日志<br />
+–debug 更加详细的日志，排错的时候使用<br />
+–test 表示测试，就带一个–test参数就可以
+<pre class="brush: bash; gutter: true">puppet agent --no-daemonize --onetime --verbose --debug</pre>
+就可以申请证书了，由于我配置的自动签发证书，所以直接就签发了，在服务端执行
+<pre class="brush: bash; gutter: true">puppet cert list --all
++ &quot;master.canghai.com&quot; (SHA256) CA:50:6A:51:D5:AD:F0:73:BF:83:A0:4A:BF:1F:4E:F0:56:C9:4B:D8:4D:BB:62:10:EE:14:16:D5:96:D0:B6:F7 (alt names: &quot;DNS:master.canghai.com&quot;, &quot;DNS:puppet&quot;, &quot;DNS:puppet.canghai.com&quot;)
++ &quot;node1.canghai.com&quot; (SHA256) B8:95:69:2B:7B:3E:F4:38:CA:63:BE:A0:ED:3C:E7:05:1F:93:53:2D:1C:60:67:E9:D8:20:99:90:B8:9B:D6:40
++ &quot;node2.canghai.com&quot; (SHA256) 6C:65:34:9D:B1:82:35:24:EF:3F:10:2B:10:F0:0B:44:42:AB:84:42:29:B5:73:1A:A0:1D:D5:1E:9E:24:BC:E3
++ &quot;node3.canghai.com&quot; (SHA256) 57:54:33:37:23:A7:CD:BE:F6:25:BD:6F:E3:DA:F9:57:48:50:C7:5E:36:8F:F4:BA:C8:27:DF:B0:A2:84:5F:AF
++ &quot;node4.canghai.com&quot; (SHA256) 65:2F:0E:E7:98:F5:05:40:31:2F:FF:36:A5:3E:DE:C1:91:E8:45:16:55:60:A1:82:74:BC:84:EC:BA:C0:62:F0
++ &quot;node5.canghai.com&quot; (SHA256) 8C:1B:31:B6:C0:9C:A5:AF:89:6C:85:1B:BA:D0:03:63:07:4C:B1:89:D4:E6:B7:4E:CA:4A:23:C7:3C:5F:CA:3D</pre>
+就可以看到所有客户端已经都已签发证书，前面带&#8221;+&#8221;号的就是签发成功的，撸过没有签名的，可以用
+<pre class="brush: bash; gutter: true">puppet cert --sign node1.canghai.com</pre>
+进行签发证书,签发后在master，执行
+<pre class="brush: bash; gutter: true">puppet cert list --all</pre>
+即可看到证书已经签发<br />
+5.在服务端安装puppet的dashboard<br />
+安装mysql
+<pre class="brush: bash; gutter: true">yum install -y mysql mysql-devel mysql-server</pre>
+优化mysql设置<br />
+编辑 /etc/my.cnf, 在[mysqld]字段,增加最后一行
+<pre class="brush: bash; gutter: true">cat /etc/my.cnf
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+max_allowed_packet = 32M
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid</pre>
+启动服务
+<pre class="brush: bash; gutter: true">/etc/init.d/mysqld start
+chkconfig mysqld on</pre>
+设置mysql密码，我这里使用是密码是123456
+<pre class="brush: bash; gutter: true">mysqladmin -u root password &#039;123456&#039;</pre>
+创建一个dashboard数据库
+<pre class="brush: bash; gutter: true">mysql -uroot -p123456 &lt;&lt;EOF
+CREATE DATABASE dashboard CHARACTER SET utf8;
+CREATE USER &#039;dashboard&#039;@&#039;localhost&#039; IDENTIFIED BY &#039;123456&#039;;
+GRANT ALL PRIVILEGES ON dashboard.* TO &#039;dashboard&#039;@&#039;localhost&#039;;
+FLUSH PRIVILEGES;
+EOF</pre>
+Passenger+Apache+Dashboard<br />
+这是让Apache支持ruby,由于Passenger不在centos官方源里，因此要添加epel的源
+<pre class="brush: bash; gutter: true">wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm -ivh epel-release-6-8.noarch.rpm
+yum install mod_passenger puppet-dashboard</pre>
+配置Dashboard
+<pre class="brush: bash; gutter: true">vi /usr/share/puppet-dashboard/config/database.yml
+production:
+  database: dashboard
+  username: dashboard
+  password: 123456
+  encoding: utf8
+  adapter: mysql</pre>
+修改时区
+<pre class="brush: bash; gutter: true">vi /usr/share/puppet-dashboard/config/environment.rb</pre></p>
+
+<p>  #config.time_zone = &#039;UTC&#039;<br />
+  config.time_zone = &#039;Beijing&#039;
+初始化数据库
+<pre class="brush: bash; gutter: true">cd /usr/share/puppet-dashboard/
+rake RAILS_ENV=production db:migrate</pre>
+配置Apache<br />
+我们需要整合Passenger和apache
+<pre class="brush: bash; gutter: true">cat &gt; /etc/httpd/conf.d/passenger.conf &lt;&lt; EOF
+LoadModule passenger_module modules/mod_passenger.so</pre></p>
+
+<p>PassengerRoot /usr/share/rubygems/gems/passenger-3.0.17<br />
+PassengerRuby /usr/bin/ruby<br />
+PassengerHighPerformance on<br />
+PassengerMaxPoolSize 12<br />
+PassengerPoolIdleTime 1500<br />
+PassengerStatThrottleRate 120<br />
+RailsAutoDetect On</p>
+
+<p>ServerName master.canghai.com<br />
+DocumentRoot &quot;/usr/share/puppet-dashboard/public/&quot;<br />
+&amp;lt;Directory &quot;/usr/share/puppet-dashboard/public/&quot;&amp;gt;<br />
+Options None<br />
+AllowOverride AuthConfig<br />
+Order allow,deny<br />
+allow from all</p>
+
+<p>ErrorLog /var/log/httpd/master.canghai.com_error.log<br />
+LogLevel warn<br />
+CustomLog /var/log/httpd/master.canghai.com_access.log combined<br />
+ServerSignature On</p>
+
+<p>EOF
+启动服务
+<pre class="brush: bash; gutter: true">/etc/init.d/httpd start
+chkconfig httpd on</pre>
+配置puppet<br />
+让Dashboard使用Reports，现在默认agent是已经启用Report的功能，所以你就不需要设置agent,你只需要设置Server端就可以
+<pre class="brush: bash; gutter: true">vi /etc/puppet/puppet.conf
+[master]
+reports = store, http
+reporturl = http://master.canghai.com:80/reports/upload</pre>
+重启puppetmaster 服务
+<pre class="brush: bash; gutter: true">/etc/init.d/puppetmaster restart</pre>
+这时候就可以直接用 http://ip 访问puppet Dashboard
+<a href="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_210851.png"><img class="aligncenter size-full wp-image-996" alt="2013-05-05_210851" src="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_210851.png" width="1025" height="642" /></a>
+导入报告
+<pre class="brush: bash; gutter: true">cd /usr/share/puppet-dashboard
+rake RAILS_ENV=production reports:import</pre>
+这时候你访问Dashboard,可以看到导入的任务.
+<a href="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_220858.png"><img class="size-full wp-image-1016 alignnone" alt="2013-05-05_220858" src="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_220858.png" width="209" height="144" /></a>
+4. 执行导入的reports
+<pre class="brush: bash; gutter: true">cd /usr/share/puppet-dashboard
+rake jobs:work RAILS_ENV=&quot;production&quot;</pre>
+<a href="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_221221.png"><img class="aligncenter size-full wp-image-1018" alt="2013-05-05_221221" src="http://www.cactifans.org/wp-content/uploads/2013/05/2013-05-05_221221.png" width="1025" height="637" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在Ubuntu 12.04上安装Puppet配置管理工具]]></title>
+    <link href="http://canghai809.github.io/blog/2013/05/01/%E5%9C%A8ubuntu-12-04%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    <updated>2013-05-01T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/05/01/在ubuntu-12-04上安装puppet配置管理工具</id>
+    <content type="html"><![CDATA[<p>最近看了下puppet,发现puppet真是个好东西。Puppet 是一个客户端/服务器（C/S）架构的配置管理工具，在中央服务器上安装 puppet-server 服务器（puppet master），在需要被管理的目标服务器上安装 puppet 客户端软件（puppet client）。当客户端连接上服务器后，定义在服务器上的配置文件会被编译，然后在客户端上运行。客户端每隔半小时主动会和服务器通信一次，确认配置信息的更新情况，如果有新的配置信息（或者配置有变化），配置文件将会被重新编译并分发到客户端执行。当然，也可以在服务器上主动触发更新指令来强制各客户端进行配置更新。</p>
+
+<p>Puppet 要求所有机器有完整的域名（FQDN），如果没有 DNS 服务器提供域名的话，可以在两台机器上设置主机名（注意要先设置主机名再安装 Puppet，因为安装 Puppet 时会把主机名写入证书，客户端和服务端通信需要这个证书）,因为我配置了DNS，所以就不用改hosts了，如果没有就需要改hosts文件指定</p>
+
+<p>我也是使用5台机器做实验
+<!--more-->
+<pre class="brush: bash; gutter: true">
+master.canghai.com  puppet master
+node1.canghai.com
+node2.canghai.com
+node3.canghai.com
+node4.canghai.com
+node5.canghai.com</pre>
+安装ntp服务在服务端和客户端都要安装
+<pre class="brush: bash; gutter: true">apt-get install ntp
+ntpdate pool.ntp.org</pre>
+服务端master安装
+<pre class="brush: bash; gutter: true">
+apt-get install ruby libshadow-ruby1.8
+apt-get install puppet puppetmaster facter</pre>
+客户端agenet安装
+<pre class="brush: bash; gutter: true">
+apt-get install ruby libshadow-ruby1.8
+apt-get install puppet facter</pre>
+Puppet 客户端使用 HTTPS 和服务端（master）通信，为了和服务器端通信必须有合法的 SSL 认证，第一次运行 puppet 客户端的时候会生成一个 SSL 证书并指定发给 Puppet 服务端。
+<pre class="brush: bash; gutter: true">
+puppet agent --no-daemonize --onetime --verbose --debug --server=master.canghai.com
+</pre>
+Puppet 服务端接受到客户端的证书后必须签字（sign）才能允许客户端接入，sign 后用 puppet cert list –all 查看会发现 node1.canghai.com 前面多了一个 + 后，表示 “加入” 成功：
+<pre class="brush: bash; gutter: true">
+puppet cert list --all 查看所有客户端的请求(有+号的代表已经签好证书可以通信，没有加号的代表尚未签好证书)
+puppet cert --sign node1.canghai.com  签字客户端，自此可以通信
+</pre>
+查看所有客户端的请求
+<pre class="brush: bash; gutter: true">
+puppet cert list --all
++ &quot;master.canghai.com&quot; (4D:71:A9:06:C5:30:6E:14:AA:BD:B2:7F:50:48:32:0A) (alt names: &quot;DNS:master.canghai.com&quot;, &quot;DNS:puppet&quot;, &quot;DNS:puppet.canghai.com&quot;)
++ &quot;node1.canghai.com&quot; (7D:CE:3D:6B:E2:CA:5C:32:66:BA:4A:E1:20:42:E0:94)
++ &quot;node2.canghai.com&quot; (78:37:17:A2:90:31:D8:8B:3F:0C:6D:21:17:4C:4E:9E)
++ &quot;node3.canghai.com&quot; (20:02:70:1E:D7:5F:CD:B8:0E:88:77:AA:EB:2E:35:43)
++ &quot;node4.canghai.com&quot; (DE:6D:D1:7C:F8:B3:B1:BD:15:B3:B0:7B:DE:66:39:82)
++ &quot;node5.canghai.com&quot; (41:D6:34:0D:8C:01:54:81:82:39:C8:AC:BC:27:A7:F5)
+</pre>
+测试一下<br />
+现在可以在服务端写个小例子来测试一下。这个例子作用很简单，用来在客户端的 /tmp 目录下新建一个 helloworld.txt 文件，内容为 hello, world. 在服务端编写代码
+<pre class="brush: bash; gutter: true">
+vi /etc/puppet/manifests/site.pp
+</pre>
+文件内容如下
+<pre class="brush: bash; gutter: true">
+node default {
+        file {
+                &quot;/tmp/helloworld.txt&quot;: content =&gt; &quot;hello, world&quot;;
+        }
+}
+</pre>
+在客户端上执行puppet，运行成功后会在 /tmp 看到新生成的 helloworld.txt：
+<pre class="brush: bash; gutter: true">
+puppet agent --test --server=master.canghai.com
+info: Caching catalog for node1.canghai.com
+info: Applying configuration version &#039;1367388486&#039;
+notice: /Stage[main]//Node[default]/File[/tmp/helloworld.txt]/ensure: defined content as &#039;{md5}e4d7f1b4ed2e42d15898f4b27b019da4&#039;
+notice: Finished catalog run in 0.05 seconds</pre></p>
+
+<p>cat /tmp/helloworld.txt <br />
+hello, worldroot
+</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CactiFans在Vmware虚拟机上的安装]]></title>
+    <link href="http://canghai809.github.io/blog/2013/04/23/cactifans%E5%9C%A8vmware%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/"/>
+    <updated>2013-04-23T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/04/23/cactifans在vmware虚拟机上的安装</id>
+    <content type="html"><![CDATA[<p>最近有部分人反应在下载CactiFans的ISO后，在Vmware里安装后，重启出现如下错误
+<p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2013/04/1.png"><img class="aligncenter size-full wp-image-956" alt="1" src="http://www.cactifans.org/wp-content/uploads/2013/04/1.png" width="727" height="279" /></a></p>
+&nbsp;</p>
+
+<p>出现此种错误,是由于Vmware自做聪明导致的，下面我就演示下CactiFans在Vmware下的安装
+<!--more-->
+新建虚拟机，选择典型</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_141807.png"><img class="aligncenter size-full wp-image-957" alt="2013-04-23_141807" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_141807.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p><span style="color: #ff0000;"><strong>这里就是要注意的地方了，出现前面那个错误，就是因为大家在这里选了第二项</strong></span></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142336.png"><img class="aligncenter size-full wp-image-958" alt="2013-04-23_142336" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142336.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>系统这里我选Red Hat 6，选CentOS也没问题，注意自己的版本是32位还是64位</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142415.png"><img class="aligncenter size-full wp-image-959" alt="2013-04-23_142415" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142415.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>虚拟机名称及位置</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142442.png"><img class="aligncenter size-full wp-image-960" alt="2013-04-23_142442" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142442.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>硬盘大小</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142451.png"><img class="aligncenter size-full wp-image-961" alt="2013-04-23_142451" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142451.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>配置预览</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142506.png"><img class="aligncenter size-full wp-image-962" alt="2013-04-23_142506" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142506.png" width="442" height="402" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>建立成功</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142517.png"><img class="aligncenter size-full wp-image-963" alt="2013-04-23_142517" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142517.png" width="1040" height="758" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>启动虚拟机</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142541.png"><img class="aligncenter size-full wp-image-964" alt="2013-04-23_142541" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_142541.png" width="736" height="553" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>点击右下角的光驱图标，先择settings，设置引导镜像</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143442.png"><img class="aligncenter size-full wp-image-965" alt="2013-04-23_143442" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143442.png" width="707" height="588" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>设置好后点ok，在这个界面回车</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143744.png"><img class="aligncenter size-full wp-image-966" alt="2013-04-23_143744" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143744.png" width="736" height="553" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>回车后就可以开始安装CactiFans了，vm-tools的安装我就不说了，可以不用安装</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143513.png"><img class="aligncenter size-full wp-image-967" alt="2013-04-23_143513" src="http://www.cactifans.org/wp-content/uploads/2013/04/2013-04-23_143513.png" width="656" height="633" /></a></p>
+
+<p>&nbsp;</p>
+
+<p>注:在Xen中，系统模版要选择other，不然也会出现上述错误。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cacti插件flowview的安装及使用]]></title>
+    <link href="http://canghai809.github.io/blog/2013/04/09/cacti%E6%8F%92%E4%BB%B6flowview%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <updated>2013-04-09T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/04/09/cacti插件flowview的安装及使用</id>
+    <content type="html"><![CDATA[<p>这期主要给大家讲的是cacti插件flowview插件的安装及使用，这个插件是利用flow-capture来把路由发送哦过来的flow信息保存为文件，再通过flowview来进行查看，因此专门做一期视频</p>
+
+<p>再次感谢肥肥提供的设备和机器。</p>
+
+<p><iframe name="tsc_player" src="http://www.cactifans.org/videos/cacti04/cacti04_player.html" height="525" width="700" allowfullscreen="" frameborder="0" scrolling="no"></iframe>
+<span style="color: #ff0000;">注：如果看不清楚，点击视频右下角的全屏查看</span></p>
+
+<p>高清无码带中文字幕视频在线观看：<a href="http://www.cactifans.org/videos/cacti04/cacti04.html" target="_blank">点击在线观看</a></p>
+
+<p>高清无码带中文字幕视频下载地址：<a href="http://www.cactifans.org/download/cacti04.zip" target="_blank">点击下载视频</a></p>
+
+<p>cacti04.zip     173MB     SHA1 (cacti04.zip) = 6a48e4a35e184f4e034b077c5ca6f4fbde2a9eec</p>
+
+<p>实验中所用的txt文档下载：<a href="http://www.cactifans.org/wp-content/uploads/2013/04/cacti04.txt">cacti04</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[cacti插件Thold的安装及使用]]></title>
+    <link href="http://canghai809.github.io/blog/2013/03/24/cacti%E6%8F%92%E4%BB%B6thold%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <updated>2013-03-24T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/03/24/cacti插件thold的安装及使用</id>
+    <content type="html"><![CDATA[<p>接上期视频，这起主要讲cacti最主要的插件之一——Thold的安装及使用</p>
+
+<p>这个插件在cacti用用的频率是比较大的，因此专门做一期</p>
+
+<p><span style="color: #ff0000;">注：如果看不清楚，点击视频右下角的全屏查看</span>
+<iframe class="tscplayer_inline" name="tsc_player" src="http://www.cactifans.org/videos/cacti03/cacti03_player.html" scrolling="no" frameborder="0" height="525" width="700" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe></p>
+
+<p>高清无码带中文字幕视频在线观看：<a href="http://www.cactifans.org/videos/cacti03/cacti03.html" target="_blank">点击在线观看</a></p>
+
+<p>高清无码带中文字幕视频下载地址：<a href="http://www.cactifans.org/download/cacti03.zip">点击下载视频</a></p>
+
+<p>cacti03.zip  70MB   SHA1 (cacti03.zip) = 47de34322ca9e51e6a80ad0c52bb3189383ed181</p>
+
+<p>实验中所用的txt文档下载：<a href="http://www.cactifans.org/wp-content/uploads/2013/03/cacti03.txt">cacti03</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[cacti插件weathermap的安装及使用]]></title>
+    <link href="http://canghai809.github.io/blog/2013/03/18/cacti%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <updated>2013-03-18T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/03/18/cacti插件的安装及使用</id>
+    <content type="html"><![CDATA[<p>接着上期视频，这一节视频，主要讲三个方面:
+<ol>
+	<li>cacti高效采集器spine的安装及使用</li>
+	<li>cacti插件weatermap的安装及使用</li>
+	<li>cacti插件clog、monitor、realtime的安装和使用</li>
+</ol>
+<span style="color: #ff0000;">注：如果看不清楚，点击视频右下角的全屏查看</span>
+<iframe name="tsc_player" src="http://www.cactifans.org/videos/cacti02/cacti02_player.html" height="525" width="700" allowfullscreen="" frameborder="0" scrolling="no"></iframe></p>
+
+<p>高清无码带中文字幕视频在线观看：<a href="http://www.cactifans.org/videos/cacti02/cacti02.html" target="_blank">点击在线观看</a></p>
+
+<p>高清无码带中文字幕视频下载地址：<a href="http://www.cactifans.org/download/cacti02.zip">点击下载视频</a></p>
+
+<p>cacti02.zip  79MB  SHA1 (cacti02.zip) = 72185dd2ddf3d764104c798861986d343e3a63ce</p>
+
+<p>实验中所用的txt文档下载：<a href="http://www.cactifans.org/wp-content/uploads/2013/03/cacti02.txt">cacti02</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cacti安装视频]]></title>
+    <link href="http://canghai809.github.io/blog/2013/03/17/cacti%E5%AE%89%E8%A3%85%E8%A7%86%E9%A2%91/"/>
+    <updated>2013-03-17T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/03/17/cacti安装视频</id>
+    <content type="html"><![CDATA[<p>录了一个Cacti 0.8.8a的安装视频，目的就是给初学者和新手看的。想想当年我安装cacti的时候也没有一个权威的文档，苦逼倒腾，各种状况，各种不出图。因此录了一个cacti的最新版0.8.8a在centos6.3 64位上的安装视频，在其他Linux系统上的安装也大同小异。本人也是菜鸟一个，视频之中有任何错误和不足之处望大家指出。此视频时给初学者看的，是关于安装系统到安装cacti，添加监控一个Linux服务器。大牛可直接无数。本人第一次录视频，缺乏经验，望大家见谅。谢谢大家的支持。
+<span style="color: #ff0000;">注：如果看不清楚，点击视频右下角的全屏查看</span>
+<iframe name="tsc_player" src="http://www.cactifans.org/videos/cacti01/cacti01_player.html" height="525" width="700" allowfullscreen="" frameborder="0" scrolling="no"></iframe></p>
+
+<p>高清无码带中文字幕视频在线观看：<a href="http://www.cactifans.org/videos/cacti01/cacti01.html" target="_blank">点击在线观看</a></p>
+
+<p>高清无码带中文字幕视频下载地址：<a href="http://www.cactifans.org/download/cacti01.zip">点击下载视频</a></p>
+
+<p>cacti01.zip   76MB  SHA1 (cacti01.zip) = 117269765211c6bc0775f51bd50c76a60e60d53a</p>
+
+<p>实验中所用的txt文档下载：<a href="http://www.cactifans.org/wp-content/uploads/2013/03/cacti01.txt">cacti01</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Kali Linux 发布]]></title>
+    <link href="http://canghai809.github.io/blog/2013/03/14/kali-linux-%E5%8F%91%E5%B8%83/"/>
+    <updated>2013-03-14T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/03/14/kali-linux-发布</id>
+    <content type="html"><![CDATA[<p>Kali Linux is the successor of the BackTrack Penetration Testing Linux distribution has been released. From the official project page:
+<blockquote>Kali is a complete re-build of BackTrack Linux, adhering completely to Debian development standards. All-new infrastructure has been put in place, all tools were reviewed and packaged, and we use Git for our VCS.</blockquote>
+官方网站：<a href="http://www.kali.org/">http://www.kali.org/</a></p>
+
+<p>安装
+<p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_105250.png"><img class="size-full wp-image-842 aligncenter" alt="2013-03-14_105250" src="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_105250.png" width="640" height="480" /></a></p>
+<p style="text-align: center;"><!--more--></p>
+<p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_105321.png"><img class="aligncenter size-full wp-image-843" alt="2013-03-14_105321" src="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_105321.png" width="800" height="600" /></a></p>
+<p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_105704.png"><img class="aligncenter size-full wp-image-845" alt="2013-03-14_105704" src="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_105704.png" width="800" height="600" /></a></p>
+<p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_111930.png"><img class="aligncenter size-full wp-image-846" alt="2013-03-14_111930" src="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_111930.png" width="800" height="600" /></a></p>
+<p style="text-align: left;">全中文</p>
+<p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_112035.png"><img class="aligncenter size-full wp-image-847" alt="2013-03-14_112035" src="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_112035.png" width="800" height="600" /></a></p>
+<p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_112110.png"><img class="aligncenter size-full wp-image-848" alt="2013-03-14_112110" src="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_112110.png" width="800" height="600" /></a></p>
+<p style="text-align: left;">MSF</p>
+<p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_112820.png"><img class="aligncenter size-full wp-image-849" alt="2013-03-14_112820" src="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_112820.png" width="800" height="600" /></a></p>
+<p style="text-align: left;">另应好基友要求外附上Kail的高清无码壁纸：<a href="http://www.cactifans.org/wp-content/uploads/2013/03/kali-wallpappers.zip">kali-wallpappers</a><a href="http://www.cactifans.org/index.php/2013/03/kali-linux-%e5%8f%91%e5%b8%83/kali-wallpappers/" rel="attachment wp-att-851">
+</a></p>
+<p style="text-align: left;">预览图：</p>
+<p style="text-align: left;"><a href="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_113848.png"><img class="aligncenter size-full wp-image-850" alt="2013-03-14_113848" src="http://www.cactifans.org/wp-content/uploads/2013/03/2013-03-14_113848.png" width="1089" height="637" /></a></p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CentOS 6.4 发布]]></title>
+    <link href="http://canghai809.github.io/blog/2013/03/12/centos-6-4-%E5%8F%91%E5%B8%83/"/>
+    <updated>2013-03-12T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/03/12/centos-6-4-发布</id>
+    <content type="html"><![CDATA[<p>We are pleased to announce the immediate availability of CentOS-6.4<br />
+install media for i386 and x86_64 Architectures. Release Notes for 6.4<br />
+are available at http://wiki.centos.org/Manuals/ReleaseNotes/CentOS6.4 -<br />
+we recommend everyone looks through those once.</p>
+
+<p>CentOS-6.4 is based on the upstream release EL 6.4 and includes packages<br />
+from all variants. All upstream repositories have been combined into<br />
+one, to make it easier for end users to work with.<!--more--></p>
+
+<p>There are many fundamental changes in this release, compared with the<br />
+past CentOS-6 releases, and we highly recommend everyone stufy the<br />
+Release Notes as well as the upstream Techical Notes about the changes<br />
+and how they might impact your installation.</p>
+
+<p>All updates released since upstream 6.4 release are also released to the<br />
+CentOS-6.4 mirrors.</p>
+
+<p>Everyone who has centos-cr repositories enabled and in use, would<br />
+already be running CentOs-6.4 as of two weeks ago and will notice only<br />
+the centos-release rpm update with this release.</p>
+
+<p>+++++++++++++++++++++++<br />
+Upgrading from CentOS-4 or CentOS-5:</p>
+
+<p>We recommend everyone run through a reinstall rather than attempt an<br />
+inplace upgrade from CentOS-4 or CentOS-5.</p>
+
+<p>+++++++++++++++++++++++<br />
+Upgrading from CentOS-6.0 / 6.1 / 6.2 or 6.3</p>
+
+<p>Unless you have edited your yum configs, a &#8216;yum update&#8217; should move your<br />
+machine seamlessly from any previous CentOS-6.x release to CentOS-6.4</p>
+
+<p>+++++++++++++++++++++++<br />
+Downloading CentOS-6.4 for new installs:</p>
+
+<p>When possible, consider using torrents to run the downloads. Usually its<br />
+also the fastest means to download the distro.</p>
+
+<p>Torrent files for the DVD&#8217;s are available at :<br />
+http://mirror.centos.org/centos/6.4/isos/i386/CentOS-6.4-i386-bin-DVD1to2.torrent<br />
+http://mirror.centos.org/centos/6.4/isos/x86_64/CentOS-6.4-x86_64-bin-DVD1to2.torrent</p>
+
+<p>You can also use a mirror close to you :<br />
+http://www.centos.org/modules/tinycontent/index.php?id=30</p>
+
+<p>Most mirrors will allow direct DVD downloads over http, ftp and rsync.</p>
+
+<p>Please keep in mind that not all mirrors are currently updated, some<br />
+might take upto another 24 hours before they have all the content.</p>
+
+<p>We have also made efforts to try and ensure that most install types and<br />
+roles can be run from DVD-1 itself.</p>
+
+<p>+++++++++++++++++++++++<br />
+sha1sum for the CentOS-6.3 ISOS:</p>
+
+<p>i386:<br />
+4bd3a1de6f6dfcd7a2199487abf5a9304d696cae CentOS-6.4-i386-bin-DVD1.iso<br />
+fb096cd6ac88959a287256c76c7292ae2ef53f32 CentOS-6.4-i386-bin-DVD2.iso<br />
+ddb63a0af2c1d63b8e9b7342c7f52a86b1842689 CentOS-6.4-i386-minimal.iso<br />
+6ffc9f3a5f4332b55cc35f1eb3ebb39f5aa8edb6 CentOS-6.4-i386-netinstall.iso</p>
+
+<p>x86_64:<br />
+8672dc087f1b0eda60b9efaa41b82f034f185e24 CentOS-6.4-x86_64-bin-DVD1.iso<br />
+db16ec15897dcb7a01e7434486075f43ca982c4b CentOS-6.4-x86_64-bin-DVD2.iso<br />
+6232efa014d9c6798396b63152c4c9a08b279f5e CentOS-6.4-x86_64-minimal.iso<br />
+77817ed6e879da155b6f3dc98e0698e8993e28f8 CentOS-6.4-x86_64-netinstall.iso</p>
+
+<p>+++++++++++++++++++++++<br />
+LiveCD and LiveDVD</p>
+
+<p>We will be releasing the LiveCD and LiveDVD images in the next few days<br />
+for both i386 and x86_64.</p>
+
+<p>+++++++++++++++++++++++<br />
+Getting Help:</p>
+
+<p>The best place to start when looking for help with CentOS is at the wiki<br />
+( http://wiki.centos.org/GettingHelp ) which lists various options and<br />
+communities who might be able to help. If you think there is a bug in<br />
+the system, do report it at http://bugs.centos.org/ - but keep in mind<br />
+that the bugs system is *not* a support mechanism.</p>
+
+<p>+++++++++++++++++++++++<br />
+Metups and training sessions</p>
+
+<p>In the next few days we will be announcing CentOS Dojo&#8217;s to be held in<br />
+different parts of the world. These will be one day events, focused on<br />
+systems and operations issues and will have talks as well as tutorials.<br />
+The aim being to encourage best practises, build social communities<br />
+around the CentOS user base and to encourage conversations around the<br />
+issues that CentOS users care about the most. Keep a lookup for a Dojo<br />
+coming to a city near you or jump in and help organise one.</p>
+
+<p>At this point we have plans to organise events in Antwerp, Beligum;<br />
+Phoenix, USA; New York City, USA; Sao Paolo, Brazil and London, UK. If<br />
+you would like to get involved in helping organising, running,<br />
+presenting or sponsoring a Dojo or even just want more detail do get in<br />
+touch with us at the CentOS Promo list ( http://lists.centos.org/ )</p>
+
+<p>+++++++++++++++++++++++<br />
+Contributing and joining the project:</p>
+
+<p>We are always looking for people to join and help with various things in<br />
+the project. If you are keen to help out a good place to start is the<br />
+wiki page at http://wiki.centos.org/Contribute . If you have questions<br />
+or a specific area you would like to contribute towards that is not<br />
+covered on that page, feel free to drop in on<br />
+#centos-devel at irc.freenode.net for a chat or email the centos-devel list<br />
+(http://lists.centos.org).</p>
+
+<p>+++++++++++++++++++++++<br />
+Thanks to everyone who contributed towards making CentOS 6.4, specially<br />
+the effort put in, as always, by the QA team.</p>
+
+<p>A special shout out to all the donors who have contributed hardware,<br />
+network connectivity, hosting and resources over the years. The CentOS<br />
+project now has a fairly well setup resource pool, purely thanks to the<br />
+donors.</p>
+
+<p>Enjoy!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CactiFans-v1.0中文版Tips]]></title>
+    <link href="http://canghai809.github.io/blog/2013/03/12/cactifans-v1-0%E4%B8%AD%E6%96%87%E7%89%88tips/"/>
+    <updated>2013-03-12T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/03/12/cactifans-v1-0中文版tips</id>
+    <content type="html"><![CDATA[<p>CactiFans-v1.0中文版发行已经有半年左右的时间，由于本人毕业之后忙于工作等事情，很久没有更新blog，给大家使用造成一定的麻烦，在此说声不好意思啊！嘿嘿！好了，今天我写几个关于CactiFans中文版V1.0的小Tips，帮大家更好的使用。
+<h3>一.修改系统密码</h3>
+ssh登录上去执行
+<pre class="brush: bash; gutter: true">passwd root</pre>
+根据提示输入新密码就可以修改系统密码
+<h3>二.修改Nagios密码</h3>
+Nagios的登录地址为：http://192.168.1.10/nagios/ （系统默认Ip地址为：192.168.1.10）<br />
+登录的用户名为：nagiosadmin</p>
+
+<p>执行以下命令修改nagios登录密码
+<pre class="brush: bash; gutter: true">cd /etc/nagios
+htpasswd -bc passwd nagiosadmin XXXXXX</pre>
+根据提示输入新密码就可以修改系统密码<br />
+XXXXXX是你要设置的密码
+<h3>三.修改nconf密码</h3>
+nconf的登录地址为：http://192.168.1.10/nconf/<br />
+nconf的登录用户名为：admin<br />
+执行以下命令修改nconf的登录密码<!--more-->
+<pre class="brush: bash; gutter: true">cd /usr/share/nconf/config
+vi .file_accounts.php</pre>
+就可以看到admin的密码，是明文的，修改为你要的密码保存退出就生效了。
+<a href="http://www.cactifans.org/index.php/2012/12/cactifans-v1-0%e4%b8%ad%e6%96%87%e7%89%88tips/2012-12-13_203522/" rel="attachment wp-att-712"><img class="alignleft size-full wp-image-712" alt="2012-12-13_203522" src="http://www.cactifans.org/wp-content/uploads/2012/12/2012-12-13_203522.png" width="905" height="426" /></a>
+<h3></h3>
+<h3>四.修改weathermap编辑密码</h3>
+由于Weathermap没有对编辑拓扑图的editor.php做验证，而导致任何人都可以编辑拓扑图，这个问题在weathermap官网是提到过的, 传送门：<a href="http://www.network-weathermap.com/manual/latest/pages/install-cacti-editor.html">http://www.network-weathermap.com/manual/latest/pages/install-cacti-editor.html</a>容易被忽视，网上也有很多没做限制的weathmaper图。在CactiFans中文版v1.0中，已经对editor.php这个文件的访问权限做了限制，访问此文件会提示输入用户名和密码<br />
+地址：http://192.168.1.10/plugins/weathermap/editor.php   (IP根据你自己的具体设定)<br />
+用户名：cactifans<br />
+执行以下命令修改weathermap修改密码
+<pre class="brush: bash; gutter: true">
+htpasswd  -b /var/www/html/plugins/weathermap/.htpasswd cactifans XXX</pre>
+XXX为你要修改成的新密码
+<h3>五. 关于字体太小的问题</h3>
+由于从英文版到中文版，CactiFans中文版v1.0的字体有点小，看起来不是很舒服，这是 由于css问题造成。我已经做好一个补丁包，只要Patch下就可以使字体恢复到正常大小。<br />
+ssh登录到CactiFans服务器执行如下命令
+<pre class="brush: bash; gutter: true">wget http://dl.cactifans.org/cactifans/patches/FixFontsize.patch
+patch -p0 &lt; FixFontsize.patch</pre>
+再打开浏览器登录到cacti，用Ctrl+F5强制刷新就可以看到字体已经恢复到正常的大小。<br />
+好了，今天就先写到这里，以后在使用中有任何问题都可以给我留言。
+<h3>六.关于查看图形出现2个周问题</h3>
+由于翻译错误，导致查看图形时出2个周的图片，其实一个是月的，纯属翻译错误，大家可以通过以下命令修复。
+<pre class="brush: sql; gutter: true">mysql -uroot -pcactifansdb
+use cacti;
+update rra set name=&#039;月 (2小时平均)&#039; where id=&#039;3&#039;;
+exit;</pre>
+就可以了，刷新查看图形已经更新了。</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2013/03/11.png"><img class="alignleft size-full wp-image-824" alt="11" src="http://www.cactifans.org/wp-content/uploads/2013/03/11.png" width="645" height="481" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Recover MySQL root Password]]></title>
+    <link href="http://canghai809.github.io/blog/2013/02/26/recover-mysql-root-password/"/>
+    <updated>2013-02-26T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/02/26/recover-mysql-root-password</id>
+    <content type="html"><![CDATA[<p>You can recover MySQL database server password with following five easy steps.<br />
+Step # 1: Stop the MySQL server process.<br />
+Step # 2: Start the MySQL (mysqld) server/daemon process with the &#8211;skip-grant-tables option so that it will not prompt for password.<br />
+Step # 3: Connect to mysql server as the root user.<br />
+Step # 4: Setup new mysql root account password i.e. reset mysql password.<br />
+Step # 5: Exit and restart the MySQL server.<br />
+Here are commands you need to type for each step (login as the root user):
+<strong>Step # 1 :</strong> Stop mysql service
+<pre class="brush: bash; gutter: true">/etc/init.d/mysql stop</pre>
+Output:
+<pre class="brush: bash; gutter: true">Stopping MySQL database server: mysqld.</pre>
+<span style="font-size: 13px; line-height: 19px;"><strong>Step # 2:</strong> Start to MySQL server w/o password:<!--more--></span>
+<pre class="brush: bash; gutter: true">mysqld_safe --skip-grant-tables &amp;</pre>
+Output:
+<pre class="brush: bash; gutter: true">[1] 5988
+Starting mysqld daemon with databases from /var/lib/mysql
+mysqld_safe[6025]: started</pre>
+<strong>Step # 3:</strong> Connect to mysql server using mysql client:
+<pre class="brush: bash; gutter: true">mysql -u root</pre>
+Output:
+<pre class="brush: bash; gutter: true">Welcome to the MySQL monitor. Commands end with ; or \g.
+Your MySQL connection id is 1 to server version: 4.1.15-Debian_1-log
+Type &#039;help;&#039; or &#039;\h&#039; for help. Type &#039;\c&#039; to clear the buffer.
+mysql&gt;</pre>
+<span style="font-size: 13px; line-height: 19px;"><strong>Step # 4:</strong> Setup new MySQL root user password</span>
+<pre class="brush: sql; gutter: true">use mysql;
+update user set password=PASSWORD(&quot;NEW-ROOT-PASSWORD&quot;) where User=&#039;root&#039;;
+flush privileges;
+quit</pre>
+<strong>Step # 5:</strong> Stop MySQL Server:
+<pre class="brush: bash; gutter: true">/etc/init.d/mysql stop</pre>
+Output:
+<pre class="brush: bash; gutter: true">Stopping MySQL database server: mysqld
+STOPPING server from pid file /var/run/mysqld/mysqld.pid
+mysqld_safe[6186]: ended
+[1]+ Done mysqld_safe --skip-grant-tables</pre>
+<strong>Step # 6:</strong> Start MySQL server and test it
+<pre class="brush: bash; gutter: true">/etc/init.d/mysql start
+mysql -u root -p</pre></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CentOS一些比较老版本的repo]]></title>
+    <link href="http://canghai809.github.io/blog/2013/01/07/centos%E4%B8%80%E4%BA%9B%E6%AF%94%E8%BE%83%E8%80%81%E7%89%88%E6%9C%AC%E7%9A%84repo/"/>
+    <updated>2013-01-07T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/01/07/centos一些比较老版本的repo</id>
+    <content type="html"><![CDATA[<p>centos的老版本对应的域名是vault.centos.org ，方便以后使用，直接repo文件。</p>
+
+<p>Packages previously released as 5.5, and its updates
+<pre class="brush: bash; gutter: true">[C5.5-base]
+name=CentOS-5.5 – Base
+baseurl=http://vault.centos.org/5.5/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+enabled=0</pre></p>
+
+<p>[C5.5-updates]<br />
+name=CentOS-5.5 – Updates<br />
+baseurl=http://vault.centos.org/5.5/updates/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.5-extras]<br />
+name=CentOS-5.5 – Extras<br />
+baseurl=http://vault.centos.org/5.5/extras/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.5-centosplus]<br />
+name=CentOS-5.5 – Plus<br />
+baseurl=http://vault.centos.org/5.5/centosplus/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0
+<!--more--></p>
+
+<p>Packages previously released as 5.4 and its updates
+<pre class="brush: bash; gutter: true">[C5.4-base]
+name=CentOS-5.4 – Base
+baseurl=http://vault.centos.org/5.4/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+enabled=0</pre></p>
+
+<p>[C5.4-updates]<br />
+name=CentOS-5.4 – Updates<br />
+baseurl=http://vault.centos.org/5.4/updates/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.4-extras]<br />
+name=CentOS-5.4 – Extras<br />
+baseurl=http://vault.centos.org/5.4/extras/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.4-centosplus]<br />
+name=CentOS-5.4 – Plus<br />
+baseurl=http://vault.centos.org/5.4/centosplus/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0
+Packages previously released as 5.3 and its updates
+<pre class="brush: bash; gutter: true">[C5.3-base]
+name=CentOS-5.3 – Base
+baseurl=http://vault.centos.org/5.3/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+enabled=0</pre></p>
+
+<p>[C5.3-updates]<br />
+name=CentOS-5.3 – Updates<br />
+baseurl=http://vault.centos.org/5.3/updates/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.3-extras]<br />
+name=CentOS-5.3 – Extras<br />
+baseurl=http://vault.centos.org/5.3/extras/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.3-centosplus]<br />
+name=CentOS-5.3 – Plus<br />
+baseurl=http://vault.centos.org/5.3/centosplus/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>Packages previously released as 5.2 and its updates
+<pre class="brush: bash; gutter: true">
+[C5.2-base]
+name=CentOS-5.2 – Base
+baseurl=http://vault.centos.org/5.2/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+enabled=0</pre></p>
+
+<p>[C5.2-updates]<br />
+name=CentOS-5.2 – Updates<br />
+baseurl=http://vault.centos.org/5.2/updates/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.2-extras]<br />
+name=CentOS-5.2 – Extras<br />
+baseurl=http://vault.centos.org/5.2/extras/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.2-centosplus]<br />
+name=CentOS-5.2 – Plus<br />
+baseurl=http://vault.centos.org/5.2/centosplus/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0
+Packages previously released as 5.1 and its updates
+<pre class="brush: bash; gutter: true">[C5.1-base]
+name=CentOS-5.1 – Base
+baseurl=http://vault.centos.org/5.1/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+enabled=0</pre></p>
+
+<p>[C5.1-updates]<br />
+name=CentOS-5.1 – Updates<br />
+baseurl=http://vault.centos.org/5.1/updates/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.1-extras]<br />
+name=CentOS-5.1 – Extras<br />
+baseurl=http://vault.centos.org/5.1/extras/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.1-centosplus]<br />
+name=CentOS-5.1 – Plus<br />
+baseurl=http://vault.centos.org/5.1/centosplus/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0
+Packages previously released as 5.0 and its updates
+<pre class="brush: bash; gutter: true">[C5.0-base]
+name=CentOS-5.0 – Base
+baseurl=http://vault.centos.org/5.0/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+enabled=0</pre></p>
+
+<p>[C5.0-updates]<br />
+name=CentOS-5.0 – Updates<br />
+baseurl=http://vault.centos.org/5.0/updates/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.0-extras]<br />
+name=CentOS-5.0 – Extras<br />
+baseurl=http://vault.centos.org/5.0/extras/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+
+<p>[C5.0-centosplus]<br />
+name=CentOS-5.0 – Plus<br />
+baseurl=http://vault.centos.org/5.0/centosplus/$basearch/<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br />
+enabled=0</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[【置顶】CactiFans V1.0中文版发布]]></title>
+    <link href="http://canghai809.github.io/blog/2012/06/18/cactifans-v1-0%E4%B8%AD%E6%96%87%E7%89%88%E5%8F%91%E5%B8%83/"/>
+    <updated>2012-06-18T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2012/06/18/cactifans-v1-0中文版发布</id>
+    <content type="html"><![CDATA[<p>经过几个月来来的努力，CactiFans V1.0中文版终于发布了！仔细算起，自上次发布已经有一年多了，这个时间是有点长，主要的原因是我太忙了，事情太多了。做完这版本，我也要毕业了，离开学校了，大学也就这么上完了，也算毕业的纪念吧！进入正题。</p>
+
+<p>CactiFans是我制作的一个cacti的集成全自动安装系统！
+<h3>CactiFans v1.0中文版特性</h3>
+<ul>
+	<li>
+<h6>基于CentOS6.2构建，集成了cacti 0.8.8a 中文版（目前最新版），rrdtool 1.4.7（目前最新）</h6>
+</li>
+	<li>
+<h6>集成nagios 3.3.1，nconf 1.3（管理nagios的一个工具）</h6>
+</li>
+	<li>
+<h6>集成phpMyAdmin-3.5.0  webmin-1.580</h6>
+</li>
+	<li>
+<h6>集成 syslog,npc.routerconfigs,weathermap,monitor,discovery等cacti常用的20个插件</h6>
+</li>
+	<li>
+<h6>集成飞信机器人，可以配置短信报警</h6>
+</li>
+	<li>
+<h6>包含FreeBSD,IIS,Nginx,apache,mysql,advance ping等实用模版</h6>
+</li>
+	<li>
+<h6>解决weahermap插件的安全性问题</h6>
+</li>
+	<li>
+<h6>Patch官方所有补丁，解决目前已知bug</h6>
+</li>
+	<li>
+<h6>集成最新spine高效轮询工具</h6>
+</li>
+	<li>
+<h6>自动定期备份cacti和syslog数据</h6>
+</li>
+	<li>
+<h6>优化系统服务</h6>
+</li>
+</ul>
+<h3>下载地址：</h3>
+<!--more--></p>
+
+<p><a href="http://dl.cactifans.org/cactifans/CactiFans-v1.0-i386.iso">CactiFans-v1.0-i386.iso</a></p>
+
+<p><a href="http://dl.cactifans.org/cactifans/CactiFans-v1.0-x86_64.iso">CactiFans-v1.0-x86_64.iso</a>
+<pre class="brush: bash; gutter: true">MD5 (CactiFans-v1.0-i386.iso) = f3953004b265eba310ad99c925e82e11
+MD5 (CactiFans-v1.0-x86_64.iso) = 5c86ad369f10f3f653c98c529784a0ec
+SHA256 (CactiFans-v1.0-i386.iso) = 616925fe49ffc0311c1f31bab66c49b0e225f89ce7f410cf544f0ebc6fd60e08
+SHA256 (CactiFans-v1.0-x86_64.iso) = 168df927757ea638d2b1f4ef77f65dd79e7b99b7a546b40053dccc1c9a7d109a</pre>
+QQ群：①185016501       ②61797150<br />
+登录系统密码：（建议尽快修改)
+<pre class="brush: bash; gutter: true">username: root
+passpord: cactifans.org</pre>
+第一次登录cacti的默认密码
+<pre class="brush: bash; gutter: true">username:admin 
+password: admin</pre>
+PHPMyadmin登录地址及密码（mysql数据库密码）
+<pre class="brush: bash; gutter: true">http：//192.168.1.10/phpmyadmin/
+username：root
+password：cactifansdb</pre>
+Nagios地址及默认密码(一定要修改）
+<pre class="brush: bash; gutter: true">http://192.168.1.10/nagios/
+username: nagiosadmin
+password: cactifans</pre>
+nconf地址及默认密码
+<pre class="brush: bash; gutter: true">http://192.168.1.10/nconf/
+username: admin
+password: cactifans.org</pre>
+weathermap编辑密码(编辑weathermap图形时会需要）
+<pre class="brush: bash; gutter: true">username:cactifans
+password:cactifans.org</pre>
+<strong><span style="color: #ff0000;">后续设置及修改密码请查看此文章</span></strong>：<a title="CactiFans-v1.0中文版Tips" href="http://www.cactifans.org/index.php/2013/03/cactifans-v1-0%E4%B8%AD%E6%96%87%E7%89%88tips/" target="_blank">CactiFans-v1.0中文版Tips</a></p>
+
+<p><span style="color: #ff0000;"><strong>在 Vmware虚拟机和Xen上的安装注意事项请看：</strong></span><a href="http://www.cactifans.org/?p=955" target="_blank">CactiFans在Vmware虚拟机上的安装</a></p>
+
+<p>&nbsp;
+<p style="text-align: center;">安装方法：<br />
+用iso引导后将会出现如下画面:
+<a href="http://www.cactifans.org/wp-content/uploads/2012/06/1.png"><img class="size-full wp-image-648 aligncenter" title="1" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/1.png" width="640" height="480" /></a></p>
+<p style="text-align: center;">直接按回车开始自动安装：
+<a href="http://www.cactifans.org/wp-content/uploads/2012/06/5.png"><img class="size-full wp-image-649 aligncenter" title="5" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/5.png" width="720" height="400" /></a></p>
+<p style="text-align: center;">安装过程需要5分钟左右，安装好之后（启动到进度条那里会卡以下，是由于网络ip问题，等待，会过去的）
+<a href="http://www.cactifans.org/wp-content/uploads/2012/06/21.png"><img class="size-full wp-image-650 aligncenter" title="21" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/21.png" width="720" height="400" /></a></p>
+安装后，默认使用静态ip，ip地址为192.168.1.10，安装好之后要根据你自己的网络情况设定IP。按一下步骤更改服务器IP。登录系统，用户名:root 密码：cactifans.org<br />
+登录后输入
+<pre class="brush: bash; gutter: true">system-config-network</pre>
+<p style="text-align: center;">回车，出现如图修改ip
+<a href="http://www.cactifans.org/wp-content/uploads/2012/06/8.png"><img class="size-full wp-image-651 aligncenter" title="8" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/8.png" width="720" height="400" /></a></p>
+<p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2012/06/10.png"><img class="size-full wp-image-653 aligncenter" title="10" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/10.png" width="720" height="400" /></a></p>
+修改完，选ok，保存并退出<br />
+输入
+<pre class="brush: bash; gutter: true">/etc/init.d/network restart</pre>
+重启网卡<br />
+打开浏览器http://xxx.xxx.xxx.xxx/<br />
+用户名：admin 密码：admin 登录后要强制修改密码，输入要设置的密码点ok，就进入系统了；
+<p style="text-align: center;">开始使用吧！<br />
+图形
+<a href="http://www.cactifans.org/wp-content/uploads/2012/06/11.png"><img class="size-large wp-image-654 aligncenter" title="11" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/11-1024x787.png" width="1024" height="787" /></a></p>
+<p style="text-align: center;">NPC
+<a href="http://www.cactifans.org/wp-content/uploads/2012/06/13.png"><img class="size-large wp-image-656 aligncenter" title="13" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/13-1024x701.png" width="1024" height="701" /></a></p>
+syslog
+<p style="text-align: center;"><a href="http://www.cactifans.org/index.php/2012/03/cacti%e6%8f%92%e4%bb%b6%e8%af%a6%e8%a7%a3-syslog/6-6/" rel="attachment wp-att-457"><img class="size-full wp-image-457 aligncenter" alt="6" src="http://www.cactifans.org/wp-content/uploads/2012/03/6.png" width="1263" height="826" /></a></p>
+<p style="text-align: center;">nagios
+<a href="http://www.cactifans.org/wp-content/uploads/2012/06/16.png"><img class="size-large wp-image-659 aligncenter" title="16" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/16-1024x787.png" width="1024" height="787" /></a></p>
+<p style="text-align: center;">nconf
+<a href="http://www.cactifans.org/wp-content/uploads/2012/06/17.png"><img class="size-large wp-image-660 aligncenter" title="17" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/17-1024x787.png" width="1024" height="787" /></a></p>
+<p style="text-align: center;">webmin
+<a href="http://www.cactifans.org/wp-content/uploads/2012/06/19.png"><img class="size-large wp-image-661 aligncenter" title="19" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/19-1024x787.png" width="1024" height="787" /></a></p>
+phpmyadmin
+<p style="text-align: center;"><a href="http://www.cactifans.org/wp-content/uploads/2012/06/18.png"><img class="size-large wp-image-662 aligncenter" title="18" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/18-1024x787.png" width="1024" height="787" /></a></p>
+<p style="text-align: center;">模版
+<a href="http://www.cactifans.org/wp-content/uploads/2012/06/20.png"><img class="size-large wp-image-663 aligncenter" title="20" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/06/20-1024x738.png" width="1024" height="738" /></a></p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Centos6.2+Openvpn+Radius+Mysql+daloRADIUS]]></title>
+    <link href="http://canghai809.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius/"/>
+    <updated>2012-04-24T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius</id>
+    <content type="html"><![CDATA[<p>OpenVPN是不同于PPTP、L2TP的另一种VPN软件包，基于SSL的VPN。OpenVPN使用需要客户端支持。</p>
+
+<p>OS:CentOS 6.2 I386<br />
+Openvpn:openvpn-2.2.1-1.el6.i686<br />
+Radius:freeradius-2.1.10-5.el6.i686<br />
+Mysql:mysql 5.1.61<br />
+Daloradiuus:daloradius-0.9-9
+<h1><span style="color: #ff0000;">一、CentOS系统设置和LAMP</span></h1>
+<h2>1.安装系统并设置源</h2>
+最小化安装centos6.2，并添加centos的升级镜像，添加epel镜像<br />
+首先备份/etc/yum.repos.d/CentOS-Base.repo<!--more-->
+<pre class="brush: bash; gutter: true">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</pre>
+下载对应版本repo文件, 放入/etc/yum.repos.d/(操作前请做好相应备份)
+<pre class="brush: bash; gutter: true">cd /etc/yum.repos.d/
+wget http://mirrors.163.com/.help/CentOS6-Base-163.repo
+yum -y update
+reboot
+sudo -s
+LANG=C
+yum -y install wget ntp
+ntpdate pool.ntp.org
+yum -y install httpd mysql mysql-devel mysql-server php php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc
+yum -y install gcc gcc-c++ autoconf libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers</pre>
+<h2>2.关闭selinux</h2>
+<pre class="brush: bash; gutter: true">vi /etc/sysconfig/selinux
+# This file controls the state of SELinux on the system.</pre></p>
+
+<p># SELINUX= can take one of these three values:</p>
+
+<p>#       enforcing - SELinux security policy is enforced.</p>
+
+<p>#       permissive - SELinux prints warnings instead of enforcing.</p>
+
+<p>#       disabled - SELinux is fully disabled.</p>
+
+<p>SELINUX=enforcing</p>
+
+<p># SELINUXTYPE= type of policy in use. Possible values are:</p>
+
+<p>#       targeted - Only targeted network daemons are protected.</p>
+
+<p>#       strict - Full SELinux protection.</p>
+
+<p>SELINUXTYPE=targeted
+把SELINUX=enforcing改为SELINUX=disabled并保存！在这个时候SElinux还在运行关闭，再执行以下命令
+<pre class="brush: bash; gutter: true">setenforce 0
+chkconfig httpd on
+chkconfig mysqld on
+/etc/init.d/httpd start
+/etc/init.d/mysqld start
+mysqladmin -u root password mysqlpwd</pre>
+清除防火墙规则
+<pre class="brush: bash; gutter: true">iptables -F</pre>
+<h2>3.建立php测试文件</h2>
+<pre class="brush: bash; gutter: true">vi /var/www/html/test.php</pre>
+输入如下内容
+<pre class="brush: php; gutter: true">&lt;?php
+phpinfo();
+?&gt;</pre>
+<h1><span style="color: #ff0000;">二、安装raidus，并配置mysql验证</span></h1>
+<h2>1.安装radius</h2>
+<pre class="brush: bash; gutter: true">yum install -y freeradius freeradius-mysql freeradius-utils</pre>
+配置本地用户测试radius
+<pre class="brush: bash; gutter: true">vi /etc/raddb/users</pre>
+在文件最后一行把前面的注释去掉
+<pre class="brush: bash; gutter: true">testuser Cleartext-Password := &quot;testpassword&quot;</pre>
+然后执行
+<pre class="brush: bash; gutter: true">chkconfig radiusd on
+/etc/init.d/radiusd restart</pre>
+运行
+<pre class="brush: bash; gutter: true">radtest testuser testpassword localhost 1812 testing123</pre>
+如果看到
+<pre class="brush: bash; gutter: true">Sending Access-Request of id 86 to 127.0.0.1 port 1812
+User-Name = &quot;testuser&quot;
+User-Password = &quot;testpassword&quot;
+NAS-IP-Address = 127.0.0.1
+NAS-Port = 1812
+rad_recv: Access-Accept packet from host 127.0.0.1 port 1812, id=86, length=20</pre>
+则表示radius服务器配置成功。
+<h2>2.为radius配置mysql验证</h2>
+<pre class="brush: bash; gutter: true">cp /etc/raddb/clients.conf /etc/raddb/clients.conf.bak
+grep -v \# /etc/raddb/clients.conf.bak &gt; /etc/raddb/clients.conf</pre>
+编辑client文件
+<pre class="brush: bash; gutter: true">vi /etc/raddb/clients.conf
+client  0.0.0.0 {
+ipaddr=127.0.0.1
+secret = testing123
+shortname = localhost
+}</pre>
+编辑用户文件，注释掉测试用户
+<pre class="brush: bash; gutter: true">vi /etc/raddb/users
+#testuser Cleartext-Password := &quot;testpassword&quot;</pre>
+备份并导入数据库
+<pre class="brush: bash; gutter: true">cp /etc/raddb/sql/mysql/admin.sql /etc/raddb/sql/mysql/admin.sql.bak
+grep -v \# /etc/raddb/sql/mysql/admin.sql.bak &gt; /etc/raddb/sql/mysql/admin.sql
+vi /etc/raddb/sql/mysql/admin.sql
+CREATE USER &#039;radius&#039;@&#039;localhost&#039;;
+SET PASSWORD FOR &#039;radius&#039;@&#039;localhost&#039; = PASSWORD(&#039;radpass&#039;);
+GRANT All ON radius.* TO &#039;radius&#039;@&#039;localhost&#039;;</pre>
+数据库为radius，密码为radpass，如果要自己设置，设置完成后还要修改sql.conf把密码改为自己设置的
+<pre class="brush: bash; gutter: true">vi /etc/raddb/sql.conf
+change the password &#039;radpass&#039; to &#039;radpass&#039;</pre>
+导入radius数据库
+<pre class="brush: bash; gutter: true">mysql -u root -p
+create database radius;
+exit
+mysql -u root -p radius &lt; /etc/raddb/sql/mysql/admin.sql
+mysql -u root -p radius &lt; /etc/raddb/sql/mysql/schema.sql
+mysql -u root -p radius &lt; /etc/raddb/sql/mysql/nas.sql
+mysql -u root -p radius &lt; /etc/raddb/sql/mysql/ippool.sql</pre>
+编辑radius配置文件，使其使用sql认证，去掉INCLUDE sql.conf 前面的#号
+<pre class="brush: bash; gutter: true">vi /etc/raddb/radiusd.conf
+$INCLUDE sql.conf</pre>
+修改sql.conf
+<pre class="brush: bash; gutter: true">vi /etc/raddb/sql.conf
+server = &quot;localhost&quot;
+port = 3306
+login = &quot;radius&quot;
+password = &quot;radpass&quot;
+radius_db = &quot;radius&quot;
+readclients = yes</pre>
+修改认证的方式
+<pre class="brush: bash; gutter: true">vi /etc/raddb/sites-enabled/default
+authorize {
+preprocess
+chap
+mschap
+suffix
+eap
+sql
+pap
+}
+accounting {
+detail
+sql
+}</pre></p>
+
+<p>session {<br />
+radutmp<br />
+sql<br />
+}
+插入测试数据
+<pre class="brush: bash; gutter: true">mysql -u root -p
+muse radius;
+INSERT INTO radcheck (UserName, Attribute, Value) VALUES (&#039;user1&#039;, &#039;Password&#039;,&#039;password1&#039;);
+exit</pre>
+运行radius服务器
+<pre class="brush: bash; gutter: true">/etc/init.d/radiusd restart</pre>
+测试radius服务器执行
+<pre class="brush: bash; gutter: true">radtest user1 password1 localhost 1812 testing123</pre>
+如果看到如下信息，表示radius服务器工作正常
+<pre class="brush: bash; gutter: true">Sending Access-Request of id 129 to 127.0.0.1 port 1812
+User-Name = &quot;user1&quot;
+User-Password = &quot;password1&quot;
+NAS-IP-Address = 127.0.0.1
+NAS-Port = 1812
+rad_recv: Access-Accept packet from host 127.0.0.1 port 1812, id=129, length=20</pre>
+如果看到以上信息，表示radius服务器可以用mysql验证了。
+<h1><span style="color: #ff0000;">三、安装openvpn</span></h1>
+<h2>1.安装openvpn</h2>
+<pre class="brush: bash; gutter: true">yum install -y openvpn</pre>
+<h2>2.建立证书</h2>
+<pre class="brush: bash; gutter: true">cp -R /usr/share/openvpn/easy-rsa/ /etc/openvpn/</pre>
+然后开始建立server的ca，key
+<pre class="brush: bash; gutter: true">cd /etc/openvpn/easy-rsa/2.0/</pre>
+编辑vars，按shit+g跳转到最下面，编辑成你需要的信息。
+<pre class="brush: bash; gutter: true">export KEY_COUNTRY=&quot;CN&quot;
+export KEY_PROVINCE=&quot;CN&quot;
+export KEY_CITY=&quot;XiangYang&quot;
+export KEY_ORG=&quot;cactifans&quot;
+export KEY_EMAIL=&quot;cactifans@gmail.com&quot;</pre>
+然后指定编译源
+<pre class="brush: bash; gutter: true">source ./vars</pre>
+下面开始生成ca证书
+<pre class="brush: bash; gutter: true">./clean-all
+./build-ca ca</pre>
+直接回车完成</p>
+
+<p>再生成server.key
+<pre class="brush: bash; gutter: true">./build-key-server server</pre>
+回车直到最后两项，按“Y”确认。</p>
+
+<p>然后我们需要生成Diffie Hellman参数，这个需要一点时间的。
+<pre class="brush: bash; gutter: true">./build-dh</pre>
+下面，我们还需要生成一个tls验证key
+<pre class="brush: bash; gutter: true">openvpn --genkey --secret keys/ta.key</pre>
+到这里先做个小结：我们生成的文件都放在/etc/openvpn/easy-rsa/2.0/keys/，记住，我们等会会用到这个路径。
+<h2>3.安装radiusplugin</h2>
+radiusplugin是radius的一个插件，可以让openvpn使用radius服务器来验证
+<pre class="brush: bash; gutter: true">yum install -y libgcrypt libgpg-error libgcrypt-devel
+wget http://www.nongnu.org/radiusplugin/radiusplugin_v2.1.tar.gz
+tar zxvf radiusplugin_v2.1.tar.gz
+cd radiusplugin
+make
+cp radiusplugin.so /etc/openpnvpn
+cp radiusplugin.cnf /etc/openvpn</pre>
+编辑radiusplugin.cnf
+<pre class="brush: bash; gutter: true">vi /etc/openvpn/radiusplugin.cnf
+server
+{
+# The UDP port for radius accounting.
+acctport=1813
+# The UDP port for radius authentication.
+authport=1812
+# The name or ip address of the radius server.
+name=127.0.0.1
+# How many times should the plugin send the if there is no response?
+retry=1
+# How long should the plugin wait for a response?
+wait=1
+# The shared secret.
+sharedsecret=testing123</pre>
+<h2>4.配置openvpn</h2>
+<pre class="brush: bash; gutter: true">cp /usr/share/doc/openvpn-2.2.1/sample-config-files/server.conf /etc/openvpn/
+vi /etc/openvpn/server.conf
+port 1194
+proto udp
+dev tun
+#指定位置
+ca /etc/openvpn/easy-rsa/2.0/keys/ca.crt
+cert /etc/openvpn/easy-rsa/2.0/keys/server.crt
+key /etc/openvpn/easy-rsa/2.0/keys/server.key
+dh /etc/openvpn/easy-rsa/2.0/keys/dh1024.pem
+tls-auth /etc/openvpn/easy-rsa/2.0/keys/ta.key 0
+client-config-dir /etc/raddb/clients.conf
+server10.8.0.0 255.255.255.0
+push &quot;redirect-gateway def1&quot;
+push &quot;dhcp-option DNS 8.8.8.8&quot;
+push &quot;dhcp-option DNS 8.8.4.4&quot;
+push &quot;dhcp-option DNS 10.8.0.1&quot;
+client-to-client
+keepalive 10 120
+comp-lzo
+persist-key
+persist-tun
+client-cert-not-required
+username-as-common-name
+#这里是指定radiusplugin.so这个插件
+plugin /etc/openvpn/radiusplugin.so /etc/openvpn/radiusplugin.cnf
+#log#日志存放目录
+log /var/log/openvpn.log
+status /var/log/openvpn-status.log
+# Verbosity level.
+# 0 -- quiet except for fatal errors.
+# 1 -- mostly quiet, but display non-fatal network errors.
+# 3 -- medium output, good for normal operation.
+# 9 -- verbose, good for troubleshooting
+#日志级别
+verb 3</pre>
+更改系统参数
+<pre class="brush: bash; gutter: true">vi /etc/sysctl.conf</pre>
+将net.ipv4.ip_forward = 0修改为net.ipv4.ip_forward = 1<br />
+并使其立即生效
+<pre class="brush: bash; gutter: true">sysctl -p</pre>
+配置iptables
+<pre class="brush: bash; gutter: true">iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j SNAT --to-source 192.168.1.2
+iptables -A INPUT -p udp -m udp --dport 1194 -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+iptables -A INPUT -i tun0 -j ACCEPT
+iptables -A INPUT -i tun0 -j ACCEPT
+iptables -A FORWARD -i tun0 -j ACCEPT
+iptables -A OUTPUT -o tun0 -j ACCEPT
+service iptables save
+service iptables restart
+chkconfig openvpn on
+service openvpn start</pre>
+192.168.1.2为你的服务器的ip
+<h1><span style="color: #ff0000;"> 四、安装daloradius</span></h1>
+<pre class="brush: bash; gutter: true">wget http://download.pear.php.net/package/DB-1.7.14RC2.tgz
+pear install DB-1.7.14RC2.tgz
+wget http://nchc.dl.sourceforge.net/project/daloradius/daloradius/daloradius0.9-9/daloradius-0.9-9.tar.gz
+tar -zxvf daloradius-0.9-9.tar.gz
+mv daloradius-0.9-9 daloradius
+cp -rf daloradius/* /var/www/html/
+chown apache:apache -R /var/www/html/
+chmod 644 /var/www/html/library/daloradius.conf.php
+cd /var/www/html/contrib/db/
+mysql -u root -p radius &lt; mysql-daloradius.sql</pre>
+修改daloradius配置文件
+<pre class="brush: bash; gutter: true">vi /var/www/html/library/daloradius.conf.php</pre></p>
+
+<p>###########<br />
+$configValues[&#039;DALORADIUS_VERSION&#039;] = &#039;0.9-9&#039;;<br />
+$configValues[&#039;FREERADIUS_VERSION&#039;] = &#039;2&#039;;<br />
+$configValues[&#039;CONFIG_DB_ENGINE&#039;] = &#039;mysql&#039;;<br />
+$configValues[&#039;CONFIG_DB_HOST&#039;] = &#039;localhost&#039;;<br />
+$configValues[&#039;CONFIG_DB_USER&#039;] = &#039;radius&#039;;<br />
+$configValues[&#039;CONFIG_DB_PASS&#039;] = &#039;radpass&#039;;<br />
+$configValues[&#039;CONFIG_DB_NAME&#039;] = &#039;radius&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADCHECK&#039;] = &#039;radcheck&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADREPLY&#039;] = &#039;radreply&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADGROUPREPLY&#039;] = &#039;radgroupreply&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADGROUPCHECK&#039;] = &#039;radgroupcheck&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADUSERGROUP&#039;] = &#039;radusergroup&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADNAS&#039;] = &#039;nas&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADPOSTAUTH&#039;] = &#039;radpostauth&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADACCT&#039;] = &#039;radacct&#039;;
+&#8230;&#8230;&#8230;..<br />
+建立daloradius日志
+<pre class="brush: bash; gutter: true">touch /tmp/daloradius.log
+chown apache.apache /tmp/daloradius.log</pre>
+安装完后打开Http://xxx.xxx.xxx.xxx就可以看到daloradius了，登录的用户名密码为
+<pre class="brush: bash; gutter: true">username: administrator
+password: radius</pre>
+<h1><span style="color: #ff0000;">五、client端设置</span></h1>
+下载http://swupdate.openvpn.org/community/releases/openvpn-2.2.1-install.exe<br />
+在安装目录下有个config目录，<br />
+将服务器上了的ca.crt，ca.key，ta.key三个文件复制到config下。<br />
+新建一个文本文件，输入以下内容。
+<pre class="brush: bash; gutter: true">client
+dev tun
+proto udp
+remote 192.168.1.2 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+tls-auth ta.key 1
+ns-cert-type server
+comp-lzo
+verb 3
+auth-user-pass</pre>
+保存为client.ovpn,remote为你的openvpn服务器外网ip，端口1194<br />
+设置运行openvpn-gui，在左面右下角，右键点击，connect，就可以连接到openvpn服务器了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[cacti-0.8.8发布]]></title>
+    <link href="http://canghai809.github.io/blog/2012/04/12/cacti-0-8-8%E5%8F%91%E5%B8%83/"/>
+    <updated>2012-04-12T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2012/04/12/cacti-0-8-8发布</id>
+    <content type="html"><![CDATA[<p>cacti-0.8.8终于发布了，修复了很多bug，而且集成了PIA,以后就估计就没有PIA这个说法了。</p>
+
+<p>Release Notes - 0.8.8</p>
+
+<p>Important Notices</p>
+
+<p><span style="color: #ff0000;">Plugin Architecture is now part of Cacti</span>
+Changelog</p>
+
+<p>&nbsp;
+<ul>
+<ul>
+	<li>bug#0002056: un-initialized datetime used for host status (was: Zero length string != NULL)</li>
+	<li>bug#0002081: In Graph Management, search display graph title breaks when using pattern symbol &#8220;/&#8221;</li>
+	<li>bug#0002132: need to include pa.sql with the 0.8.7i and future releases</li>
+	<li>bug#0002134: rebuild_poller_cache.php &#8211;host-id deletes table poller_item completely</li>
+	<li>bug#0002141: cacti.sql missing BTREE PRIMARY KEY for poller_output</li>
+	<li>bug#0002146: Utilities -&gt; View Log File -&gt; refresh does not work</li>
+	<li>bug#0002150: usort_data_query_index() is broken -&gt; graph order for hosts with data query sort option fails</li>
+	<li>bug#0002151: When building HTML forms with sub_checkbox on_change parameter is not used</li>
+	<li>bug#0002152: Issue with filter on graphs_new.php</li>
+</ul>
+</ul>
+<!--more-->
+<ul>
+	<li>bug#0002153: Cant search for patterns containing a forward-slash</li>
+	<li>bug#0002156: CDEF strings are not escaped before passed to rrdtool command</li>
+	<li>bug#0002158: Minor changes to grammar of displayed messages</li>
+	<li>bug#0002165: Using data input field in data source name (related to 2079 in 0.8.7i)</li>
+	<li>bug#0002167: New poller hook poller_finishing</li>
+	<li>bug#0002172: structure_rra_paths.php does not handle disabled data sources</li>
+	<li>bug#0002174: poller_item.host_id has wrong type</li>
+	<li>bug#0002178: typo in include/global_form.php: Mimimum -&gt; Minimum</li>
+	<li>bug#0002181: session_unregister (use in functions.php) doesn&#8217;t exist anymore in PHP 5.4</li>
+	<li>bug#0002182: When there is no suitable (unique) index, graphs are not shown in data query ordering on host leafs</li>
+	<li>bug#0002189: Proper graph hooks</li>
+	<li>bug#0002191: Refresh issues</li>
+	<li>bug#0002194: changing data query XML does not propagate to existing data sources</li>
+	<li>bug: Fix input validation on cli/api_device.php</li>
+	<li>bug: Fix issue with data source template associate command line script inserting incorrect rra information</li>
+	<li>bug: Fix minor display issue on data source pages</li>
+	<li>bug: Fix minor issue with counting items in the poller_output table</li>
+	<li>bug: Graph settings and settings check boxes do not allow unchecking to be saved</li>
+	<li>bug: Fix minor issue with plugin library caused by non-session</li>
+	<li>bug: Fix SQL error on data input save for non-templated graphs</li>
+	<li>bug: user_log index added to increase performance</li>
+	<li>feature: Merge Plugin Architecture into Cacti</li>
+	<li>feature: Added index to data_template_data to increase performance</li>
+</ul>
+安装好之后就直接看到到了Plugin Management。</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/04/a.png"><img class="alignnone size-large wp-image-591" title="a" src="http://www.cactifans.org/wp-content/uploads/2012/04/a-1024x458.png" alt="" width="1024" height="458" /></a></p>
+
+<p>初步使用不错，在导入模版的时候发现提示</p>
+
+<p><span style="color: #ff0000;"> Importing template Error: XML: Cacti version does not exist</span></p>
+
+<p>在cacti论坛里找到这个解决方法，原来这个是bug，并且已经提交，并修复了。</p>
+
+<p><a href="http://bugs.cacti.net/view.php?id=2207">http://bugs.cacti.net/view.php?id=2207</a></p>
+
+<p>临时的解决办法就是
+<pre lang="bash" line="1" escaped="true">vi include/global_arrays.php
+$hash_version_codes = array(
+&quot;0.8.4&quot; =&gt; &quot;0000&quot;,
+&quot;0.8.5&quot; =&gt; &quot;0001&quot;,
+&quot;0.8.5a&quot; =&gt; &quot;0002&quot;,
+&quot;0.8.6&quot; =&gt; &quot;0003&quot;,
+&quot;0.8.6a&quot; =&gt; &quot;0004&quot;,
+&quot;0.8.6b&quot; =&gt; &quot;0005&quot;,
+&quot;0.8.6c&quot; =&gt; &quot;0006&quot;,
+&quot;0.8.6d&quot; =&gt; &quot;0007&quot;,
+&quot;0.8.6e&quot; =&gt; &quot;0008&quot;,
+&quot;0.8.6f&quot; =&gt; &quot;0009&quot;,
+&quot;0.8.6g&quot; =&gt; &quot;0010&quot;,
+&quot;0.8.6h&quot; =&gt; &quot;0011&quot;,
+&quot;0.8.6i&quot; =&gt; &quot;0012&quot;,
+&quot;0.8.6j&quot; =&gt; &quot;0013&quot;,
+&quot;0.8.7&quot; =&gt; &quot;0014&quot;,
+&quot;0.8.7a&quot; =&gt; &quot;0015&quot;,
+&quot;0.8.7b&quot; =&gt; &quot;0016&quot;,
+&quot;0.8.7c&quot; =&gt; &quot;0017&quot;,
+&quot;0.8.7d&quot; =&gt; &quot;0018&quot;,
+&quot;0.8.7e&quot; =&gt; &quot;0019&quot;,
+&quot;0.8.7f&quot; =&gt; &quot;0020&quot;,
+&quot;0.8.7g&quot; =&gt; &quot;0021&quot;,
+&quot;0.8.7h&quot; =&gt; &quot;0022&quot;,
+&quot;0.8.7i&quot; =&gt; &quot;0023&quot;
+);</pre>
+找到这里，在这里添加一个
+<pre lang="bash" line="1" escaped="true">&quot;0.8.8&quot;  =&gt; &quot;0024&quot;</pre>
+并在&#8221;0.8.7i&#8221; =&gt; &#8220;0023&#8221;后加一个，<br />
+修改好后为
+<pre lang="bash" line="1" escaped="true">$hash_version_codes = array(
+&quot;0.8.4&quot; =&gt; &quot;0000&quot;,
+&quot;0.8.5&quot; =&gt; &quot;0001&quot;,
+&quot;0.8.5a&quot; =&gt; &quot;0002&quot;,
+&quot;0.8.6&quot; =&gt; &quot;0003&quot;,
+&quot;0.8.6a&quot; =&gt; &quot;0004&quot;,
+&quot;0.8.6b&quot; =&gt; &quot;0005&quot;,
+&quot;0.8.6c&quot; =&gt; &quot;0006&quot;,
+&quot;0.8.6d&quot; =&gt; &quot;0007&quot;,
+&quot;0.8.6e&quot; =&gt; &quot;0008&quot;,
+&quot;0.8.6f&quot; =&gt; &quot;0009&quot;,
+&quot;0.8.6g&quot; =&gt; &quot;0010&quot;,
+&quot;0.8.6h&quot; =&gt; &quot;0011&quot;,
+&quot;0.8.6i&quot; =&gt; &quot;0012&quot;,
+&quot;0.8.6j&quot; =&gt; &quot;0013&quot;,
+&quot;0.8.7&quot; =&gt; &quot;0014&quot;,
+&quot;0.8.7a&quot; =&gt; &quot;0015&quot;,
+&quot;0.8.7b&quot; =&gt; &quot;0016&quot;,
+&quot;0.8.7c&quot; =&gt; &quot;0017&quot;,
+&quot;0.8.7d&quot; =&gt; &quot;0018&quot;,
+&quot;0.8.7e&quot; =&gt; &quot;0019&quot;,
+&quot;0.8.7f&quot; =&gt; &quot;0020&quot;,
+&quot;0.8.7g&quot; =&gt; &quot;0021&quot;,
+&quot;0.8.7h&quot; =&gt; &quot;0022&quot;,
+&quot;0.8.7i&quot; =&gt; &quot;0023&quot;,
+&quot;0.8.8&quot; =&gt; &quot;0024&quot;
+);</pre>
+这样就可以解决了，别的还在测试中。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cacti插件详解——Syslog]]></title>
+    <link href="http://canghai809.github.io/blog/2012/03/12/cacti%E6%8F%92%E4%BB%B6%E8%AF%A6%E8%A7%A3-syslog/"/>
+    <updated>2012-03-12T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2012/03/12/cacti插件详解-syslog</id>
+    <content type="html"><![CDATA[<p><code></code><span style="font-size: 18px;">     cacti中syslog插件，是通过rsyslog或syslog-ng与mysql的交互，将日志存放到mysql数据库中，cacti中的syslog插件从mysql中检索查看日志数据。因此，首先要配置一台rsyslog与mysql的日志中心服务器来接收客户机的日志;其次，配置cacti的syslog插件，通过该插件检索与查询mysql</span><span style="font-size: 18px;">中的日志。可以收集来自linux、windows等服务器和交换机路由器的日志。做到集中和分类查看。</span>
+<div></div>
+<div><span style="font-size: 18px;">说下软件环境</span></div>
+<div><span style="font-size: 18px;">os：centos6.2x86</span></div>
+<div><span style="font-size: 18px;">cacti-0.8.7i-PIA-3.1.tar.gz</span></div>
+<div><span style="font-size: 18px;">syslog-v1.22-2.tgz</span></div>
+<div><span style="font-size: 18px;">rsyslog-4.6.2-12.el6.i686</span></div>
+<div></div>
+<div><span style="font-size: 18px;">关于cacti的安装我这里就不详细讲了，可以在我的另外二篇文章</span></div>
+<div></div>
+<!--more-->
+<h2 class="entry-title" style="font-size: 20px; line-height: 26px; text-shadow: rgba(0, 0, 0, 0.199219) 1px 1px 3px; color: #000000; font-family: 微软雅黑; padding: 0px; margin: 0px;"><span style="text-decoration: underline;"><span style="font-size: 18px;"><a style="text-decoration: none; color: #000000;" title="链向 Cacti 0.8.7g在CentOS5.5上的安装（1） 的固定链接" href="http://www.cactifans.org/index.php/2011/09/cacti-0-8-7g%E5%9C%A8centos5-5%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/" rel="bookmark">Cacti 0.8.7g在CentOS5.5上的安装（1）</a></span></span></h2>
+&nbsp;
+<h2 class="entry-title" style="font-size: 20px; line-height: 26px; text-shadow: rgba(0, 0, 0, 0.199219) 1px 1px 3px; color: #000000; font-family: 微软雅黑; padding: 0px; margin: 0px;"><span style="text-decoration: underline;"><span style="font-size: 18px;"><a style="text-decoration: none; color: #000000;" title="链向 Cacti 0.8.7g在CentOS5.5上的安装（2） 的固定链接" href="http://www.cactifans.org/index.php/2011/09/cacti-0-8-7g%e5%9c%a8centos5-5%e4%b8%8a%e7%9a%84%e5%ae%89%e8%a3%85%ef%bc%882%ef%bc%89/" rel="bookmark">Cacti 0.8.7g在CentOS5.5上的安装（2）</a></span></span></h2>
+<span style="font-size: 18px;">由于我们此次安装的是集成PIA的cacti，因此不用单独安装PIA,</span><span style="font-size: 18px;">安装好cacti以后要启用Plugin Management,然后我们下载syslog插件</span></p>
+
+<p>&nbsp;
+<h2><span style="font-size: 18px;">1.设置接收日志</span></h2>
+<h1><span style="font-size: 18px;">要想接收日志信息，并在cacti的syslog插件中显示接收到的日志，首先是接收日志，有二种办法：</span></h1>
+<span style="font-size: 18px;">1.使用syslog-ng，在centos5.5及以下系统上，系统默认有syslog，可以发送日志，但不能接受日志，因此要借助于syslog-ng，来接收发送过来的日志，并规范成一个模版，再通过自己写的脚本，插入到mysql数据库里</span></p>
+
+<p><span style="font-size: 18px;">2.使用rsyslog，rsyslog是在centos6以上系统自带的，rsyslog不仅能接收日志，还可以发送日志，因此要是在centos6以上系统就不需要额外安装syslog-ng接收日志了，用自带的rsylog就可以接收日志，再用rsyslog-mysql就可以把接收到的日志写入mysql数据库</span></p>
+
+<p><span style="font-size: 18px;">下面我分别说明：</span>
+<h2>A.使用rsyslog</h2>
+<div><span style="font-size: 18px;">我用的是centos6.2使用的是rsyslog，配置下就可以用来接受日志。在centos5.5版本自带syslog，可是要收集日志就还要安装syslog-ng用来接受日志。另外还要安装rsyslog-mysql来把接受到的日志插入到mysql数据库里 </span></div>
+<pre class="brush: bash; gutter: true">yum install -y rsyslog rsyslog-mysql</pre>
+<div><span style="font-size: 18px;">下面我们要对rsyslog进行设置</span></div>
+<pre class="brush: bash; gutter: true">vi /etc/rsyslog.conf</pre>
+<div><span style="font-size: 18px;">在文件最后添加</span></div>
+<pre class="brush: bash; gutter: true">$ModLoad imudp.so
+$UDPServerRun 514
+$ModLoad ommysql
+$template cacti_syslog,&quot;INSERT INTO syslog_incoming(facility, priority, date, time, host, message) values (%syslogfacility%, %syslogpriority%, &#039;%timereported:::date-mysql%&#039;, &#039;%timereported:::date-mysql%&#039;, &#039;%HOSTNAME%&#039;, &#039;%msg%&#039;)&quot;, SQL
+*.* &amp;gt;localhost,syslog,cactiuser,cactifans.org;cacti_syslog</pre>
+<div /></p>
+
+<p><span style="font-size: 18px;"><span style="font-size: 18px;">然后保存，重新启动rsyslog，并设置rsyslog开机启动</span></span>
+<pre class="brush: bash; gutter: true">chkconfig rsyslog on
+service rsyslog restart</pre>
+<h2><span style="font-size: 18px;">B.使用syslog-ng</span></h2>
+<span style="font-size: 18px;"><span style="font-size: 18px;">syslog-ng在默认的源里没有，可以编译安装，在这里我用yum安装syslog-ng</span></span>
+<span style="font-size: 18px;"><span style="font-size: 18px;">首先添加一个第三方源</span></span>
+<pre class="brush: bash; gutter: true">rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+yum install -y syslog-ng</pre>
+<span style="font-size: 17px;">
+</span>
+<span style="font-size: 18px;"><span style="color: #000000; font-family: Verdana, Arial, sans-serif; line-height: 20px;">安装好后我们配置syslog-ng</span></span>
+<pre class="brush: bash; gutter: true">vi /etc/syslog-ng/syslog-ng.conf</pre>
+<p style="text-align: left;"><span style="font-size: 18px;"><span style="font-size: 18px;">在文件最后加入如下</span></span></p></p>
+
+<p><pre class="brush: bash; gutter: true">source net {</pre></p>
+
+<p>udp();<br />
+};</p>
+
+<p>destination d_mysql {<br />
+pipe(&quot;/tmp/mysql.pipe&quot;<br />
+template(&quot;INSERT INTO syslog_incoming (host, facility, priority, date, time, message) VALUES ( &#039;$HOST&#039;, &#039;$FACILITY&#039;, &#039;$PRIORITY&#039;, &#039;$YEAR-$MONTH-$DAY&#039;, &#039;$HOUR:$MIN:$SEC&#039;, &#039;$MSG&#039; );\n&quot;)<br />
+template-escape(yes)<br />
+);<br />
+};</p>
+
+<p>log { source(net); destination(d_mysql); };<br />
+log { source(s_sys); destination(d_mysql); };
+<span style="font-size: 18px;">加入后保存，退出。</span>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">我们需要写一个脚本把syslog-ng接受到的数据写入到mysql数据库里</span></span></div>
+<pre class="brush: bash; gutter: true">vi /sbin/syslogtomysql
+#!/bin/bash
+if [ ! -e /tmp/mysql.pipe ]; then
+        mkfifo /tmp/mysql.pipe
+fi</pre></p>
+
+<p>while [ -e /tmp/mysql.pipe ]<br />
+do<br />
+        mysql -u cactiuser &#8211;password=cactifans.org syslog &lt; /tmp/mysql.pipe<br />
+done
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">保存退出，我们赋予执行权限</span></span></div>
+<pre class="brush: bash; gutter: true">chmod +x /sbin/syslogtomysql</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">上面的mysql -u syslog （syslog为用户名 密码为syslogpwd，数据库名为syslog）</span></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">我们执行</span></span></div>
+<pre class="brush: bash; gutter: true">/sbin/syslogtomysql &amp;</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">再启动syslog-ng</span></span></div>
+<pre class="brush: bash; gutter: true">/etc/init.d/syslog-ng start</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">写好后我们把这个脚本写到开机启动里</span></span></div>
+<pre class="brush: bash; gutter: true">vi /etc/rc.local</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">添加如下</span></span></div>
+<pre class="brush: bash; gutter: true">/sbin/syslogtomysql &amp;</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">设置syslog-ng开机启动</span></span></div>
+<pre class="brush: bash; gutter: true">chkconfig syslog-ng on</pre>
+<span style="color: #000000; font-family: Verdana, Arial, sans-serif; font-size: 18px; line-height: 20px; text-align: left;">至此syslog的设置完成</span></p>
+
+<p>
+<p style="text-align: left;"><span style="font-size: 18px;"><span style="font-size: 18px;"><span style="color: #000000; font-family: Verdana, Arial, sans-serif; line-height: 20px;">syslog-ng和rsyslog的设置就说到这里，基本都是差不多，不过rsyslog好设置一点不用独立写脚本就成。在centos6以上版本中也可以用syslog-ng来接收日志。以下的安装步骤就一样了。</span></span></span></p>
+<p style="text-align: left;"><span style="font-size: 18px;"> </span></p></p>
+
+<p><h1 style="text-align: left;"><span style="font-size: 18px;">2.配置syslog的数据库</span></h1>
+<div><span style="font-size: 18px;"> </span></div>
+<pre class="brush: bash; gutter: true">mysql -uroot -p
+create database syslog；
+GRANT ALL ON syslog.* TO cactiuser@localhost IDENTIFIED BY &#039;cactifans.org； quit；</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">设置的数据库名：syslog 用户名：cactiuser 密码：cactifans.org 可以自行设定</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<h1><span style="font-size: 18px;"><span style="font-size: 18px;">3.安装syslog插件</span></span></h1>
+<div><span style="font-size: 18px;"> </span></div>
+<pre class="brush: bash; gutter: true">wget http://docs.cacti.net/_media/plugin:syslog-v1.22-2.tgz -O syslog.tgz
+tar zxvf syslog*.tgz -C /var/www/html/plugins
+chown -R apache:apache /var/www/html/plugins/syslog</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">接下来我们进行一下配置</span></span></div>
+<pre class="brush: bash; gutter: true">vi /var/www/html/plugins/syslog/config.php
+......
+global $config, $database_type, $database_default, $database_hostname;
+global $database_username, $database_password, $database_port;</pre></p>
+
+<p>/* revert if you dont use the Cacti database */<br />
+$use_cacti_db = false;</p>
+
+<p>if (!$use_cacti_db) {<br />
+        $syslogdb_type     = &#039;mysql&#039;;<br />
+        $syslogdb_default  = &#039;syslog&#039;;<br />
+        $syslogdb_hostname = &#039;localhost&#039;;<br />
+        $syslogdb_username = &#039;cactiuser&#039;;<br />
+        $syslogdb_password = &#039;cactifans.org&#039;;<br />
+        $syslogdb_port     = 3306;<br />
+         }else{<br />
+        $syslogdb_type     = $database_type;<br />
+        $syslogdb_default  = $database_default;<br />
+       $syslogdb_hostname = $database_hostname;<br />
+       $syslogdb_username = $database_username;<br />
+       $syslogdb_password = $database_password;<br />
+       $syslogdb_port     = $database_port;<br />
+}
+&#8230;&#8230;.
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"><span style="color: #ff0000;">可以看到以上设置$use_cacti_db = false;这个是设置syslog是否要使用cacti的数据库，我在这里不使用cacti的数据，因为syslog往往比较多，日志比较多，为了便于备份和使用，还是选择用一个独立的数据库。</span>因此要在下面设置连接数据库的用户名，密码，数据库名等。设置好后我们打开cacti，点console——Plugin Management，可以看到syslog还没有被启用</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/1.png"><img class="alignleft size-full wp-image-451" title="1" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/1.png" width="796" height="589" /></a></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">我们点syslog前面的那个先下箭头的小原点，会出现如下图</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/2.png"><img class="alignleft size-large wp-image-452" title="2" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/2-1024x485.png" width="1024" height="485" /></a></span></div>
+<span style="font-size: 18px;"> </span>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">这里是对syslog数据的一些设置第分别为Database Storage Engine（数据库存储引擎）、Database Architecutre(数据库架构)</span><span style="font-size: 18px;">这二项在一般默认，如果你的mysql数据库为5.1.6后者以上可以选择InnoDB Storage 和Partitioned Table，可以提高syslog的性能</span><span style="font-size: 18px;">最后一项是Retention Policy（保留策略）就是要在syslog存储多长的时间，这个可以根据自己的需求设定，最后我们点install</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/3.png"><img class="alignleft size-full wp-image-454" title="3" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/3.png" width="830" height="418" /></a></span></div>
+<span style="font-size: 18px;"><span style="font-size: 18px;">就可以看到syslog已经安装，但是还没有启用，我们点那个绿色箭头就可以启用syslog</span></span>
+<p style="text-align: center;"><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/4.png"><img class="size-full wp-image-455 aligncenter" title="4" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/4.png" width="618" height="405" /></a></span></p>
+<span style="font-size: 18px;"><span style="font-size: 18px;">启用后我们可以看到syslog了</span></span>
+<p style="text-align: center;"><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/5.png"><img class="size-large wp-image-456 aligncenter" title="5" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/5-1024x447.png" width="1024" height="447" /></a></span></p>
+&nbsp;
+<h1><span style="font-size: 18px;">4.被监控端设置</span></h1>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">A.Linux服务器设置</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">如果系统用的是syslog或者sysklog可以添加如下到/etc/syslog.conf（具体位置可能有所不同）</span></span></div>
+<pre class="brush: bash; gutter: true">*.*     @192.168.0.111</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> @后面为你的cacti服务器IP地址</span></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> 设置完毕后重启syslog或者sysklog服务，并在防火墙上允许upd 514端口</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> 如果用的是rsyslog可以在rsylog的配置文件里添加如下(配置文件一般为rsyslog.conf)</span></span></div>
+<pre class="brush: bash; gutter: true"> *.*       @@192.168.0.111:514</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> @@后面为你的cacti服务器IP地址一般端口为514</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">设置完毕后重启rsyslog服务，并在防火墙上允许upd 514端口</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">通过以上设置就可以把服务器的所有日志发送到cacti服务器</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">B.网络设备</span></span></div>
+<pre class="brush: bash; gutter: true">logging 192.168.0.111</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">在设备上指定logging 为cacti的服务器就成了。（设备不通设置方法可能有所不同，可以参考设备说明书）</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">网络设备包括路由器，防火墙交换机。这样就可以在cacti里看到接受到的日志</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">效果图</span></span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/6.png"><img class="size-large wp-image-457 aligncenter" title="6" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/6-1024x669.png" width="1024" height="669" /></a></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">syslog可以接受到防火墙，路由器，交换机，服务器的日志，并自动分为7个等级，并用不通的颜色表示，看起来直观，也做到的日志的集中收集与查看.另外还可以在cacti里对的setting里对syslog插件进行一些设置。</span></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">本人菜鸟一个，如有错误之处，欢迎大家指正.</span></span></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[cacti整合nagios-cacti插件npc的使用]]></title>
+    <link href="http://canghai809.github.io/blog/2012/02/24/cacti%E6%95%B4%E5%90%88nagios-cacti%E6%8F%92%E4%BB%B6npc%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <updated>2012-02-24T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2012/02/24/cacti整合nagios-cacti插件npc的使用</id>
+    <content type="html"><![CDATA[<p><span style="font-size: 18px;"><span style="font-family: arial,helvetica,sans-serif;">                Nagios是</span>监控服务器的状态很强大，并且报警功能也不错，不过就是缺少直观的表示，在cacti的插件里有一个插件NPC，通过NDO</span><span style="font-size: 18px;">可以把Nagios里的数据展示在NPC标签里，很直观的就可以看到各种信息如图：</span></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc1.png"><img class="aligncenter size-full wp-image-410" title="npc1" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc1.png" width="1275" height="670" /></a></p>
+
+<p>图2</p>
+
+<p>&nbsp;</p>
+
+<p><!--more--></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc2.png"><img class="aligncenter size-large wp-image-411" title="npc2" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc2-1024x418.png" width="1024" height="418" /></a></p>
+
+<p><span style="font-size: 18px;">下面说一下我本次的安装环境；</span>
+<h1>1.软件环境</h1>
+<span style="font-size: 18px;">OS：CentOS6.2 i386（最小化安装，只安装开ssh-server）</span></p>
+
+<p><span style="font-size: 18px;">cacti-0.8.7i-PIA-3.1</span></p>
+
+<p><span style="font-size: 18px;">nagios-3.2.3-3.el6.rf.i686</span></p>
+
+<p><span style="font-size: 18px;">ndoutils-1.4-0.beta8.1.el6.rf.i686  (nagios的数据库支持）</span></p>
+
+<p><span style="font-size: 18px;">settings-v0.71-1 （cacti 插件）</span></p>
+
+<p><span style="font-size: 18px;">npc-2.4     （ <span style="font-family: Verdana;">nagios plugin for cacti ，</span>cacti插件）</span>
+<h1>2.环境支持</h1>
+<span style="font-size: 18px;">http mysql mysql-devel（ <span style="font-family: Verdana;">ndoutils需要它的支持</span>）php php-devel rrdtool <span style="font-family: Verdana;">net-snmp libtool</span></span></p>
+
+<p><span style="color: #ff0000;"><span style="font-size: 18px;"><span style="font-family: Verdana;">注：有人说要安装</span>php-json，经过测试在CentOS5.5里是要安装的，在CentOS6里，这个包已经在php-common里了，所以在安装php的时候就一起安装了</span></span>
+<h1>3.安装cacti</h1>
+<span style="font-size: 18px;">A.关闭SElinux</span>
+<pre class="brush: bash; gutter: true">vi /etc/sysconfig/selinux
+# This file controls the state of SELinux on the system.</pre></p>
+
+<p># SELINUX= can take one of these three values:</p>
+
+<p>#       enforcing - SELinux security policy is enforced.</p>
+
+<p>#       permissive - SELinux prints warnings instead of enforcing.</p>
+
+<p>#       disabled - SELinux is fully disabled.</p>
+
+<p>SELINUX=enforcing</p>
+
+<p># SELINUXTYPE= type of policy in use. Possible values are:</p>
+
+<p>#       targeted - Only targeted network daemons are protected.</p>
+
+<p>#       strict - Full SELinux protection.</p>
+
+<p>SELINUXTYPE=targeted
+<span style="font-size: 18px;">
+把SELINUX=enforcing改为SELINUX=disabled并保存！在这个时候SElinux还在运行关闭</span>
+<pre class="brush: bash; gutter: true">setenforce 0</pre>
+<span style="font-size: 18px;">B.防火墙</span></p>
+
+<p>一般我都是把防火墙直接关掉省的好多事情（生产环境不建议这么搞啊！嘿嘿！）
+<pre class="brush: bash; gutter: true">/etc/init.d/iptables stop
+/etc/init.d/ip6tables stop
+chkconfig iptables off
+chkconfig ip6tables off</pre>
+<span style="font-size: 18px;">C.由于一些包在官方的库中没有，因此我们要建立dag.repo，定义非官方库</span>
+<pre class="brush: bash; gutter: true">vi /etc/yum.repos.d/dag.repo
+[dag]</pre></p>
+
+<p>name=Dag RPM Repository for Red Hat Enterprise Linux<br />
+baseurl=http://apt.sw.be/redhat/el$releasever/en/$basearch/dag<br />
+gpgcheck=1<br />
+enabled=1
+然后再导入非官方库的GPG：
+<pre class="brush: bash; gutter: true">rpm --import http://dag.wieers.com/rpm/packages/RPM-GPG-KEY.dag.txt</pre>
+安装cacti需要的环境包
+<pre class="brush: bash; gutter: true">yum install -y httpd mysql mysql-server  php php-mysql php-devel net-snmp net-snmp-utils
+yum install -y zlib libpng freetype libjpeg fontconfig gd libxml2 patch wget
+yum install -y rrdtool</pre>
+<span style="font-size: 18px;">下载cacti-0.8.7i-PIA-3.1.tar.gz(这个是整合了cacti 0.8.7和 cacti-plugin-arch3.1的）并解压</span>
+<pre class="brush: bash; gutter: true">cd /var/www/html/
+yum install wget -y
+wget http://www.cacti.net/downloads/cacti-0.8.7i-PIA-3.1.tar.gz
+tar zxvf cacti-0.8.7i-PIA-3.1.tar.gz
+wget http://www.cacti.net/downloads/patches/0.8.7i/settings_checkbox.patch
+cd cacti-0.8.7i-PIA-3.1
+patch -p1 -N &lt; ../settings_checkbox.patch
+cd ..
+mv -f cacti-0.8.7i-PIA-3.1/* /var/www/html/
+rm -rf cacti-0.8.7i-PIA-3.1
+chown -R apache:apache /var/www/html/</pre>
+<span style="font-size: 18px;">D.为cacti创建数据库和用户</span>
+<pre class="brush: bash; gutter: true">service mysqld start
+/usr/bin/mysqladmin --user=root create cacti
+mysql -e &quot;GRANT ALL ON cacti.* TO cactiuser@localhost IDENTIFIED BY &#039;cactifans.org&#039;&quot;</pre>
+我们再导入cacti的数据库
+<pre class="brush: bash; gutter: true">mysql -ucactiuser -pcactifans.org cacti &lt; /var/www/html/cacti.sql</pre>
+修改cacti的配置文件并保存
+<pre class="brush: bash; gutter: true">vi /var/www/html/include/config.php</pre></p>
+
+<p>/* make sure these values refect your actual database/host/user/password */<br />
+$database_type = &quot;mysql&quot;;<br />
+$database_default = &quot;cacti&quot;;<br />
+$database_hostname = &quot;localhost&quot;;<br />
+$database_username = &quot;cactiuser&quot;;<br />
+$database_password = &quot;cactifans.org&quot;;<br />
+$database_port = &quot;3306&quot;;
+设置crontab定时任务<br />
+由于我们是最小系统安装没有安装定时任务，因此我们首先安装
+<pre class="brush: bash; gutter: true">yum install vixie-cron</pre>
+然后我们添加定时任务
+<pre class="brush: bash; gutter: true">echo &#039;*/5 * * * * root /usr/bin/php /var/www/html/poller.php&#039; &gt;&gt; /etc/crontab</pre>
+<span style="font-size: 18px;">设置服务开机自启动,重启服务</span>
+<pre class="brush: bash; gutter: true">chkconfig snmpd on
+chkconfig httpd on
+chkconfig mysqld on
+chkconfig crond on
+service httpd restart
+service snmpd restart
+service mysqld restart
+service crond restart</pre>
+<span style="font-size: 18px;">E.WEB页完成安装</span>
+浏览http://xxx.xxx.xxx.xxx/index.php<br />
+就可以出再Cacti Installation Guide的页面了。NEXT&#8211;NEXT&#8211;FINISH。<br />
+用户名和密码为：admin/admin，之后输入新的密码，就完成了最基本的安装。
+<span style="font-size: 18px;">F.由于我们安装的这个版本已经在整合了cacti-plugin-3.1，所以我们只要在cacti里启用就成了，点console&#8211;User Management&#8211;admin</span></p>
+
+<p>可以看到Plugin Management ，选中它点save就可以启用cacti-plugin
+<h1>3.安装ngios</h1>
+<span style="font-size: 18px;">nagios我通过yum进行安装</span>
+<pre class="brush: bash; gutter: true">yum install nagios nagios-plugin nagios-nrpe</pre>
+这样就把ngios安装好了，安装好之后有几个地方需要配置一下，</p>
+
+<p>A.设置nagios的访问用户及密码，默认用户为nagiosadmin
+<pre class="brush: bash; gutter: true">htpasswd -c /etc/nagios/htpasswd.users nagiosadmin</pre>
+如果你设置的用户不是nagios还需要修改cgi.cfg(yum 安装会将nagios的配置文件放在/etc/nagios下)
+<pre class="brush: bash; gutter: true">
+authorized_for_system_information=nagiosadmin
+authorized_for_configuration_information=nagiosadmin
+authorized_for_system_commands=nagiosadmin
+authorized_for_all_services=nagiosadmin
+authorized_for_all_hosts=nagiosadmin
+authorized_for_all_service_commands=nagiosadmin
+authorized_for_all_host_commands=nagiosadmin</pre>
+修改以上几个的nagiosadmin为自定义的用户名，否则你将没有权限看见服务器的信息。<br />
+nagios的安装到到此结束了，至于详细的配置网上也有很多例子。Nagios的配置无非就是主机，服务，报警的配置，可以写成简单的脚本来实现快速添加。
+<h1>4.安装ndoutils</h1>
+<span style="font-size: 18px;">ndoutils我也是通过yum安装的，比较方便这个需要用到mysql的mysql-lib及mysql-inc，</span>
+因此需要安装mysql-devel（yum install mysql-devel）
+<pre class="brush: bash; gutter: true">yum install ndoutils -y</pre>
+然后我们配置ndo2db.cfg （yum默认安装的路径为 /etc/nagios/ndo2db.cfg）
+<pre class="brush: bash; gutter: true">vi /etc/nagios/ndo2db.cfg
+socket_type=tcp
+socket_name=/var/nagios/rw/ndo.sock
+db_name=cacti
+db_prefix=npc_
+db_user=cactiuser
+db_pass=cactifans.org
+debug_level=1
+debug_file=/var/nagios/ndo2db.debug</pre>
+用的数据库为cacti的数据库，别的根据你自己的具体设置就成了<br />
+配置ndomod.cfg  （yum默认安装的路径为 /etc/nagios/ndomod.cfg）
+<pre class="brush: bash; gutter: true">vi /etc/nagios/ndomod.cfg
+output_type=tcpsocket
+output=127.0.0.1
+buffer_file=/var/nagios/ndomod.tmp</pre>
+配置nagios.cfg   （yum安装的默认路径为 /etc/nagios/nagios.cfg)
+<pre class="brush: bash; gutter: true">check_external_commands=1
+command_check_interval = -1
+event_broker_options = -1
+broker_module=/usr/libexec/ndomod-3x.o config_file=/etc/nagios/ndomod.cfg
+process_performance_data=1</pre>
+<h1>5.安装NPC</h1>
+<span style="font-size: 18px;">我在npc的官网没有下载到，下载的地址貌似已经不能用了，最后发现有svn的，于是我用svn check了一份(我已打包传到我的空间,<a href="http://www.cactifans.org/plugins/npc.tar.gz">点此下载</a>）</span>
+<pre class="brush: bash; gutter: true">wget http://www.cactifans.org/plugins/npc.tar.gz
+tar zxvf npc*.tar.gz -C /var/www/html/plugins
+chown -R apache:apache /var/www/html/plugins/npc</pre>
+然后进入cacti，点Console&#8211;Plugin Management&#8211;并启用npc插件就是了</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc4.png"><img class="aligncenter size-full wp-image-418" title="npc4" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc4.png" width="914" height="327" /></a></p>
+
+<p><span style="font-size: 18px;">接着在右侧栏目中选择settings,点选npc的标签</span></p>
+
+<p>钩选Remote Commands
+<pre class="brush: bash; gutter: true">Nagios Command File Path：      /var/nagios/rw/nagios.cmd</pre>
+这个文件启动nagios后会产生，根据实际的位置写，yum安装的在默认在 /var/nagios/rw/nagios.cmd
+<pre class="brush: bash; gutter: true">Nagios URL：]http://yourserver/nagios/</pre>
+保存就可以了。</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc5.png"><img class="aligncenter size-large wp-image-419" title="npc5" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc5-1024x430.png" width="1024" height="430" /></a></p>
+
+<p><span style="font-size: 18px;">接着启动nagios ndoutils</span>
+<pre class="brush: bash; gutter: true">service mysqld restart
+service httpd restart
+/usr/sbin/ndo2db-3x -c /etc/nagios/ndo2db.cfg
+service nagios start
+chkconfig nagios on</pre>
+安装好之后在npc里只看到nagios status是on 别的主机信息却是没有查看日志发现有如下信息
+<pre class="brush: bash; gutter: true">tail -100 /var/log/messages</pre></p>
+
+<p>Feb 24 12:02:37 localhost ndo2db-3x: Error: mysql_query() failed for &#039;INSERT INTO npc_servicestatus SET instance_id=&#039;1&#039;</p>
+
+<p>, service_object_id=&#039;5&#039;, status_update_time=FROM_UNIXTIME(1330055656), output=&#039;HTTP OK: HTTP/1&#46;1 200 OK - 1916 bytes i</p>
+
+<p>n 0&#46;083 second response time&#039;, long_output=&#039;&#039;, perfdata=&#039;time=0&#46;083463s;;;0&#46;000000 size=1916B;;;0&#039;, current_state=&#039;0</p>
+
+<p>&#039;, has_been_checked=&#039;1&#039;, should_be_scheduled=&#039;1&#039;, current_check_attempt=&#039;1&#039;, max_check_attempts=&#039;4&#039;, last_check=FROM_UN</p>
+
+<p>IXTIME(1330055520), next_check=FROM_UNIXTIME(1330055820), check_type=&#039;0&#039;, last_state_change=FROM_UNIXTIME(1330011420),</p>
+
+<p>last_hard_state_change=FROM_UNIXTIME(1330011420), last_hard_state=&#039;0&#039;, last_time_ok=FROM_UNIXTIME(1330055520), last_tim</p>
+
+<p>e_warning=FROM_UNIXTIME(0), last_time_unknown=FROM_UNIXTIME(0), last_time_critical=FROM_UNIXTIME(1330011120), state_typ</p>
+
+<p>e=&#039;1&#039;, last_notification=FROM_UNIXTIME(0), next_notification=FROM_UNIXTIME(0), no_more_notifications=&#039;0&#039;, notifications</p>
+
+<p>_enabled=&#039;1&#039;, problem_has_been_acknowledged=&#039;0&#039;, acknowledgement_type=&#039;0&#039;, current_notification_number=&#039;0&#039;, passive_che</p>
+
+<p>cks_enabled=&#039;1&#039;, active_checks_enabled=&#039;1&#039;, event_handler_enabled=&#039;1&#039;, flap_detection_enabled=&#039;1&#039;, is_flapping=&#039;0&#039;, per</p>
+
+<p>cent_state_change=&#039;0.000000&#039;, latency=&#039;0.027000&#039;, execution_time=&#039;0.094000&#039;, scheduled_downtime_depth=&#039;0&#039;, failure_pred</p>
+
+<p>iction_enabled=&#039;1&#039;, process_performance_data=&#039;1&#039;, obsess_over_service=&#039;1&#039;, modified_service_attributes=&#039;1&#039;, event_handl</p>
+
+<p>er=&#039;&#039;, check_command=&#039;check_http&#039;, normal_check_interval=&#039;5.000000&#039;, retry_check_interval=&#039;1.000000&#039;, check_timeperiod_</p>
+
+<p>object_id=&#039;2&#039; ON DUPLICATE KEY UPDATE instance_id=&#039;1&#039;, service_object_id=&#039;5&#039;, status_update_time=FROM_UNIXTIME(13300556</p>
+
+<p>56), output=&#039;HTTP OK: HTTP/1&#46;1 200 OK - 1916 bytes in 0&#46;083 second response time&#039;, long_output=&#039;&#039;, perfdata=&#039;time=0&#46;</p>
+
+<p>083463s;;;0&#46;000000 size=1916B;;;0&#039;, current_state=&#039;0&#039;, has_been_checked=&#039;1&#039;, should_be_scheduled=&#039;1&#039;, current_check_at</p>
+
+<p>tempt=&#039;1&#039;, max_check_attempts=&#039;4&#039;, last_check=FROM_UNIXTIME(1330055520), next_check=FROM_UNIXTIME(1330055820), check_ty</p>
+
+<p>pe=&#039;0&#039;, last_state_change=FROM_
+很多类似的错误，最后在cacti的论坛里找到了，是缺少一个表因此进入mysql执行如下语句
+<pre class="brush: sql; gutter: true">mysql -ucactiuser -pcactifans.org
+use cacti;
+ALTER TABLE `npc_hostchecks` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_hoststatus` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_servicechecks` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_servicestatus` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_statehistory` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_eventhandlers` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_systemcommands` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_notifications` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+exit;</pre>
+这样操作之后刷新一次就可以了，现在已经正常了</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc6.png"><img class="aligncenter size-large wp-image-420" title="npc6" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc6-1024x443.png" width="1024" height="443" /></a></p>
+
+<p>&nbsp;</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc7.png"><img class="aligncenter size-large wp-image-421" title="npc7" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc7-1024x322.png" width="1024" height="322" /></a></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc8.png"><img class="aligncenter size-large wp-image-422" title="npc8" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc8-1024x515.png" width="1024" height="515" /></a></p>
+]]></content>
+  </entry>
+  
+</feed>

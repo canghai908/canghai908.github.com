@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Centos6.2+Openvpn+Radius+Mysql+daloRADIUS - Canghai's Blog</title>
+  <meta name="author" content="Sole">
+
+  
+  <meta name="description" content="cactifans,Linux">
+  <meta name="keywords" content="linux,cacti,httpd,browser,internet,media,sql,news,cactifans">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://canghai809.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Canghai's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Canghai's Blog</a></h1>
+  
+    <h2>A blogging framework for hackers!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:canghai809.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">博客主页</a></li>
+  <li><a href="/blog/archives">文章列表</a></li>
+  <li><a href="/blog/categories/cacti">cacti</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Centos6.2+Openvpn+Radius+Mysql+daloRADIUS</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-24T00:00:00+08:00" pubdate data-updated="true">Apr 24<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>OpenVPN是不同于PPTP、L2TP的另一种VPN软件包，基于SSL的VPN。OpenVPN使用需要客户端支持。</p>
+
+<p>OS:CentOS 6.2 I386<br />
+Openvpn:openvpn-2.2.1-1.el6.i686<br />
+Radius:freeradius-2.1.10-5.el6.i686<br />
+Mysql:mysql 5.1.61<br />
+Daloradiuus:daloradius-0.9-9
+<h1><span style="color: #ff0000;">一、CentOS系统设置和LAMP</span></h1>
+<h2>1.安装系统并设置源</h2>
+最小化安装centos6.2，并添加centos的升级镜像，添加epel镜像<br />
+首先备份/etc/yum.repos.d/CentOS-Base.repo<!--more-->
+<pre class="brush: bash; gutter: true">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</pre>
+下载对应版本repo文件, 放入/etc/yum.repos.d/(操作前请做好相应备份)
+<pre class="brush: bash; gutter: true">cd /etc/yum.repos.d/
+wget http://mirrors.163.com/.help/CentOS6-Base-163.repo
+yum -y update
+reboot
+sudo -s
+LANG=C
+yum -y install wget ntp
+ntpdate pool.ntp.org
+yum -y install httpd mysql mysql-devel mysql-server php php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc
+yum -y install gcc gcc-c++ autoconf libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers</pre>
+<h2>2.关闭selinux</h2>
+<pre class="brush: bash; gutter: true">vi /etc/sysconfig/selinux
+# This file controls the state of SELinux on the system.</pre></p>
+
+<p># SELINUX= can take one of these three values:</p>
+
+<p>#       enforcing - SELinux security policy is enforced.</p>
+
+<p>#       permissive - SELinux prints warnings instead of enforcing.</p>
+
+<p>#       disabled - SELinux is fully disabled.</p>
+
+<p>SELINUX=enforcing</p>
+
+<p># SELINUXTYPE= type of policy in use. Possible values are:</p>
+
+<p>#       targeted - Only targeted network daemons are protected.</p>
+
+<p>#       strict - Full SELinux protection.</p>
+
+<p>SELINUXTYPE=targeted
+把SELINUX=enforcing改为SELINUX=disabled并保存！在这个时候SElinux还在运行关闭，再执行以下命令
+<pre class="brush: bash; gutter: true">setenforce 0
+chkconfig httpd on
+chkconfig mysqld on
+/etc/init.d/httpd start
+/etc/init.d/mysqld start
+mysqladmin -u root password mysqlpwd</pre>
+清除防火墙规则
+<pre class="brush: bash; gutter: true">iptables -F</pre>
+<h2>3.建立php测试文件</h2>
+<pre class="brush: bash; gutter: true">vi /var/www/html/test.php</pre>
+输入如下内容
+<pre class="brush: php; gutter: true">&lt;?php
+phpinfo();
+?&gt;</pre>
+<h1><span style="color: #ff0000;">二、安装raidus，并配置mysql验证</span></h1>
+<h2>1.安装radius</h2>
+<pre class="brush: bash; gutter: true">yum install -y freeradius freeradius-mysql freeradius-utils</pre>
+配置本地用户测试radius
+<pre class="brush: bash; gutter: true">vi /etc/raddb/users</pre>
+在文件最后一行把前面的注释去掉
+<pre class="brush: bash; gutter: true">testuser Cleartext-Password := &quot;testpassword&quot;</pre>
+然后执行
+<pre class="brush: bash; gutter: true">chkconfig radiusd on
+/etc/init.d/radiusd restart</pre>
+运行
+<pre class="brush: bash; gutter: true">radtest testuser testpassword localhost 1812 testing123</pre>
+如果看到
+<pre class="brush: bash; gutter: true">Sending Access-Request of id 86 to 127.0.0.1 port 1812
+User-Name = &quot;testuser&quot;
+User-Password = &quot;testpassword&quot;
+NAS-IP-Address = 127.0.0.1
+NAS-Port = 1812
+rad_recv: Access-Accept packet from host 127.0.0.1 port 1812, id=86, length=20</pre>
+则表示radius服务器配置成功。
+<h2>2.为radius配置mysql验证</h2>
+<pre class="brush: bash; gutter: true">cp /etc/raddb/clients.conf /etc/raddb/clients.conf.bak
+grep -v \# /etc/raddb/clients.conf.bak &gt; /etc/raddb/clients.conf</pre>
+编辑client文件
+<pre class="brush: bash; gutter: true">vi /etc/raddb/clients.conf
+client  0.0.0.0 {
+ipaddr=127.0.0.1
+secret = testing123
+shortname = localhost
+}</pre>
+编辑用户文件，注释掉测试用户
+<pre class="brush: bash; gutter: true">vi /etc/raddb/users
+#testuser Cleartext-Password := &quot;testpassword&quot;</pre>
+备份并导入数据库
+<pre class="brush: bash; gutter: true">cp /etc/raddb/sql/mysql/admin.sql /etc/raddb/sql/mysql/admin.sql.bak
+grep -v \# /etc/raddb/sql/mysql/admin.sql.bak &gt; /etc/raddb/sql/mysql/admin.sql
+vi /etc/raddb/sql/mysql/admin.sql
+CREATE USER &#039;radius&#039;@&#039;localhost&#039;;
+SET PASSWORD FOR &#039;radius&#039;@&#039;localhost&#039; = PASSWORD(&#039;radpass&#039;);
+GRANT All ON radius.* TO &#039;radius&#039;@&#039;localhost&#039;;</pre>
+数据库为radius，密码为radpass，如果要自己设置，设置完成后还要修改sql.conf把密码改为自己设置的
+<pre class="brush: bash; gutter: true">vi /etc/raddb/sql.conf
+change the password &#039;radpass&#039; to &#039;radpass&#039;</pre>
+导入radius数据库
+<pre class="brush: bash; gutter: true">mysql -u root -p
+create database radius;
+exit
+mysql -u root -p radius &lt; /etc/raddb/sql/mysql/admin.sql
+mysql -u root -p radius &lt; /etc/raddb/sql/mysql/schema.sql
+mysql -u root -p radius &lt; /etc/raddb/sql/mysql/nas.sql
+mysql -u root -p radius &lt; /etc/raddb/sql/mysql/ippool.sql</pre>
+编辑radius配置文件，使其使用sql认证，去掉INCLUDE sql.conf 前面的#号
+<pre class="brush: bash; gutter: true">vi /etc/raddb/radiusd.conf
+$INCLUDE sql.conf</pre>
+修改sql.conf
+<pre class="brush: bash; gutter: true">vi /etc/raddb/sql.conf
+server = &quot;localhost&quot;
+port = 3306
+login = &quot;radius&quot;
+password = &quot;radpass&quot;
+radius_db = &quot;radius&quot;
+readclients = yes</pre>
+修改认证的方式
+<pre class="brush: bash; gutter: true">vi /etc/raddb/sites-enabled/default
+authorize {
+preprocess
+chap
+mschap
+suffix
+eap
+sql
+pap
+}
+accounting {
+detail
+sql
+}</pre></p>
+
+<p>session {<br />
+radutmp<br />
+sql<br />
+}
+插入测试数据
+<pre class="brush: bash; gutter: true">mysql -u root -p
+muse radius;
+INSERT INTO radcheck (UserName, Attribute, Value) VALUES (&#039;user1&#039;, &#039;Password&#039;,&#039;password1&#039;);
+exit</pre>
+运行radius服务器
+<pre class="brush: bash; gutter: true">/etc/init.d/radiusd restart</pre>
+测试radius服务器执行
+<pre class="brush: bash; gutter: true">radtest user1 password1 localhost 1812 testing123</pre>
+如果看到如下信息，表示radius服务器工作正常
+<pre class="brush: bash; gutter: true">Sending Access-Request of id 129 to 127.0.0.1 port 1812
+User-Name = &quot;user1&quot;
+User-Password = &quot;password1&quot;
+NAS-IP-Address = 127.0.0.1
+NAS-Port = 1812
+rad_recv: Access-Accept packet from host 127.0.0.1 port 1812, id=129, length=20</pre>
+如果看到以上信息，表示radius服务器可以用mysql验证了。
+<h1><span style="color: #ff0000;">三、安装openvpn</span></h1>
+<h2>1.安装openvpn</h2>
+<pre class="brush: bash; gutter: true">yum install -y openvpn</pre>
+<h2>2.建立证书</h2>
+<pre class="brush: bash; gutter: true">cp -R /usr/share/openvpn/easy-rsa/ /etc/openvpn/</pre>
+然后开始建立server的ca，key
+<pre class="brush: bash; gutter: true">cd /etc/openvpn/easy-rsa/2.0/</pre>
+编辑vars，按shit+g跳转到最下面，编辑成你需要的信息。
+<pre class="brush: bash; gutter: true">export KEY_COUNTRY=&quot;CN&quot;
+export KEY_PROVINCE=&quot;CN&quot;
+export KEY_CITY=&quot;XiangYang&quot;
+export KEY_ORG=&quot;cactifans&quot;
+export KEY_EMAIL=&quot;cactifans@gmail.com&quot;</pre>
+然后指定编译源
+<pre class="brush: bash; gutter: true">source ./vars</pre>
+下面开始生成ca证书
+<pre class="brush: bash; gutter: true">./clean-all
+./build-ca ca</pre>
+直接回车完成</p>
+
+<p>再生成server.key
+<pre class="brush: bash; gutter: true">./build-key-server server</pre>
+回车直到最后两项，按“Y”确认。</p>
+
+<p>然后我们需要生成Diffie Hellman参数，这个需要一点时间的。
+<pre class="brush: bash; gutter: true">./build-dh</pre>
+下面，我们还需要生成一个tls验证key
+<pre class="brush: bash; gutter: true">openvpn --genkey --secret keys/ta.key</pre>
+到这里先做个小结：我们生成的文件都放在/etc/openvpn/easy-rsa/2.0/keys/，记住，我们等会会用到这个路径。
+<h2>3.安装radiusplugin</h2>
+radiusplugin是radius的一个插件，可以让openvpn使用radius服务器来验证
+<pre class="brush: bash; gutter: true">yum install -y libgcrypt libgpg-error libgcrypt-devel
+wget http://www.nongnu.org/radiusplugin/radiusplugin_v2.1.tar.gz
+tar zxvf radiusplugin_v2.1.tar.gz
+cd radiusplugin
+make
+cp radiusplugin.so /etc/openpnvpn
+cp radiusplugin.cnf /etc/openvpn</pre>
+编辑radiusplugin.cnf
+<pre class="brush: bash; gutter: true">vi /etc/openvpn/radiusplugin.cnf
+server
+{
+# The UDP port for radius accounting.
+acctport=1813
+# The UDP port for radius authentication.
+authport=1812
+# The name or ip address of the radius server.
+name=127.0.0.1
+# How many times should the plugin send the if there is no response?
+retry=1
+# How long should the plugin wait for a response?
+wait=1
+# The shared secret.
+sharedsecret=testing123</pre>
+<h2>4.配置openvpn</h2>
+<pre class="brush: bash; gutter: true">cp /usr/share/doc/openvpn-2.2.1/sample-config-files/server.conf /etc/openvpn/
+vi /etc/openvpn/server.conf
+port 1194
+proto udp
+dev tun
+#指定位置
+ca /etc/openvpn/easy-rsa/2.0/keys/ca.crt
+cert /etc/openvpn/easy-rsa/2.0/keys/server.crt
+key /etc/openvpn/easy-rsa/2.0/keys/server.key
+dh /etc/openvpn/easy-rsa/2.0/keys/dh1024.pem
+tls-auth /etc/openvpn/easy-rsa/2.0/keys/ta.key 0
+client-config-dir /etc/raddb/clients.conf
+server10.8.0.0 255.255.255.0
+push &quot;redirect-gateway def1&quot;
+push &quot;dhcp-option DNS 8.8.8.8&quot;
+push &quot;dhcp-option DNS 8.8.4.4&quot;
+push &quot;dhcp-option DNS 10.8.0.1&quot;
+client-to-client
+keepalive 10 120
+comp-lzo
+persist-key
+persist-tun
+client-cert-not-required
+username-as-common-name
+#这里是指定radiusplugin.so这个插件
+plugin /etc/openvpn/radiusplugin.so /etc/openvpn/radiusplugin.cnf
+#log#日志存放目录
+log /var/log/openvpn.log
+status /var/log/openvpn-status.log
+# Verbosity level.
+# 0 -- quiet except for fatal errors.
+# 1 -- mostly quiet, but display non-fatal network errors.
+# 3 -- medium output, good for normal operation.
+# 9 -- verbose, good for troubleshooting
+#日志级别
+verb 3</pre>
+更改系统参数
+<pre class="brush: bash; gutter: true">vi /etc/sysctl.conf</pre>
+将net.ipv4.ip_forward = 0修改为net.ipv4.ip_forward = 1<br />
+并使其立即生效
+<pre class="brush: bash; gutter: true">sysctl -p</pre>
+配置iptables
+<pre class="brush: bash; gutter: true">iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j SNAT --to-source 192.168.1.2
+iptables -A INPUT -p udp -m udp --dport 1194 -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+iptables -A INPUT -i tun0 -j ACCEPT
+iptables -A INPUT -i tun0 -j ACCEPT
+iptables -A FORWARD -i tun0 -j ACCEPT
+iptables -A OUTPUT -o tun0 -j ACCEPT
+service iptables save
+service iptables restart
+chkconfig openvpn on
+service openvpn start</pre>
+192.168.1.2为你的服务器的ip
+<h1><span style="color: #ff0000;"> 四、安装daloradius</span></h1>
+<pre class="brush: bash; gutter: true">wget http://download.pear.php.net/package/DB-1.7.14RC2.tgz
+pear install DB-1.7.14RC2.tgz
+wget http://nchc.dl.sourceforge.net/project/daloradius/daloradius/daloradius0.9-9/daloradius-0.9-9.tar.gz
+tar -zxvf daloradius-0.9-9.tar.gz
+mv daloradius-0.9-9 daloradius
+cp -rf daloradius/* /var/www/html/
+chown apache:apache -R /var/www/html/
+chmod 644 /var/www/html/library/daloradius.conf.php
+cd /var/www/html/contrib/db/
+mysql -u root -p radius &lt; mysql-daloradius.sql</pre>
+修改daloradius配置文件
+<pre class="brush: bash; gutter: true">vi /var/www/html/library/daloradius.conf.php</pre></p>
+
+<p>###########<br />
+$configValues[&#039;DALORADIUS_VERSION&#039;] = &#039;0.9-9&#039;;<br />
+$configValues[&#039;FREERADIUS_VERSION&#039;] = &#039;2&#039;;<br />
+$configValues[&#039;CONFIG_DB_ENGINE&#039;] = &#039;mysql&#039;;<br />
+$configValues[&#039;CONFIG_DB_HOST&#039;] = &#039;localhost&#039;;<br />
+$configValues[&#039;CONFIG_DB_USER&#039;] = &#039;radius&#039;;<br />
+$configValues[&#039;CONFIG_DB_PASS&#039;] = &#039;radpass&#039;;<br />
+$configValues[&#039;CONFIG_DB_NAME&#039;] = &#039;radius&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADCHECK&#039;] = &#039;radcheck&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADREPLY&#039;] = &#039;radreply&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADGROUPREPLY&#039;] = &#039;radgroupreply&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADGROUPCHECK&#039;] = &#039;radgroupcheck&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADUSERGROUP&#039;] = &#039;radusergroup&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADNAS&#039;] = &#039;nas&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADPOSTAUTH&#039;] = &#039;radpostauth&#039;;<br />
+$configValues[&#039;CONFIG_DB_TBL_RADACCT&#039;] = &#039;radacct&#039;;
+&#8230;&#8230;&#8230;..<br />
+建立daloradius日志
+<pre class="brush: bash; gutter: true">touch /tmp/daloradius.log
+chown apache.apache /tmp/daloradius.log</pre>
+安装完后打开Http://xxx.xxx.xxx.xxx就可以看到daloradius了，登录的用户名密码为
+<pre class="brush: bash; gutter: true">username: administrator
+password: radius</pre>
+<h1><span style="color: #ff0000;">五、client端设置</span></h1>
+下载http://swupdate.openvpn.org/community/releases/openvpn-2.2.1-install.exe<br />
+在安装目录下有个config目录，<br />
+将服务器上了的ca.crt，ca.key，ta.key三个文件复制到config下。<br />
+新建一个文本文件，输入以下内容。
+<pre class="brush: bash; gutter: true">client
+dev tun
+proto udp
+remote 192.168.1.2 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+tls-auth ta.key 1
+ns-cert-type server
+comp-lzo
+verb 3
+auth-user-pass</pre>
+保存为client.ovpn,remote为你的openvpn服务器外网ip，端口1194<br />
+设置运行openvpn-gui，在左面右下角，右键点击，connect，就可以连接到openvpn服务器了。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Sole</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-24T00:00:00+08:00" pubdate data-updated="true">Apr 24<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/wei-fen-lei/'>未分类</a>
+  
+</span>
+
+
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/04/12/cacti-0-8-8%E5%8F%91%E5%B8%83/" title="Previous Post: cacti-0.8.8发布">&laquo; cacti-0.8.8发布</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/06/18/cactifans-v1-0%E4%B8%AD%E6%96%87%E7%89%88%E5%8F%91%E5%B8%83/" title="Next Post: 【置顶】CactiFans V1.0中文版发布">【置顶】CactiFans V1.0中文版发布 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2119046645&verifier=220ff941&dpc=1"></iframe>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/backtrack'>BackTrack (1)</a></li><li><a href='/blog/categories/cacti'>cacti (17)</a></li><li><a href='/blog/categories/cacti插件'>Cacti插件 (6)</a></li><li><a href='/blog/categories/dhcp'>dhcp (1)</a></li><li><a href='/blog/categories/linux'>linux (7)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/oracle'>oracle (1)</a></li><li><a href='/blog/categories/other'>other (1)</a></li><li><a href='/blog/categories/puppet'>puppet (2)</a></li><li><a href='/blog/categories/未分类'>未分类 (1)</a></li><li><a href='/blog/categories/测试'>测试 (1)</a></li><li><a href='/blog/categories/视频'>视频 (4)</a></li></ul>
+</section>
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/backtrack' style='font-size: 103.52941176470588%'>BackTrack(1)</a> <a href='/blog/categories/cacti' style='font-size: 160.0%'>cacti(17)</a> <a href='/blog/categories/cacti插件' style='font-size: 121.17647058823529%'>Cacti插件(6)</a> <a href='/blog/categories/dhcp' style='font-size: 103.52941176470588%'>dhcp(1)</a> <a href='/blog/categories/linux' style='font-size: 124.70588235294117%'>linux(7)</a> <a href='/blog/categories/mysql' style='font-size: 103.52941176470588%'>MySQL(1)</a> <a href='/blog/categories/oracle' style='font-size: 103.52941176470588%'>oracle(1)</a> <a href='/blog/categories/other' style='font-size: 103.52941176470588%'>other(1)</a> <a href='/blog/categories/puppet' style='font-size: 107.05882352941177%'>puppet(2)</a> <a href='/blog/categories/未分类' style='font-size: 103.52941176470588%'>未分类(1)</a> <a href='/blog/categories/测试' style='font-size: 103.52941176470588%'>测试(1)</a> <a href='/blog/categories/视频' style='font-size: 114.11764705882354%'>视频(4)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/17/ce-shi-xia-xin-bloga/">测试下新blog啊</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/16/hello-world/">Hello World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/my-first-blog/">My First Blog</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/05/%E5%9C%A8centos-6-4%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">在CentOS 6.4上安装Puppet配置管理工具</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/01/%E5%9C%A8ubuntu-12-04%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">在Ubuntu 12.04上安装Puppet配置管理工具</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+<a style="font-size: 165%" href="/tags/cacti/">cacti</a>
+<a style="font-size: 60%" href="/tags/centos/">centos</a>
+<a style="font-size: 60%" href="/tags/hello-world/">hello world!</a>
+<a style="font-size: 60%" href="/tags/linux/">linux</a>
+<a style="font-size: 60%" href="/tags/puppet/">puppet</a>
+
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Sole -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'cactifans';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://canghai809.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius/';
+        var disqus_url = 'http://canghai809.github.io/blog/2012/04/24/centos6-2openvpnradiusmysqldaloradius/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

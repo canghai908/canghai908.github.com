@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cacti 0.8.7g在CentOS5.5上的安装（1） - Canghai's Blog</title>
+  <meta name="author" content="Sole">
+
+  
+  <meta name="description" content="cactifans,Linux">
+  <meta name="keywords" content="linux,cacti,httpd,browser,internet,media,sql,news,cactifans">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://canghai809.github.io/blog/2011/09/08/cacti-0-8-7g%E5%9C%A8centos5-5%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Canghai's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Canghai's Blog</a></h1>
+  
+    <h2>A blogging framework for hackers!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:canghai809.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">博客主页</a></li>
+  <li><a href="/blog/archives">文章列表</a></li>
+  <li><a href="/blog/categories/cacti">cacti</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Cacti 0.8.7g在CentOS5.5上的安装（1）</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-08T00:00:00+08:00" pubdate data-updated="true">Sep 8<span>th</span>, 2011</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>1.系统的安装<br />
+这次我用的是CentOS5.5-i386，在选择安装包时一个包都不需要装，就以最小系统。配置好IP等。<br />
+A.关闭SElinux
+<pre class="brush: bash; gutter: true">vi /etc/sysconfig/selinux
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#       enforcing - SELinux security policy is enforced.
+#       permissive - SELinux prints warnings instead of enforcing.
+#       disabled - SELinux is fully disabled.</pre></p>
+
+<p>SELINUX=enforcing<br />
+# SELINUXTYPE= type of policy in use. Possible values are:<br />
+#       targeted - Only targeted network daemons are protected.<br />
+#       strict - Full SELinux protection.<br />
+SELINUXTYPE=targeted
+把SELINUX=enforcing改为SELINUX=disabled并保存！在这个时候SElinux还在运行我们用
+<pre class="brush: bash; gutter: true">setenforce 0</pre>
+来关闭SElinux
+<!--more-->
+B.防火墙<br />
+一般我都是把防火墙直接关掉
+<pre class="brush: bash; gutter: true">/etc/init.d/iptables stop
+/etc/init.d/ip6tables stop
+chkconfig iptables off
+chkconfig ip6tables off</pre>
+2.配置cacti需要的软件环境<br />
+A.由于一些包在官方的库中没有，因此我们要建立dag.repo，定义非官方库
+<pre class="brush: bash; gutter: true">vi /etc/yum.repos.d/dag.repo</pre>
+内容如下
+<pre class="brush: bash; gutter: true">[dag]
+name=Dag RPM Repository for Red Hat Enterprise Linux
+baseurl=http://apt.sw.be/redhat/el$releasever/en/$basearch/dag
+gpgcheck=1
+enabled=1</pre>
+然后再导入非官方库的GPG：
+<pre class="brush: bash; gutter: true">rpm --import http://dag.wieers.com/rpm/packages/RPM-GPG-KEY.dag.txt</pre>
+B.安装cacti需要的环境包
+<pre class="brush: bash; gutter: true">yum install -y httpd mysql mysql-server php php-mysql net-snmp net-snmp-utils
+yum install -y zlib libpng freetype libjpeg fontconfig gd libxml2 
+yum install -y rrdtool</pre>
+C.为cacti创建数据库和用户
+<pre class="brush: bash; gutter: true">service mysqld start
+/usr/bin/mysqladmin --user=root create cacti
+mysql -e &quot;GRANT ALL ON cacti.* TO cactiuser@localhost IDENTIFIED BY &#039;cactifans.org&#039;&quot;</pre>
+3.下载cacti-0.8.7g.tar.gz并解压、MV
+<pre class="brush: bash; gutter: true">cd /var/www/html/
+yum install wget -y
+wget http://www.cacti.net/downloads/cacti-0.8.7g.tar.gz
+tar xf cacti-0.8.7g.tar.gz
+rm -rf cacti-0.8.7g.tar.gz
+cd cacti-0.8.7g/
+mv * ../
+cd ..
+rm -rf cacti-0.8.7g/
+mysql -ucactiuser -pcactifans.org cacti &lt; /var/www/html/cacti.sql</pre>
+修改cacti的配置文件并保存
+<pre class="brush: bash; gutter: true">vi /var/www/html/include/config.php
+/* make sure these values refect your actual database/host/user/password */
+$database_type = &quot;mysql&quot;;
+$database_default = &quot;cacti&quot;;
+$database_hostname = &quot;localhost&quot;;
+$database_username = &quot;cactiuser&quot;;
+$database_password = &quot;cactifans.org&quot;;
+$database_port = &quot;3306&quot;;</pre>
+设置crontab定时任务<br />
+由于我们是最小系统安装没有安装定时任务，因此我们首先安装
+<pre class="brush: bash; gutter: true">yum install vixie-cron</pre>
+然后我们添加定时任务
+<pre class="brush: bash; gutter: true">cho &#039;*/5 * * * * root /usr/bin/php /var/www/html/poller.php&#039; &gt;&gt; /etc/crontab</pre>
+设置服务开机自启动,重启服务
+<pre class="brush: bash; gutter: true">chkconfig snmpd on
+chkconfig httpd on
+chkconfig mysqld on
+chkconfig crond on
+service httpd restart
+service snmpd restart
+service mysqld restart
+service crond restart</pre>
+4.WEB页完成安装<br />
+浏览<a href="http://xxx.xxx.xxx.xxx/index.php">http://xxx.xxx.xxx.xxx/index.php</a>
+就可以出再Cacti Installation Guide的页面了。NEXT&#8211;NEXT&#8211;FINISH。<br />
+用户名和密码为：admin/admin，之后输入新的密码，就完成了最基本的安装。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Sole</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-08T00:00:00+08:00" pubdate data-updated="true">Sep 8<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cacti/'>cacti</a>, <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/05/13/centos-5-5%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAapachephp5mysql%E5%AE%8C%E7%BE%8Eweb%E6%9C%8D%E5%8A%A1%E5%99%A8lamp/" title="Previous Post: CentOS 5.5快速搭建Apache+PHP5+MySQL完美Web服务器(LAMP)">&laquo; CentOS 5.5快速搭建Apache+PHP5+MySQL完美Web服务器(LAMP)</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/09/08/cacti-0-8-7g%E5%9C%A8centos5-5%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85%EF%BC%882%EF%BC%89/" title="Next Post: Cacti 0.8.7g在CentOS5.5上的安装（2）">Cacti 0.8.7g在CentOS5.5上的安装（2） &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2119046645&verifier=220ff941&dpc=1"></iframe>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/backtrack'>BackTrack (1)</a></li><li><a href='/blog/categories/cacti'>cacti (17)</a></li><li><a href='/blog/categories/cacti插件'>Cacti插件 (6)</a></li><li><a href='/blog/categories/dhcp'>dhcp (1)</a></li><li><a href='/blog/categories/linux'>linux (7)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/oracle'>oracle (1)</a></li><li><a href='/blog/categories/other'>other (1)</a></li><li><a href='/blog/categories/puppet'>puppet (2)</a></li><li><a href='/blog/categories/未分类'>未分类 (1)</a></li><li><a href='/blog/categories/测试'>测试 (1)</a></li><li><a href='/blog/categories/视频'>视频 (4)</a></li></ul>
+</section>
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/backtrack' style='font-size: 103.52941176470588%'>BackTrack(1)</a> <a href='/blog/categories/cacti' style='font-size: 160.0%'>cacti(17)</a> <a href='/blog/categories/cacti插件' style='font-size: 121.17647058823529%'>Cacti插件(6)</a> <a href='/blog/categories/dhcp' style='font-size: 103.52941176470588%'>dhcp(1)</a> <a href='/blog/categories/linux' style='font-size: 124.70588235294117%'>linux(7)</a> <a href='/blog/categories/mysql' style='font-size: 103.52941176470588%'>MySQL(1)</a> <a href='/blog/categories/oracle' style='font-size: 103.52941176470588%'>oracle(1)</a> <a href='/blog/categories/other' style='font-size: 103.52941176470588%'>other(1)</a> <a href='/blog/categories/puppet' style='font-size: 107.05882352941177%'>puppet(2)</a> <a href='/blog/categories/未分类' style='font-size: 103.52941176470588%'>未分类(1)</a> <a href='/blog/categories/测试' style='font-size: 103.52941176470588%'>测试(1)</a> <a href='/blog/categories/视频' style='font-size: 114.11764705882354%'>视频(4)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/17/ce-shi-xia-xin-bloga/">测试下新blog啊</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/16/hello-world/">Hello World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/my-first-blog/">My First Blog</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/05/%E5%9C%A8centos-6-4%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">在CentOS 6.4上安装Puppet配置管理工具</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/01/%E5%9C%A8ubuntu-12-04%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">在Ubuntu 12.04上安装Puppet配置管理工具</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+<a style="font-size: 165%" href="/tags/cacti/">cacti</a>
+<a style="font-size: 60%" href="/tags/centos/">centos</a>
+<a style="font-size: 60%" href="/tags/hello-world/">hello world!</a>
+<a style="font-size: 60%" href="/tags/linux/">linux</a>
+<a style="font-size: 60%" href="/tags/puppet/">puppet</a>
+
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Sole -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'cactifans';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://canghai809.github.io/blog/2011/09/08/cacti-0-8-7g%E5%9C%A8centos5-5%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/';
+        var disqus_url = 'http://canghai809.github.io/blog/2011/09/08/cacti-0-8-7g%E5%9C%A8centos5-5%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

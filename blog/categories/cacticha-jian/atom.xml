@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Cacti插件 | Canghai's Blog]]></title>
+  <link href="http://canghai809.github.io/blog/categories/cacticha-jian/atom.xml" rel="self"/>
+  <link href="http://canghai809.github.io/"/>
+  <updated>2013-06-24T12:36:26+08:00</updated>
+  <id>http://canghai809.github.io/</id>
+  <author>
+    <name><![CDATA[Sole]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cacti插件flowview的安装及使用]]></title>
+    <link href="http://canghai809.github.io/blog/2013/04/09/cacti%E6%8F%92%E4%BB%B6flowview%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <updated>2013-04-09T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/04/09/cacti插件flowview的安装及使用</id>
+    <content type="html"><![CDATA[<p>这期主要给大家讲的是cacti插件flowview插件的安装及使用，这个插件是利用flow-capture来把路由发送哦过来的flow信息保存为文件，再通过flowview来进行查看，因此专门做一期视频</p>
+
+
+
+
+<p>再次感谢肥肥提供的设备和机器。</p>
+
+
+
+
+<p><iframe name="tsc_player" src="http://www.cactifans.org/videos/cacti04/cacti04_player.html" height="525" width="700" allowfullscreen="" frameborder="0" scrolling="no"></iframe>
+<span style="color: #ff0000;">注：如果看不清楚，点击视频右下角的全屏查看</span></p>
+
+
+
+
+<p>高清无码带中文字幕视频在线观看：<a href="http://www.cactifans.org/videos/cacti04/cacti04.html" target="_blank">点击在线观看</a></p>
+
+
+
+
+<p>高清无码带中文字幕视频下载地址：<a href="http://www.cactifans.org/download/cacti04.zip" target="_blank">点击下载视频</a></p>
+
+
+
+
+<p>cacti04.zip     173MB     SHA1 (cacti04.zip) = 6a48e4a35e184f4e034b077c5ca6f4fbde2a9eec</p>
+
+
+
+
+<p>实验中所用的txt文档下载：<a href="http://www.cactifans.org/wp-content/uploads/2013/04/cacti04.txt">cacti04</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[cacti插件Thold的安装及使用]]></title>
+    <link href="http://canghai809.github.io/blog/2013/03/24/cacti%E6%8F%92%E4%BB%B6thold%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <updated>2013-03-24T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/03/24/cacti插件thold的安装及使用</id>
+    <content type="html"><![CDATA[<p>接上期视频，这起主要讲cacti最主要的插件之一——Thold的安装及使用</p>
+
+
+
+
+<p>这个插件在cacti用用的频率是比较大的，因此专门做一期</p>
+
+
+
+
+<p><span style="color: #ff0000;">注：如果看不清楚，点击视频右下角的全屏查看</span>
+<iframe class="tscplayer_inline" name="tsc_player" src="http://www.cactifans.org/videos/cacti03/cacti03_player.html" scrolling="no" frameborder="0" height="525" width="700" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe></p>
+
+
+
+
+<p>高清无码带中文字幕视频在线观看：<a href="http://www.cactifans.org/videos/cacti03/cacti03.html" target="_blank">点击在线观看</a></p>
+
+
+
+
+<p>高清无码带中文字幕视频下载地址：<a href="http://www.cactifans.org/download/cacti03.zip">点击下载视频</a></p>
+
+
+
+
+<p>cacti03.zip  70MB   SHA1 (cacti03.zip) = 47de34322ca9e51e6a80ad0c52bb3189383ed181</p>
+
+
+
+
+<p>实验中所用的txt文档下载：<a href="http://www.cactifans.org/wp-content/uploads/2013/03/cacti03.txt">cacti03</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[cacti插件weathermap的安装及使用]]></title>
+    <link href="http://canghai809.github.io/blog/2013/03/18/cacti%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <updated>2013-03-18T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2013/03/18/cacti插件的安装及使用</id>
+    <content type="html"><![CDATA[<p>接着上期视频，这一节视频，主要讲三个方面:
+<ol>
+    <li>cacti高效采集器spine的安装及使用</li>
+    <li>cacti插件weatermap的安装及使用</li>
+    <li>cacti插件clog、monitor、realtime的安装和使用</li>
+</ol>
+<span style="color: #ff0000;">注：如果看不清楚，点击视频右下角的全屏查看</span>
+<iframe name="tsc_player" src="http://www.cactifans.org/videos/cacti02/cacti02_player.html" height="525" width="700" allowfullscreen="" frameborder="0" scrolling="no"></iframe></p>
+
+
+
+
+<p>高清无码带中文字幕视频在线观看：<a href="http://www.cactifans.org/videos/cacti02/cacti02.html" target="_blank">点击在线观看</a></p>
+
+
+
+
+<p>高清无码带中文字幕视频下载地址：<a href="http://www.cactifans.org/download/cacti02.zip">点击下载视频</a></p>
+
+
+
+
+<p>cacti02.zip  79MB  SHA1 (cacti02.zip) = 72185dd2ddf3d764104c798861986d343e3a63ce</p>
+
+
+
+
+<p>实验中所用的txt文档下载：<a href="http://www.cactifans.org/wp-content/uploads/2013/03/cacti02.txt">cacti02</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cacti插件详解——Syslog]]></title>
+    <link href="http://canghai809.github.io/blog/2012/03/12/cacti%E6%8F%92%E4%BB%B6%E8%AF%A6%E8%A7%A3-syslog/"/>
+    <updated>2012-03-12T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2012/03/12/cacti插件详解-syslog</id>
+    <content type="html"><![CDATA[<p><code></code><span style="font-size: 18px;">     cacti中syslog插件，是通过rsyslog或syslog-ng与mysql的交互，将日志存放到mysql数据库中，cacti中的syslog插件从mysql中检索查看日志数据。因此，首先要配置一台rsyslog与mysql的日志中心服务器来接收客户机的日志;其次，配置cacti的syslog插件，通过该插件检索与查询mysql</span><span style="font-size: 18px;">中的日志。可以收集来自linux、windows等服务器和交换机路由器的日志。做到集中和分类查看。</span>
+<div></div>
+<div><span style="font-size: 18px;">说下软件环境</span></div>
+<div><span style="font-size: 18px;">os：centos6.2x86</span></div>
+<div><span style="font-size: 18px;">cacti-0.8.7i-PIA-3.1.tar.gz</span></div>
+<div><span style="font-size: 18px;">syslog-v1.22-2.tgz</span></div>
+<div><span style="font-size: 18px;">rsyslog-4.6.2-12.el6.i686</span></div>
+<div></div>
+<div><span style="font-size: 18px;">关于cacti的安装我这里就不详细讲了，可以在我的另外二篇文章</span></div>
+<div></div>
+<!--more-->
+<h2 class="entry-title" style="font-size: 20px; line-height: 26px; text-shadow: rgba(0, 0, 0, 0.199219) 1px 1px 3px; color: #000000; font-family: 微软雅黑; padding: 0px; margin: 0px;"><span style="text-decoration: underline;"><span style="font-size: 18px;"><a style="text-decoration: none; color: #000000;" title="链向 Cacti 0.8.7g在CentOS5.5上的安装（1） 的固定链接" href="http://www.cactifans.org/index.php/2011/09/cacti-0-8-7g%E5%9C%A8centos5-5%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/" rel="bookmark">Cacti 0.8.7g在CentOS5.5上的安装（1）</a></span></span></h2>
+&nbsp;
+<h2 class="entry-title" style="font-size: 20px; line-height: 26px; text-shadow: rgba(0, 0, 0, 0.199219) 1px 1px 3px; color: #000000; font-family: 微软雅黑; padding: 0px; margin: 0px;"><span style="text-decoration: underline;"><span style="font-size: 18px;"><a style="text-decoration: none; color: #000000;" title="链向 Cacti 0.8.7g在CentOS5.5上的安装（2） 的固定链接" href="http://www.cactifans.org/index.php/2011/09/cacti-0-8-7g%e5%9c%a8centos5-5%e4%b8%8a%e7%9a%84%e5%ae%89%e8%a3%85%ef%bc%882%ef%bc%89/" rel="bookmark">Cacti 0.8.7g在CentOS5.5上的安装（2）</a></span></span></h2>
+<span style="font-size: 18px;">由于我们此次安装的是集成PIA的cacti，因此不用单独安装PIA,</span><span style="font-size: 18px;">安装好cacti以后要启用Plugin Management,然后我们下载syslog插件</span></p>
+
+
+
+
+<p>&nbsp;
+<h2><span style="font-size: 18px;">1.设置接收日志</span></h2>
+<h1><span style="font-size: 18px;">要想接收日志信息，并在cacti的syslog插件中显示接收到的日志，首先是接收日志，有二种办法：</span></h1>
+<span style="font-size: 18px;">1.使用syslog-ng，在centos5.5及以下系统上，系统默认有syslog，可以发送日志，但不能接受日志，因此要借助于syslog-ng，来接收发送过来的日志，并规范成一个模版，再通过自己写的脚本，插入到mysql数据库里</span></p>
+
+
+
+
+<p><span style="font-size: 18px;">2.使用rsyslog，rsyslog是在centos6以上系统自带的，rsyslog不仅能接收日志，还可以发送日志，因此要是在centos6以上系统就不需要额外安装syslog-ng接收日志了，用自带的rsylog就可以接收日志，再用rsyslog-mysql就可以把接收到的日志写入mysql数据库</span></p>
+
+
+
+
+<p><span style="font-size: 18px;">下面我分别说明：</span>
+<h2>A.使用rsyslog</h2>
+<div><span style="font-size: 18px;">我用的是centos6.2使用的是rsyslog，配置下就可以用来接受日志。在centos5.5版本自带syslog，可是要收集日志就还要安装syslog-ng用来接受日志。另外还要安装rsyslog-mysql来把接受到的日志插入到mysql数据库里 </span></div>
+<pre class="brush: bash; gutter: true">yum install -y rsyslog rsyslog-mysql</pre>
+<div><span style="font-size: 18px;">下面我们要对rsyslog进行设置</span></div>
+<pre class="brush: bash; gutter: true">vi /etc/rsyslog.conf</pre>
+<div><span style="font-size: 18px;">在文件最后添加</span></div>
+<pre class="brush: bash; gutter: true">$ModLoad imudp.so
+$UDPServerRun 514
+$ModLoad ommysql
+$template cacti_syslog,&quot;INSERT INTO syslog_incoming(facility, priority, date, time, host, message) values (%syslogfacility%, %syslogpriority%, &#039;%timereported:::date-mysql%&#039;, &#039;%timereported:::date-mysql%&#039;, &#039;%HOSTNAME%&#039;, &#039;%msg%&#039;)&quot;, SQL
+*.* &amp;gt;localhost,syslog,cactiuser,cactifans.org;cacti_syslog</pre>
+<div /></p>
+
+
+
+
+<p><span style="font-size: 18px;"><span style="font-size: 18px;">然后保存，重新启动rsyslog，并设置rsyslog开机启动</span></span>
+<pre class="brush: bash; gutter: true">chkconfig rsyslog on
+service rsyslog restart</pre>
+<h2><span style="font-size: 18px;">B.使用syslog-ng</span></h2>
+<span style="font-size: 18px;"><span style="font-size: 18px;">syslog-ng在默认的源里没有，可以编译安装，在这里我用yum安装syslog-ng</span></span>
+<span style="font-size: 18px;"><span style="font-size: 18px;">首先添加一个第三方源</span></span>
+<pre class="brush: bash; gutter: true">rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+yum install -y syslog-ng</pre>
+<span style="font-size: 17px;">
+</span>
+<span style="font-size: 18px;"><span style="color: #000000; font-family: Verdana, Arial, sans-serif; line-height: 20px;">安装好后我们配置syslog-ng</span></span>
+<pre class="brush: bash; gutter: true">vi /etc/syslog-ng/syslog-ng.conf</pre>
+<p style="text-align: left;"><span style="font-size: 18px;"><span style="font-size: 18px;">在文件最后加入如下</span></span></p></p>
+
+
+
+
+<p><pre class="brush: bash; gutter: true">source net {</pre></p>
+
+
+
+
+<p>udp();<br />
+};</p>
+
+
+
+
+<p>destination d_mysql {<br />
+pipe(&quot;/tmp/mysql.pipe&quot;<br />
+template(&quot;INSERT INTO syslog_incoming (host, facility, priority, date, time, message) VALUES ( &#039;$HOST&#039;, &#039;$FACILITY&#039;, &#039;$PRIORITY&#039;, &#039;$YEAR-$MONTH-$DAY&#039;, &#039;$HOUR:$MIN:$SEC&#039;, &#039;$MSG&#039; );\n&quot;)<br />
+template-escape(yes)<br />
+);<br />
+};</p>
+
+
+
+
+<p>log { source(net); destination(d_mysql); };<br />
+log { source(s_sys); destination(d_mysql); };
+<span style="font-size: 18px;">加入后保存，退出。</span>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">我们需要写一个脚本把syslog-ng接受到的数据写入到mysql数据库里</span></span></div>
+<pre class="brush: bash; gutter: true">vi /sbin/syslogtomysql
+#!/bin/bash
+if [ ! -e /tmp/mysql.pipe ]; then
+        mkfifo /tmp/mysql.pipe
+fi</pre></p>
+
+
+
+
+<p>while [ -e /tmp/mysql.pipe ]<br />
+do<br />
+        mysql -u cactiuser --password=cactifans.org syslog &lt; /tmp/mysql.pipe<br />
+done
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">保存退出，我们赋予执行权限</span></span></div>
+<pre class="brush: bash; gutter: true">chmod +x /sbin/syslogtomysql</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">上面的mysql -u syslog （syslog为用户名 密码为syslogpwd，数据库名为syslog）</span></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">我们执行</span></span></div>
+<pre class="brush: bash; gutter: true">/sbin/syslogtomysql &amp;</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">再启动syslog-ng</span></span></div>
+<pre class="brush: bash; gutter: true">/etc/init.d/syslog-ng start</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">写好后我们把这个脚本写到开机启动里</span></span></div>
+<pre class="brush: bash; gutter: true">vi /etc/rc.local</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">添加如下</span></span></div>
+<pre class="brush: bash; gutter: true">/sbin/syslogtomysql &amp;</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">设置syslog-ng开机启动</span></span></div>
+<pre class="brush: bash; gutter: true">chkconfig syslog-ng on</pre>
+<span style="color: #000000; font-family: Verdana, Arial, sans-serif; font-size: 18px; line-height: 20px; text-align: left;">至此syslog的设置完成</span></p>
+
+
+
+
+<p>
+<p style="text-align: left;"><span style="font-size: 18px;"><span style="font-size: 18px;"><span style="color: #000000; font-family: Verdana, Arial, sans-serif; line-height: 20px;">syslog-ng和rsyslog的设置就说到这里，基本都是差不多，不过rsyslog好设置一点不用独立写脚本就成。在centos6以上版本中也可以用syslog-ng来接收日志。以下的安装步骤就一样了。</span></span></span></p>
+<p style="text-align: left;"><span style="font-size: 18px;"> </span></p></p>
+
+
+
+
+<p><h1 style="text-align: left;"><span style="font-size: 18px;">2.配置syslog的数据库</span></h1>
+<div><span style="font-size: 18px;"> </span></div>
+<pre class="brush: bash; gutter: true">mysql -uroot -p
+create database syslog；
+GRANT ALL ON syslog.* TO cactiuser@localhost IDENTIFIED BY &#039;cactifans.org； quit；</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">设置的数据库名：syslog 用户名：cactiuser 密码：cactifans.org 可以自行设定</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<h1><span style="font-size: 18px;"><span style="font-size: 18px;">3.安装syslog插件</span></span></h1>
+<div><span style="font-size: 18px;"> </span></div>
+<pre class="brush: bash; gutter: true">wget http://docs.cacti.net/_media/plugin:syslog-v1.22-2.tgz -O syslog.tgz
+tar zxvf syslog*.tgz -C /var/www/html/plugins
+chown -R apache:apache /var/www/html/plugins/syslog</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">接下来我们进行一下配置</span></span></div>
+<pre class="brush: bash; gutter: true">vi /var/www/html/plugins/syslog/config.php
+......
+global $config, $database_type, $database_default, $database_hostname;
+global $database_username, $database_password, $database_port;</pre></p>
+
+
+
+
+<p>/* revert if you dont use the Cacti database */<br />
+$use_cacti_db = false;</p>
+
+
+
+
+<p>if (!$use_cacti_db) {<br />
+        $syslogdb_type     = &#039;mysql&#039;;<br />
+        $syslogdb_default  = &#039;syslog&#039;;<br />
+        $syslogdb_hostname = &#039;localhost&#039;;<br />
+        $syslogdb_username = &#039;cactiuser&#039;;<br />
+        $syslogdb_password = &#039;cactifans.org&#039;;<br />
+        $syslogdb_port     = 3306;<br />
+         }else{<br />
+        $syslogdb_type     = $database_type;<br />
+        $syslogdb_default  = $database_default;<br />
+       $syslogdb_hostname = $database_hostname;<br />
+       $syslogdb_username = $database_username;<br />
+       $syslogdb_password = $database_password;<br />
+       $syslogdb_port     = $database_port;<br />
+}
+.......
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"><span style="color: #ff0000;">可以看到以上设置$use_cacti_db = false;这个是设置syslog是否要使用cacti的数据库，我在这里不使用cacti的数据，因为syslog往往比较多，日志比较多，为了便于备份和使用，还是选择用一个独立的数据库。</span>因此要在下面设置连接数据库的用户名，密码，数据库名等。设置好后我们打开cacti，点console——Plugin Management，可以看到syslog还没有被启用</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/1.png"><img class="alignleft size-full wp-image-451" title="1" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/1.png" width="796" height="589" /></a></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">我们点syslog前面的那个先下箭头的小原点，会出现如下图</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/2.png"><img class="alignleft size-large wp-image-452" title="2" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/2-1024x485.png" width="1024" height="485" /></a></span></div>
+<span style="font-size: 18px;"> </span>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">这里是对syslog数据的一些设置第分别为Database Storage Engine（数据库存储引擎）、Database Architecutre(数据库架构)</span><span style="font-size: 18px;">这二项在一般默认，如果你的mysql数据库为5.1.6后者以上可以选择InnoDB Storage 和Partitioned Table，可以提高syslog的性能</span><span style="font-size: 18px;">最后一项是Retention Policy（保留策略）就是要在syslog存储多长的时间，这个可以根据自己的需求设定，最后我们点install</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/3.png"><img class="alignleft size-full wp-image-454" title="3" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/3.png" width="830" height="418" /></a></span></div>
+<span style="font-size: 18px;"><span style="font-size: 18px;">就可以看到syslog已经安装，但是还没有启用，我们点那个绿色箭头就可以启用syslog</span></span>
+<p style="text-align: center;"><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/4.png"><img class="size-full wp-image-455 aligncenter" title="4" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/4.png" width="618" height="405" /></a></span></p>
+<span style="font-size: 18px;"><span style="font-size: 18px;">启用后我们可以看到syslog了</span></span>
+<p style="text-align: center;"><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/5.png"><img class="size-large wp-image-456 aligncenter" title="5" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/5-1024x447.png" width="1024" height="447" /></a></span></p>
+&nbsp;
+<h1><span style="font-size: 18px;">4.被监控端设置</span></h1>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">A.Linux服务器设置</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">如果系统用的是syslog或者sysklog可以添加如下到/etc/syslog.conf（具体位置可能有所不同）</span></span></div>
+<pre class="brush: bash; gutter: true">*.*     @192.168.0.111</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> @后面为你的cacti服务器IP地址</span></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> 设置完毕后重启syslog或者sysklog服务，并在防火墙上允许upd 514端口</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> 如果用的是rsyslog可以在rsylog的配置文件里添加如下(配置文件一般为rsyslog.conf)</span></span></div>
+<pre class="brush: bash; gutter: true"> *.*       @@192.168.0.111:514</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;"> @@后面为你的cacti服务器IP地址一般端口为514</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">设置完毕后重启rsyslog服务，并在防火墙上允许upd 514端口</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">通过以上设置就可以把服务器的所有日志发送到cacti服务器</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">B.网络设备</span></span></div>
+<pre class="brush: bash; gutter: true">logging 192.168.0.111</pre>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">在设备上指定logging 为cacti的服务器就成了。（设备不通设置方法可能有所不同，可以参考设备说明书）</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">网络设备包括路由器，防火墙交换机。这样就可以在cacti里看到接受到的日志</span></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">效果图</span></span></div>
+<div><span style="font-size: 18px;"><a href="http://www.cactifans.org/wp-content/uploads/2012/03/6.png"><img class="size-large wp-image-457 aligncenter" title="6" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/03/6-1024x669.png" width="1024" height="669" /></a></span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"> </span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">syslog可以接受到防火墙，路由器，交换机，服务器的日志，并自动分为7个等级，并用不通的颜色表示，看起来直观，也做到的日志的集中收集与查看.另外还可以在cacti里对的setting里对syslog插件进行一些设置。</span></span></div>
+<div><span style="font-size: 18px;"><span style="font-size: 18px;">本人菜鸟一个，如有错误之处，欢迎大家指正.</span></span></div></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[cacti整合nagios-cacti插件npc的使用]]></title>
+    <link href="http://canghai809.github.io/blog/2012/02/24/cacti%E6%95%B4%E5%90%88nagios-cacti%E6%8F%92%E4%BB%B6npc%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <updated>2012-02-24T00:00:00+08:00</updated>
+    <id>http://canghai809.github.io/blog/2012/02/24/cacti整合nagios-cacti插件npc的使用</id>
+    <content type="html"><![CDATA[<p><span style="font-size: 18px;"><span style="font-family: arial,helvetica,sans-serif;">                Nagios是</span>监控服务器的状态很强大，并且报警功能也不错，不过就是缺少直观的表示，在cacti的插件里有一个插件NPC，通过NDO</span><span style="font-size: 18px;">可以把Nagios里的数据展示在NPC标签里，很直观的就可以看到各种信息如图：</span></p>
+
+
+
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc1.png"><img class="aligncenter size-full wp-image-410" title="npc1" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc1.png" width="1275" height="670" /></a></p>
+
+
+
+
+<p>图2</p>
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+<p><!--more--></p>
+
+
+
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc2.png"><img class="aligncenter size-large wp-image-411" title="npc2" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc2-1024x418.png" width="1024" height="418" /></a></p>
+
+
+
+
+<p><span style="font-size: 18px;">下面说一下我本次的安装环境；</span>
+<h1>1.软件环境</h1>
+<span style="font-size: 18px;">OS：CentOS6.2 i386（最小化安装，只安装开ssh-server）</span></p>
+
+
+
+
+<p><span style="font-size: 18px;">cacti-0.8.7i-PIA-3.1</span></p>
+
+
+
+
+<p><span style="font-size: 18px;">nagios-3.2.3-3.el6.rf.i686</span></p>
+
+
+
+
+<p><span style="font-size: 18px;">ndoutils-1.4-0.beta8.1.el6.rf.i686  (nagios的数据库支持）</span></p>
+
+
+
+
+<p><span style="font-size: 18px;">settings-v0.71-1 （cacti 插件）</span></p>
+
+
+
+
+<p><span style="font-size: 18px;">npc-2.4     （ <span style="font-family: Verdana;">nagios plugin for cacti ，</span>cacti插件）</span>
+<h1>2.环境支持</h1>
+<span style="font-size: 18px;">http mysql mysql-devel（ <span style="font-family: Verdana;">ndoutils需要它的支持</span>）php php-devel rrdtool <span style="font-family: Verdana;">net-snmp libtool</span></span></p>
+
+
+
+
+<p><span style="color: #ff0000;"><span style="font-size: 18px;"><span style="font-family: Verdana;">注：有人说要安装</span>php-json，经过测试在CentOS5.5里是要安装的，在CentOS6里，这个包已经在php-common里了，所以在安装php的时候就一起安装了</span></span>
+<h1>3.安装cacti</h1>
+<span style="font-size: 18px;">A.关闭SElinux</span>
+<pre class="brush: bash; gutter: true">vi /etc/sysconfig/selinux
+# This file controls the state of SELinux on the system.</pre></p>
+
+
+
+
+<p># SELINUX= can take one of these three values:</p>
+
+
+
+
+<p>#       enforcing - SELinux security policy is enforced.</p>
+
+
+
+
+<p>#       permissive - SELinux prints warnings instead of enforcing.</p>
+
+
+
+
+<p>#       disabled - SELinux is fully disabled.</p>
+
+
+
+
+<p>SELINUX=enforcing</p>
+
+
+
+
+<p># SELINUXTYPE= type of policy in use. Possible values are:</p>
+
+
+
+
+<p>#       targeted - Only targeted network daemons are protected.</p>
+
+
+
+
+<p>#       strict - Full SELinux protection.</p>
+
+
+
+
+<p>SELINUXTYPE=targeted
+<span style="font-size: 18px;">
+把SELINUX=enforcing改为SELINUX=disabled并保存！在这个时候SElinux还在运行关闭</span>
+<pre class="brush: bash; gutter: true">setenforce 0</pre>
+<span style="font-size: 18px;">B.防火墙</span></p>
+
+
+
+
+<p>一般我都是把防火墙直接关掉省的好多事情（生产环境不建议这么搞啊！嘿嘿！）
+<pre class="brush: bash; gutter: true">/etc/init.d/iptables stop
+/etc/init.d/ip6tables stop
+chkconfig iptables off
+chkconfig ip6tables off</pre>
+<span style="font-size: 18px;">C.由于一些包在官方的库中没有，因此我们要建立dag.repo，定义非官方库</span>
+<pre class="brush: bash; gutter: true">vi /etc/yum.repos.d/dag.repo
+[dag]</pre></p>
+
+
+
+
+<p>name=Dag RPM Repository for Red Hat Enterprise Linux<br />
+baseurl=http://apt.sw.be/redhat/el$releasever/en/$basearch/dag<br />
+gpgcheck=1<br />
+enabled=1
+然后再导入非官方库的GPG：
+<pre class="brush: bash; gutter: true">rpm --import http://dag.wieers.com/rpm/packages/RPM-GPG-KEY.dag.txt</pre>
+安装cacti需要的环境包
+<pre class="brush: bash; gutter: true">yum install -y httpd mysql mysql-server  php php-mysql php-devel net-snmp net-snmp-utils
+yum install -y zlib libpng freetype libjpeg fontconfig gd libxml2 patch wget
+yum install -y rrdtool</pre>
+<span style="font-size: 18px;">下载cacti-0.8.7i-PIA-3.1.tar.gz(这个是整合了cacti 0.8.7和 cacti-plugin-arch3.1的）并解压</span>
+<pre class="brush: bash; gutter: true">cd /var/www/html/
+yum install wget -y
+wget http://www.cacti.net/downloads/cacti-0.8.7i-PIA-3.1.tar.gz
+tar zxvf cacti-0.8.7i-PIA-3.1.tar.gz
+wget http://www.cacti.net/downloads/patches/0.8.7i/settings_checkbox.patch
+cd cacti-0.8.7i-PIA-3.1
+patch -p1 -N &lt; ../settings_checkbox.patch
+cd ..
+mv -f cacti-0.8.7i-PIA-3.1/* /var/www/html/
+rm -rf cacti-0.8.7i-PIA-3.1
+chown -R apache:apache /var/www/html/</pre>
+<span style="font-size: 18px;">D.为cacti创建数据库和用户</span>
+<pre class="brush: bash; gutter: true">service mysqld start
+/usr/bin/mysqladmin --user=root create cacti
+mysql -e &quot;GRANT ALL ON cacti.* TO cactiuser@localhost IDENTIFIED BY &#039;cactifans.org&#039;&quot;</pre>
+我们再导入cacti的数据库
+<pre class="brush: bash; gutter: true">mysql -ucactiuser -pcactifans.org cacti &lt; /var/www/html/cacti.sql</pre>
+修改cacti的配置文件并保存
+<pre class="brush: bash; gutter: true">vi /var/www/html/include/config.php</pre></p>
+
+
+
+
+<p>/* make sure these values refect your actual database/host/user/password */<br />
+$database_type = &quot;mysql&quot;;<br />
+$database_default = &quot;cacti&quot;;<br />
+$database_hostname = &quot;localhost&quot;;<br />
+$database_username = &quot;cactiuser&quot;;<br />
+$database_password = &quot;cactifans.org&quot;;<br />
+$database_port = &quot;3306&quot;;
+设置crontab定时任务<br />
+由于我们是最小系统安装没有安装定时任务，因此我们首先安装
+<pre class="brush: bash; gutter: true">yum install vixie-cron</pre>
+然后我们添加定时任务
+<pre class="brush: bash; gutter: true">echo &#039;*/5 * * * * root /usr/bin/php /var/www/html/poller.php&#039; &gt;&gt; /etc/crontab</pre>
+<span style="font-size: 18px;">设置服务开机自启动,重启服务</span>
+<pre class="brush: bash; gutter: true">chkconfig snmpd on
+chkconfig httpd on
+chkconfig mysqld on
+chkconfig crond on
+service httpd restart
+service snmpd restart
+service mysqld restart
+service crond restart</pre>
+<span style="font-size: 18px;">E.WEB页完成安装</span>
+浏览http://xxx.xxx.xxx.xxx/index.php<br />
+就可以出再Cacti Installation Guide的页面了。NEXT--NEXT--FINISH。<br />
+用户名和密码为：admin/admin，之后输入新的密码，就完成了最基本的安装。
+<span style="font-size: 18px;">F.由于我们安装的这个版本已经在整合了cacti-plugin-3.1，所以我们只要在cacti里启用就成了，点console--User Management--admin</span></p>
+
+
+
+
+<p>可以看到Plugin Management ，选中它点save就可以启用cacti-plugin
+<h1>3.安装ngios</h1>
+<span style="font-size: 18px;">nagios我通过yum进行安装</span>
+<pre class="brush: bash; gutter: true">yum install nagios nagios-plugin nagios-nrpe</pre>
+这样就把ngios安装好了，安装好之后有几个地方需要配置一下，</p>
+
+
+
+
+<p>A.设置nagios的访问用户及密码，默认用户为nagiosadmin
+<pre class="brush: bash; gutter: true">htpasswd -c /etc/nagios/htpasswd.users nagiosadmin</pre>
+如果你设置的用户不是nagios还需要修改cgi.cfg(yum 安装会将nagios的配置文件放在/etc/nagios下)
+<pre class="brush: bash; gutter: true">
+authorized_for_system_information=nagiosadmin
+authorized_for_configuration_information=nagiosadmin
+authorized_for_system_commands=nagiosadmin
+authorized_for_all_services=nagiosadmin
+authorized_for_all_hosts=nagiosadmin
+authorized_for_all_service_commands=nagiosadmin
+authorized_for_all_host_commands=nagiosadmin</pre>
+修改以上几个的nagiosadmin为自定义的用户名，否则你将没有权限看见服务器的信息。<br />
+nagios的安装到到此结束了，至于详细的配置网上也有很多例子。Nagios的配置无非就是主机，服务，报警的配置，可以写成简单的脚本来实现快速添加。
+<h1>4.安装ndoutils</h1>
+<span style="font-size: 18px;">ndoutils我也是通过yum安装的，比较方便这个需要用到mysql的mysql-lib及mysql-inc，</span>
+因此需要安装mysql-devel（yum install mysql-devel）
+<pre class="brush: bash; gutter: true">yum install ndoutils -y</pre>
+然后我们配置ndo2db.cfg （yum默认安装的路径为 /etc/nagios/ndo2db.cfg）
+<pre class="brush: bash; gutter: true">vi /etc/nagios/ndo2db.cfg
+socket_type=tcp
+socket_name=/var/nagios/rw/ndo.sock
+db_name=cacti
+db_prefix=npc_
+db_user=cactiuser
+db_pass=cactifans.org
+debug_level=1
+debug_file=/var/nagios/ndo2db.debug</pre>
+用的数据库为cacti的数据库，别的根据你自己的具体设置就成了<br />
+配置ndomod.cfg  （yum默认安装的路径为 /etc/nagios/ndomod.cfg）
+<pre class="brush: bash; gutter: true">vi /etc/nagios/ndomod.cfg
+output_type=tcpsocket
+output=127.0.0.1
+buffer_file=/var/nagios/ndomod.tmp</pre>
+配置nagios.cfg   （yum安装的默认路径为 /etc/nagios/nagios.cfg)
+<pre class="brush: bash; gutter: true">check_external_commands=1
+command_check_interval = -1
+event_broker_options = -1
+broker_module=/usr/libexec/ndomod-3x.o config_file=/etc/nagios/ndomod.cfg
+process_performance_data=1</pre>
+<h1>5.安装NPC</h1>
+<span style="font-size: 18px;">我在npc的官网没有下载到，下载的地址貌似已经不能用了，最后发现有svn的，于是我用svn check了一份(我已打包传到我的空间,<a href="http://www.cactifans.org/plugins/npc.tar.gz">点此下载</a>）</span>
+<pre class="brush: bash; gutter: true">wget http://www.cactifans.org/plugins/npc.tar.gz
+tar zxvf npc*.tar.gz -C /var/www/html/plugins
+chown -R apache:apache /var/www/html/plugins/npc</pre>
+然后进入cacti，点Console--Plugin Management--并启用npc插件就是了</p>
+
+
+
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc4.png"><img class="aligncenter size-full wp-image-418" title="npc4" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc4.png" width="914" height="327" /></a></p>
+
+
+
+
+<p><span style="font-size: 18px;">接着在右侧栏目中选择settings,点选npc的标签</span></p>
+
+
+
+
+<p>钩选Remote Commands
+<pre class="brush: bash; gutter: true">Nagios Command File Path：      /var/nagios/rw/nagios.cmd</pre>
+这个文件启动nagios后会产生，根据实际的位置写，yum安装的在默认在 /var/nagios/rw/nagios.cmd
+<pre class="brush: bash; gutter: true">Nagios URL：]http://yourserver/nagios/</pre>
+保存就可以了。</p>
+
+
+
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc5.png"><img class="aligncenter size-large wp-image-419" title="npc5" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc5-1024x430.png" width="1024" height="430" /></a></p>
+
+
+
+
+<p><span style="font-size: 18px;">接着启动nagios ndoutils</span>
+<pre class="brush: bash; gutter: true">service mysqld restart
+service httpd restart
+/usr/sbin/ndo2db-3x -c /etc/nagios/ndo2db.cfg
+service nagios start
+chkconfig nagios on</pre>
+安装好之后在npc里只看到nagios status是on 别的主机信息却是没有查看日志发现有如下信息
+<pre class="brush: bash; gutter: true">tail -100 /var/log/messages</pre></p>
+
+
+
+
+<p>Feb 24 12:02:37 localhost ndo2db-3x: Error: mysql_query() failed for &#039;INSERT INTO npc_servicestatus SET instance_id=&#039;1&#039;</p>
+
+
+
+
+<p>, service_object_id=&#039;5&#039;, status_update_time=FROM_UNIXTIME(1330055656), output=&#039;HTTP OK: HTTP/1\.1 200 OK - 1916 bytes i</p>
+
+
+
+
+<p>n 0\.083 second response time&#039;, long_output=&#039;&#039;, perfdata=&#039;time=0\.083463s;;;0\.000000 size=1916B;;;0&#039;, current_state=&#039;0</p>
+
+
+
+
+<p>&#039;, has_been_checked=&#039;1&#039;, should_be_scheduled=&#039;1&#039;, current_check_attempt=&#039;1&#039;, max_check_attempts=&#039;4&#039;, last_check=FROM_UN</p>
+
+
+
+
+<p>IXTIME(1330055520), next_check=FROM_UNIXTIME(1330055820), check_type=&#039;0&#039;, last_state_change=FROM_UNIXTIME(1330011420),</p>
+
+
+
+
+<p>last_hard_state_change=FROM_UNIXTIME(1330011420), last_hard_state=&#039;0&#039;, last_time_ok=FROM_UNIXTIME(1330055520), last_tim</p>
+
+
+
+
+<p>e_warning=FROM_UNIXTIME(0), last_time_unknown=FROM_UNIXTIME(0), last_time_critical=FROM_UNIXTIME(1330011120), state_typ</p>
+
+
+
+
+<p>e=&#039;1&#039;, last_notification=FROM_UNIXTIME(0), next_notification=FROM_UNIXTIME(0), no_more_notifications=&#039;0&#039;, notifications</p>
+
+
+
+
+<p>_enabled=&#039;1&#039;, problem_has_been_acknowledged=&#039;0&#039;, acknowledgement_type=&#039;0&#039;, current_notification_number=&#039;0&#039;, passive_che</p>
+
+
+
+
+<p>cks_enabled=&#039;1&#039;, active_checks_enabled=&#039;1&#039;, event_handler_enabled=&#039;1&#039;, flap_detection_enabled=&#039;1&#039;, is_flapping=&#039;0&#039;, per</p>
+
+
+
+
+<p>cent_state_change=&#039;0.000000&#039;, latency=&#039;0.027000&#039;, execution_time=&#039;0.094000&#039;, scheduled_downtime_depth=&#039;0&#039;, failure_pred</p>
+
+
+
+
+<p>iction_enabled=&#039;1&#039;, process_performance_data=&#039;1&#039;, obsess_over_service=&#039;1&#039;, modified_service_attributes=&#039;1&#039;, event_handl</p>
+
+
+
+
+<p>er=&#039;&#039;, check_command=&#039;check_http&#039;, normal_check_interval=&#039;5.000000&#039;, retry_check_interval=&#039;1.000000&#039;, check_timeperiod_</p>
+
+
+
+
+<p>object_id=&#039;2&#039; ON DUPLICATE KEY UPDATE instance_id=&#039;1&#039;, service_object_id=&#039;5&#039;, status_update_time=FROM_UNIXTIME(13300556</p>
+
+
+
+
+<p>56), output=&#039;HTTP OK: HTTP/1\.1 200 OK - 1916 bytes in 0\.083 second response time&#039;, long_output=&#039;&#039;, perfdata=&#039;time=0\.</p>
+
+
+
+
+<p>083463s;;;0\.000000 size=1916B;;;0&#039;, current_state=&#039;0&#039;, has_been_checked=&#039;1&#039;, should_be_scheduled=&#039;1&#039;, current_check_at</p>
+
+
+
+
+<p>tempt=&#039;1&#039;, max_check_attempts=&#039;4&#039;, last_check=FROM_UNIXTIME(1330055520), next_check=FROM_UNIXTIME(1330055820), check_ty</p>
+
+
+
+
+<p>pe=&#039;0&#039;, last_state_change=FROM_
+很多类似的错误，最后在cacti的论坛里找到了，是缺少一个表因此进入mysql执行如下语句
+<pre class="brush: sql; gutter: true">mysql -ucactiuser -pcactifans.org
+use cacti;
+ALTER TABLE `npc_hostchecks` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_hoststatus` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_servicechecks` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_servicestatus` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_statehistory` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_eventhandlers` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_systemcommands` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+ALTER TABLE `npc_notifications` ADD COLUMN `long_output` varchar(8192) NOT NULL default &#039;&#039; AFTER `output`;
+exit;</pre>
+这样操作之后刷新一次就可以了，现在已经正常了</p>
+
+
+
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc6.png"><img class="aligncenter size-large wp-image-420" title="npc6" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc6-1024x443.png" width="1024" height="443" /></a></p>
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc7.png"><img class="aligncenter size-large wp-image-421" title="npc7" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc7-1024x322.png" width="1024" height="322" /></a></p>
+
+
+
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2012/02/npc8.png"><img class="aligncenter size-large wp-image-422" title="npc8" alt="" src="http://www.cactifans.org/wp-content/uploads/2012/02/npc8-1024x515.png" width="1024" height="515" /></a></p>
+
+]]></content>
+  </entry>
+  
+</feed>

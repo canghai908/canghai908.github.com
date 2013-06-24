@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cacti插件详解——Weathermap - Canghai's Blog</title>
+  <meta name="author" content="Sole">
+
+  
+  <meta name="description" content="cactifans,Linux">
+  <meta name="keywords" content="linux,cacti,httpd,browser,internet,media,sql,news,cactifans">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://canghai809.github.io/blog/2011/04/15/cacti%E6%8F%92%E4%BB%B6%E8%AF%A6%E8%A7%A3-weathermap">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Canghai's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Canghai's Blog</a></h1>
+  
+    <h2>A blogging framework for hackers!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:canghai809.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">博客主页</a></li>
+  <li><a href="/blog/archives">文章列表</a></li>
+  <li><a href="/blog/categories/cacti">cacti</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Cacti插件详解——Weathermap</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-15T00:00:00+08:00" pubdate data-updated="true">Apr 15<span>th</span>, 2011</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><blockquote>&nbsp;
+<div><span style="font-size: 18px;">          Weathermap是cacti中大家最用的一个插件之一，用它可以画出漂亮的网络拓扑图！同时Weathermap也是一个独立工具，可以独立部署，不需要cacti的支持，也可以部署.下面首先来看一看用Weathermap画出来的拓扑图.</span></div>
+&nbsp;</blockquote>
+<a href="http://www.cactifans.org/wp-content/uploads/2011/04/16.png"><img class="alignnone size-full wp-image-193" title="1" src="http://www.cactifans.org/wp-content/uploads/2011/04/16.png" alt="" width="990" height="710" /></a></p>
+
+<p>&nbsp;</p>
+
+<p><!--more--><a href="http://www.cactifans.org/wp-content/uploads/2011/04/22.png"><img class="alignnone size-full wp-image-194" title="2" src="http://www.cactifans.org/wp-content/uploads/2011/04/22.png" alt="" width="650" height="450" /></a></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/31.png"><img class="alignnone size-full wp-image-195" title="3" src="http://www.cactifans.org/wp-content/uploads/2011/04/31.png" alt="" width="1600" height="1200" /></a></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/41.jpg"><img class="alignnone size-full wp-image-196" title="4" src="http://www.cactifans.org/wp-content/uploads/2011/04/41.jpg" alt="" width="818" height="796" /></a></p>
+
+<p>&nbsp;
+<div><span style="font-size: 18px;">        这些漂亮的网络拓扑都是用weathermap画出来的!</span></div>
+<div><span style="font-size: 18px;">这么长时间了没有发出来，今天就写以下weathermap的用法，以下都是我自己的理解，如有错误之处请谅解！</span></div>
+<div><span style="font-size: 18px;">weathermap是用来做网络拓扑图的，其中可以调用mrtg和cacti的流量图，可以生成静态的html页面。具体的例子大家可以中国科大的这个http://linux.ustc.edu.cn/</span></div>
+<div><span style="font-size: 18px;">weathermap的官方网站为 http://www.network-weathermap.com/ weathermap有二种用法。第一种就是作为cacti的插件使用，第二种就是独立出来，可以独立安装一个weathermapm，当然要php,php-gd支持，weathermap最新版本为weathermap-0.97a.</span></div>
+<div></div>
+<h1>一.weathermap作为cacti插件的用法</h1>
+<h2>1.安装weathermap插件</h2></p>
+
+<p><pre lang="bash" line="1" escaped="true">wget http://www.network-weathermap.com/files/php-weathermap-0.97a.zip
+unzip php-weathermap-0.97a.zip
+mv weathermap/ /var/www/html/plugins/
+chown -R apache:apache /var/www/html/plugins/weathermap/configs/
+chown -R apache:apache /var/www/html/plugins/weathermap/output/</pre>
+<div><span style="font-size: 18px;">下面我们打开cacti，点console——Plugin Management,就可以看到weathermap了，点前面那个点就可以安装weathermap</span></div>
+&nbsp;</p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap1.png"><img class="alignnone size-full wp-image-483" title="weathermap1" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap1.png" alt="" width="823" height="587" /></a></p>
+
+<p>&nbsp;</p>
+
+<p><span style="font-size: 18px;">点击安装weathermap后</span></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap2.png"><img class="alignnone size-full wp-image-484" title="weathermap2" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap2.png" alt="" width="753" height="594" /></a></p>
+
+<p><span style="font-size: 18px;">至此，weathermap已经安装成功。</span>
+<h2>2.配置使用weathermap</h2>
+<span style="font-size: 18px;">安装好weathermap后，看到点Console在左边的列表里会看到weathermap的菜单，我们点击，会看到设置，因为我们还没有定义一个weathermap配置文件，所以我们点右上角的Add按钮，添加一个weathermap配置文件</span></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap3.png"><img class="alignnone size-large wp-image-485" title="weathermap3" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap3-1024x518.png" alt="" width="1024" height="518" /></a></p>
+
+<p><span style="font-size: 18px;">点击Add之后，我们看到有二个文件，其实这个时候调用的就是weathermap的configs目录下的文件，simple.conf就是自带的一个配置文件，我们可以点击它前面的Add按钮，把他添加到默认配置文件里</span></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap4.png"><img class="alignnone size-large wp-image-486" title="weathermap4" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap4-1024x395.png" alt="" width="1024" height="395" /></a></p>
+
+<p><span style="font-size: 18px;">至此我们添加了一个weathermap的配置文件，下面就是对weathermap进行配置了，点击weathermap,然后点击Editor对默认图形配置文件进行配置。</span></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap5.png"><img class="alignnone size-full wp-image-487" title="weathermap5" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap5.png" alt="" width="783" height="297" /></a></p>
+
+<p><span style="font-size: 18px;">点击editor后我们会看到如下提示</span></p>
+
+<p>&nbsp;
+<p style="color: #000000; font-family: Simsun; font-size: medium;">The editor has not been enabled yet. You need to set ENABLED=true at the top of editor.php</p>
+<p style="color: #000000; font-family: Simsun; font-size: medium;">Before you do that, you should consider using FilesMatch (in Apache) or similar to limit who can access the editor. There is more information in the install guide section of the manual.</p></p>
+
+<p><div></div>
+<span style="font-size: 18px;">我们按照他提示的编辑editor.php</span>
+<pre lang="bash" line="1" escaped="true">vi /var/www/html/plugins/weathermap/editor.php</pre>
+<pre lang="php" line="1" escaped="true">
+<php </pre></p>
+
+<p>require_once &#8216;editor.inc.php&#8217;;<br />
+require_once &#8216;Weathermap.class.php&#8217;;</p>
+
+<p>// so that you can&#8217;t have the editor active, and not know about it.<br />
+$ENABLED=true;</p>
+
+<p>if(! $ENABLED)<br />
+{
+print &#8221;</p>
+
+<p>The editor has not been enabled yet. You need to set ENABLED=true at the top of editor.php</p>
+
+<p>&#8221;;<br />
+print &#8221;</p>
+
+<p>Before you do that, you should consider using FilesMatch (in Apache) or similar to limit who can access the editor. There is more information in the install guide section of the manual.</p>
+
+<p>&#8221;;<br />
+exit();<br />
+}
+<div><span style="font-size: 18px;">把上面的$ENABLED=false;改为$ENABLED=true;然后保存。之后我们刷新页面就可以看到如下页面</span></div>
+&nbsp;
+<div><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap6.png"><img class="alignnone size-full wp-image-488" title="weathermap6" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap6.png" alt="" width="637" height="583" /></a></div>
+<div><span style="font-size: 18px;">在这里我们可以创建配置文件，或者从一个配置文件创建一个新的配置文件，或者打开一个已有的配置文件进行编辑，这里我们就点击simple.conf文件做一个简单的weathermap配置。点击simple.conf可以看到下图</span></div>
+<div><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap7.png"><img class="alignnone size-large wp-image-489" title="weathermap7" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap7-1024x729.png" alt="" width="1024" height="729" /></a></div>
+<div></div>
+<div><span style="font-size: 18px;">这里就是weathermap的编辑页面了，把上面那个几次菜单翻译下吧。</span></div>
+<div><span style="font-size: 18px;">Change File可以会到前面的那个界面改变编辑的图形配置文件。</span></div>
+<div><span style="font-size: 18px;">Add Node就是添加一个节点，点击之后鼠标会变成变成一个十字，在你想要放Node的地方点一下就可以创建一个Node。</span></div>
+<div><span style="font-size: 18px;">Add Link 就是添加添加一条链接，可以把二个Node连接起来，点击Add Link后点击Node，再点击另外一个Node就可以把二个Node连接起来。</span></div>
+<div><span style="font-size: 18px;">Position Legend是调整那个图列的位置，点击之后鼠标会编成十字，点击以下就可以移动到新的位置。</span></div>
+<div><span style="font-size: 18px;">Postion Timestamp就是添加一个图片创建的时间啊什么信息的。</span></div>
+<div><span style="font-size: 18px;">Map Style 可以调整这个图形的风格。比如图形名称、.图形大小、图形背景图片、输出图片目录、位置等</span></div>
+<div><span style="font-size: 18px;">基本使用的也就这几个了。点击一个Node</span></div>
+<div><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap8.png"><img class="alignnone size-full wp-image-491" title="weathermap8" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap8.png" alt="" width="725" height="512" /></a></div>
+<div></div>
+<div><span style="font-size: 18px;">这里可以改Node的大小，Node的名称和标签名称，Info URl是用户把鼠标放在这个Node后会出现一个流量图片，这个图片信息来自那里，Hover Graph URL 这里是当用户点击这个Node是会跳转到那个图，在这里可以选择点击Pick From Cacti，从cacti中选取，Icon Filename是图标的图像，这里可以有很多比如Router、Host、firewall。当然也可以自己添加，在weathermap的images里，设置好有点击Submit就可以提交更改了.</span></div>
+<div><span style="font-size: 18px;">我们在设置以下Link，点击Link的那条线</span></div>
+<div></div>
+<div><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap9.png"><img class="alignnone size-full wp-image-492" title="weathermap9" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap9.png" alt="" width="761" height="623" /></a></div>
+<div></div>
+<div></div>
+<div><span style="font-size: 18px;">Maximum Bandwidth Into这里是设置这条Link的最大带宽，这里根据你自己的具体配置设置了，这里端口是1G的端口，出口带宽是300MB因此我设置为300MB，Maximum Bandwidth out 是出去的最大流量带宽，可以根据自己的具体情况设置。Data source是流量从那里获取，这里可以引用mrtg的流量也可以点击Pick form Cacti从cacti里获取，Info URl是用户把鼠标放在这个Node后会出现一个流量图片，这个图片信息来自那里，Hover Graph URL 这里是当用户点击这个Node是会跳转到那个图，这个如果选择从cacti获取会自动取得。从mrtg要自己设置下。别的默认就成。这样我们就我完成了对一张拓扑图的编辑。如下就是我设计的weathermap图像</span></div>
+<div></div>
+<div><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap10.png"><img class="alignnone size-full wp-image-494" title="weathermap10" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap10.png" alt="" width="1001" height="707" /></a></div>
+<div></div>
+<h1><span style="color: #ff0000;">注意问题</span>：</h1>
+<div><span style="font-size: 18px;">1，中文显示，我们可以在配置文件里指定中中文字体的路径</span></div>
+<pre lang="bash" line="1" escaped="true">vi /var/www/html/plugins/weathermap/configs/simple.conf
+FONTDEFINE 100 /var/www/html/plugins/weathermap/msyh.ttf 10</pre>
+<div><span style="font-size: 18px;">msyh.ttf是中文字体的名字.需要用户自己加进去，指定路径，后面10字体是大小</span></div>
+<div><div><span style="font-size: 18px;">2.每次对图形进行调整后，都是自动保存的，不用保存（也没有那个选项！嘿嘿），要在weathermap里看到修改后的效果要等到下次cacti采集器采集后才会绘图。</span></div>
+<div<div><span style="font-size: 18px;">>3.cacti的日志里可能会显示</span></div>
+<div><span style="color: #000000; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px;">WEATHERMAP: Poller[0] [Map 1] simple.conf: About to write image file. If this is the last message in your log, increase memory_limit in php.ini [WMPOLL01]</span></div>
+<div><span style="color: #000000; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px;">等信息,不过我修改php.ini里的设置也不起作用，不用管它！</span></div>
+<div><div><span style="font-size: 18px;">4.可以在cacti的里进行设置，如图，一般默认就成</span></div>
+<div><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap11.png"><img class="alignnone size-large wp-image-495" title="weathermap11" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap11-1024x467.png" alt="" width="1024" height="467" /></a></div>
+<div></div>
+<h1>二.weathermap独立的使用。</h1>
+<div>
+<div><span style="font-size: 18px;">通过在catci里的设置，大家会weathermap已经有了一个认识了，其实它就是用过一个配置文件，绘图，引用cacti或者mrtg的流量和图形就成了</span></div>
+<div></div>
+<h2>1.安装基本环境</h2>
+<pre lang="bash" line="1" escaped="true">
+yum install httpd php php-gd  php-pear rrdtool -y
+servie http start
+chkconfig http on
+service crond start
+chkconfig crond on
+wget http://www.network-weathermap.com/files/php-weathermap-0.97a.zip
+unzip php-weathermap-0.97a.zip
+mv weathermap/ /var/www/html/
+chown -R apache:apache /var/www/html/weathermap/configs/
+</pre>
+<h2>2.配置weathermap</h2>
+&nbsp;
+<div><span style="font-size: 18px;">我们要配置我们的图形配置文件</span></div>
+<div></div>
+<div><span style="font-size: 18px;">先编辑editor.php</span></div>
+<pre lang="bash" line="1" escaped="true">vi /var/www/html/weathermap/editor.php</pre>
+<div><span style="font-size: 18px;">把里面的$ENABLED=false;改为$ENABLED=true;$ignore_cacti=False;改为$ignore_cacti=True;然后保存。</span></div>
+<div><span style="font-size: 18px;">之后我们打开http://xxx.xxx.xxx.xxx/weathermap/editor.php</span></div>
+<div><span style="font-size: 18px;">就可以像在cacti里一样设计自己的weathermap图形了，</span></div>
+&nbsp;
+<h1><span style="color: #ff0000;">特别注意：</span></h1>
+&nbsp;
+<div><span style="font-size: 18px;">1.在这里ICO的路径要选择绝对路径，不让路径会有错误，导致不能出图。</span></div>
+<div><span style="font-size: 18px;">2.eidtor.php里可以设置拓扑图输出的路径Image的路径直接写名称，不用写路径，Html的路径路径要写绝对路径。</span></div>
+<div><span style="font-size: 18px;">3.在weathermap目录里有个weathermap文件要设置rrdtools的路径。$rrdtool=&#8221;/usr/bin/rrdtool&#8221;;</span></div>
+<div><span style="font-size: 18px;">关于配置文件的我们可以weathermap官网找到</span></div>
+<div><span style="font-size: 18px;">weathermap官网的设置：http://www.network-weathermap.com/manual/latest/pages/config-reference.html 具体的参数这里都有</span></div>
+<div><span style="font-size: 18px;">这里还有一个配置文件的范本http://www.network-weathermap.com/manual/latest/pages/main.html#example</span></div>
+<div><span style="font-size: 18px;">这个是做好的图形;http://www.network-weathermap.com/manual/latest/example/example.html</span></div>
+&nbsp;
+<h2>3.生成图形</h2>
+&nbsp;
+<div><span style="font-size: 18px;">设置好图形配置文件后我们就要生成图形了，在cacti里这个是通过cacti的采集器实现的，在单独安装weathermap的后，需要利用系统的计划任务来实现</span></div>
+<div><span style="font-size: 18px;">我们先执行一次</span></div>
+<pre lang="bash" line="1" escaped="true">/usr/bin/php /var/www/html/weathermap/weathermap --config /var/www/html/weathermap/configs/simple.conf --image-uri ../weathermap/test.png</pre>
+<div><span style="font-size: 18px;">就可以在/下生成一个test.png图片，然后我们编辑</span></div>
+<pre lang="bash" line="1" escaped="true">vi /etc/crontab</pre>
+<div><span style="font-size: 18px;">添加如下</span></div>
+<pre lang="bash" line="1" escaped="true">*/5 * * * * root /usr/bin/php /var/www/html/weathermap/weathermap --config /var/www/html/weathermap/configs/simple.conf --image-uri ../weathermap/test.png</pre>
+<div><span style="font-size: 18px;">然后我们要做个硬链接不让png图片的路径会有错误</span></div>
+<pre lang="bash" line="1" escaped="true">ln /test.png /var/www/html/weathermap/test.png</pre>
+<div><span style="font-size: 18px;">至此我们的weathermap已经做好我们可以打开http://xxx.xxx.xxx.xxx/weathermap/index.html查看拓扑图。</span></div>
+<div><span style="font-size: 18px;">我最终的拓扑图</span></div>
+&nbsp;</div></div></div></p>
+
+<p><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap12.png"><img class="alignnone size-large wp-image-498" title="weathermap12" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap12-1024x725.png" alt="" width="1024" height="725" /></a>
+<h1>总结：</h1>
+&nbsp;
+<div><span style="font-size: 18px;">1.weathermap的用法就说到这里，基本就是这二种了，还有的是自己做一个html，再嵌套一个weathermap的页面就像刚开始给大家说的那个中国科大的，就是通过网页的嵌套做到的，嵌套了mrtg，weathermap的页面。</span></div>
+<div><span style="font-size: 18px;">2.在单独使用weathermap时要特别注意路径问题，不出图形很有可能是路径问题，这个问题我也纠结了很久。</span></div>
+<h1><span style="color: #ff0000;">3.最重要的一点，就是关于weathermap的安全性问题，其实在它的官网也说明了。</span></h1>
+<div>地址：http://www.network-weathermap.com/manual/latest/pages/install-cacti-editor.html</div>
+&nbsp;</p>
+
+<p><span style="color: #000000; font-family: 'Lucida Grande', 'Trebuchet MS', Verdana, Lucida, Geneva, Helvetica, Arial, sans-serif; font-size: 12px; line-height: 18px;">When you are happy that the world can&#8217;t edit your maps, then enable the editor. This is done by editing the top of editor.php and changing </span><code style="color: #000000; font-size: 12px; line-height: 18px;">$ENABLED=false;</code><span style="color: #000000; font-family: 'Lucida Grande', 'Trebuchet MS', Verdana, Lucida, Geneva, Helvetica, Arial, sans-serif; font-size: 12px; line-height: 18px;"> to </span><code style="color: #000000; font-size: 12px; line-height: 18px;">$ENABLED=true;</code>
+<p style="color: #000000; font-family: 'Lucida Grande', 'Trebuchet MS', Verdana, Lucida, Geneva, Helvetica, Arial, sans-serif; font-size: 12px; line-height: 18px;">You should now be able to go to http://your.server/cacti/plugins/weathermap/editor.php in a browser, and get a welcome page that offers to load or create a config file. That&#8217;s it. All done. Please see the <a href="http://www.network-weathermap.com/manual/latest/pages/editor.html">editor manual page</a> for more about <em>using</em> the editor!</p>
+<p style="color: #000000; font-family: 'Lucida Grande', 'Trebuchet MS', Verdana, Lucida, Geneva, Helvetica, Arial, sans-serif; font-size: 12px; line-height: 18px;">You can also edit an existing map from the Cacti web interface, by choosing Manage..Weathermaps and then clicking on the name of a config file in the list of active maps. The editor will open with that map loaded.</p>
+<p style="color: #000000; font-family: 'Lucida Grande', 'Trebuchet MS', Verdana, Lucida, Geneva, Helvetica, Arial, sans-serif; font-size: 12px; line-height: 18px;"><strong>Important Security Note:</strong> The editor allows <em>anyone</em> who can access editor.php to change the configuration files for your network weathermaps. There is no authentication built-in for editing, even with the Cacti Plugin. This is why the configuration file doesn&#8217;t exist by default - the editor won&#8217;t work until you choose to make it work. It&#8217;s recommended that you either:</p></p>
+
+<p><ul style="color: #000000; font-family: 'Lucida Grande', 'Trebuchet MS', Verdana, Lucida, Geneva, Helvetica, Arial, sans-serif; font-size: 12px; line-height: 18px;">
+	<li>change the ownership of configuration files so that the editor can&#8217;t write to them once they are complete, or</li>
+	<li>use your webserver&#8217;s authentication and access control facilities to limit who can access the editor.php URL. On apache, this can be done using the FilesMatch directive and mod_access.</li>
+</ul>
+
+<div><span style="font-size: 18px;">可以看到在默认情况下editor.php这个是没有做验证的，就是意味<span style="color: #ff0000;">每个人都可以编辑你的weathermap图形配置文件！！！！</span>发现很多使用weathermap都没做限制，有些还是直接到公网的，再次特别提醒，一定要做一个验证!</span></div>
+<div><span style="font-size: 18px;">下面我提供一种方法。</span></div>
+<div>
+<div><span style="font-size: 18px;">修改httpd.conf配置文件</span></div>
+<pre lang="bash" line="1" escaped="true">vi /etc/httpd/conf/httpd.conf</pre>
+<div><span style="font-size: 18px;">在文件最后添加</span></div>
+<pre lang="bash" line="1" escaped="true">
+<Directory /var/www/html/weathermap>
+   <files editor.php>
+            Order Deny,Allow
+            Deny from all
+            Allow from 127.0.0.1
+        </files>
+</pre>
+<div><span style="font-size: 18px;"> 然后保存，这个路劲是weathermap的路径.这样就可以限制别人访问editor.php的访问.设置好后重启apache，再访问那个页面就会出现这个页面</span></div>
+<div><a href="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap13.png"><img class="alignnone size-full wp-image-501" title="weathermap13" src="http://www.cactifans.org/wp-content/uploads/2011/04/weathermap13.png" alt="" width="663" height="272" /></a></div>
+<div><span style="font-size: 18px;">当然也可以做一个基于.htaccess的验证。</span></div>
+</div>
+<div></div>
+<div><span style="font-size: 18px;">本文内容都是本人自己理解，如有错误之处，请大牛指正啊，不胜感谢啊！</span></div></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Sole</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-15T00:00:00+08:00" pubdate data-updated="true">Apr 15<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cacticha-jian/'>Cacti插件</a>, <a class='category' href='/blog/categories/cacti/'>cacti</a>
+  
+</span>
+
+
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/11/cactifans-v0-8-7g%E5%8F%91%E8%A1%8C%E7%89%88%E8%AF%B4%E6%98%8E%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%EF%BC%81/" title="Previous Post: CactiFans-v0.8.7g发行版说明及使用教程！">&laquo; CactiFans-v0.8.7g发行版说明及使用教程！</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/16/%E9%A6%96%E5%8F%91cacti-0-8-7h-beta1%E7%89%88%E8%AF%95%E7%94%A8/" title="Next Post: [首发]cacti-0.8.7h-beta1版试用">[首发]cacti-0.8.7h-beta1版试用 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2119046645&verifier=220ff941&dpc=1"></iframe>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/backtrack'>BackTrack (1)</a></li><li><a href='/blog/categories/cacti'>cacti (17)</a></li><li><a href='/blog/categories/cacti插件'>Cacti插件 (6)</a></li><li><a href='/blog/categories/dhcp'>dhcp (1)</a></li><li><a href='/blog/categories/linux'>linux (7)</a></li><li><a href='/blog/categories/mysql'>MySQL (1)</a></li><li><a href='/blog/categories/oracle'>oracle (1)</a></li><li><a href='/blog/categories/other'>other (1)</a></li><li><a href='/blog/categories/puppet'>puppet (2)</a></li><li><a href='/blog/categories/未分类'>未分类 (1)</a></li><li><a href='/blog/categories/测试'>测试 (1)</a></li><li><a href='/blog/categories/视频'>视频 (4)</a></li></ul>
+</section>
+<section>
+  <h1>Category Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/backtrack' style='font-size: 103.52941176470588%'>BackTrack(1)</a> <a href='/blog/categories/cacti' style='font-size: 160.0%'>cacti(17)</a> <a href='/blog/categories/cacti插件' style='font-size: 121.17647058823529%'>Cacti插件(6)</a> <a href='/blog/categories/dhcp' style='font-size: 103.52941176470588%'>dhcp(1)</a> <a href='/blog/categories/linux' style='font-size: 124.70588235294117%'>linux(7)</a> <a href='/blog/categories/mysql' style='font-size: 103.52941176470588%'>MySQL(1)</a> <a href='/blog/categories/oracle' style='font-size: 103.52941176470588%'>oracle(1)</a> <a href='/blog/categories/other' style='font-size: 103.52941176470588%'>other(1)</a> <a href='/blog/categories/puppet' style='font-size: 107.05882352941177%'>puppet(2)</a> <a href='/blog/categories/未分类' style='font-size: 103.52941176470588%'>未分类(1)</a> <a href='/blog/categories/测试' style='font-size: 103.52941176470588%'>测试(1)</a> <a href='/blog/categories/视频' style='font-size: 114.11764705882354%'>视频(4)</a> </span>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/17/ce-shi-xia-xin-bloga/">测试下新blog啊</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/16/hello-world/">Hello World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/15/my-first-blog/">My First Blog</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/05/%E5%9C%A8centos-6-4%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">在CentOS 6.4上安装Puppet配置管理工具</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/01/%E5%9C%A8ubuntu-12-04%E4%B8%8A%E5%AE%89%E8%A3%85puppet%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">在Ubuntu 12.04上安装Puppet配置管理工具</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tags</h1>
+  <ul class="tag-cloud">
+<a style="font-size: 165%" href="/tags/cacti/">cacti</a>
+<a style="font-size: 60%" href="/tags/centos/">centos</a>
+<a style="font-size: 60%" href="/tags/hello-world/">hello world!</a>
+<a style="font-size: 60%" href="/tags/linux/">linux</a>
+<a style="font-size: 60%" href="/tags/puppet/">puppet</a>
+
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Sole -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'cactifans';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://canghai809.github.io/blog/2011/04/15/cacti%E6%8F%92%E4%BB%B6%E8%AF%A6%E8%A7%A3-weathermap/';
+        var disqus_url = 'http://canghai809.github.io/blog/2011/04/15/cacti%E6%8F%92%E4%BB%B6%E8%AF%A6%E8%A7%A3-weathermap/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
